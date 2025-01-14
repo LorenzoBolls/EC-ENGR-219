@@ -1,0 +1,30 @@
+# Byte-compiled / optimized files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.env/
+.venv/
+venv/
+ENV/
+
+# Logs and temporary files
+*.log
+*.tmp
+*.swp
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# macOS-specific
+.DS_Store
+.AppleDouble
+
+# Unit test / coverage
+.coverage
+.pytest_cache/
+
+# IDE-specific (optional)
+.idea/
+.vscode/

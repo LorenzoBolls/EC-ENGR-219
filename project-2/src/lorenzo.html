@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>lorenzo.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="part-2">Part 2</h1>
+<pre class="hljs"><code><div><span class="hljs-keyword">import</span> torch
+<span class="hljs-keyword">import</span> torch.nn <span class="hljs-keyword">as</span> nn
+<span class="hljs-keyword">from</span> torchvision <span class="hljs-keyword">import</span> transforms, datasets
+<span class="hljs-keyword">from</span> torch.utils.data <span class="hljs-keyword">import</span> DataLoader, TensorDataset
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+<span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+
+<span class="hljs-keyword">from</span> sklearn.decomposition <span class="hljs-keyword">import</span> PCA, TruncatedSVD
+<span class="hljs-keyword">from</span> sklearn.cluster <span class="hljs-keyword">import</span> KMeans, AgglomerativeClustering
+<span class="hljs-keyword">from</span> sklearn.metrics <span class="hljs-keyword">import</span> (
+    confusion_matrix,
+    adjusted_rand_score,
+    adjusted_mutual_info_score,
+)
+<span class="hljs-keyword">from</span> sklearn.preprocessing <span class="hljs-keyword">import</span> StandardScaler
+<span class="hljs-keyword">from</span> sklearn.pipeline <span class="hljs-keyword">import</span> Pipeline
+<span class="hljs-keyword">from</span> sklearn.base <span class="hljs-keyword">import</span> TransformerMixin
+<span class="hljs-keyword">from</span> sklearn.manifold <span class="hljs-keyword">import</span> TSNE
+<span class="hljs-keyword">from</span> sklearn.model_selection <span class="hljs-keyword">import</span> train_test_split
+
+<span class="hljs-keyword">import</span> umap
+<span class="hljs-keyword">import</span> hdbscan
+<span class="hljs-keyword">from</span> tqdm <span class="hljs-keyword">import</span> tqdm
+<span class="hljs-keyword">import</span> requests
+<span class="hljs-keyword">import</span> os
+<span class="hljs-keyword">import</span> tarfile
+<span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd
+</div></code></pre>
+<pre class="hljs"><code><div>filename = <span class="hljs-string">'./flowers_features_and_labels.npz'</span>
+
+<span class="hljs-keyword">if</span> os.path.exists(filename):
+    file = np.load(filename)
+    f_all, y_all = file[<span class="hljs-string">'f_all'</span>], file[<span class="hljs-string">'y_all'</span>]
+
+<span class="hljs-keyword">else</span>:
+    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> os.path.exists(<span class="hljs-string">'./flower_photos'</span>):
+        <span class="hljs-comment"># download the flowers dataset and extract its images</span>
+        url = <span class="hljs-string">'http://download.tensorflow.org/example_images/flower_photos.tgz'</span>
+        <span class="hljs-keyword">with</span> open(<span class="hljs-string">'./flower_photos.tgz'</span>, <span class="hljs-string">'wb'</span>) <span class="hljs-keyword">as</span> file:
+            file.write(requests.get(url).content)
+        <span class="hljs-keyword">with</span> tarfile.open(<span class="hljs-string">'./flower_photos.tgz'</span>) <span class="hljs-keyword">as</span> file:
+            file.extractall(<span class="hljs-string">'./'</span>)
+        os.remove(<span class="hljs-string">'./flower_photos.tgz'</span>)
+
+    <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FeatureExtractor</span><span class="hljs-params">(nn.Module)</span>:</span>
+        <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self)</span>:</span>
+            super().__init__()
+
+            vgg = torch.hub.load(<span class="hljs-string">'pytorch/vision:v0.10.0'</span>, <span class="hljs-string">'vgg16'</span>, pretrained=<span class="hljs-literal">True</span>)
+
+            <span class="hljs-comment"># Extract VGG-16 Feature Layers</span>
+            self.features = list(vgg.features)
+            self.features = nn.Sequential(*self.features)
+            <span class="hljs-comment"># Extract VGG-16 Average Pooling Layer</span>
+            self.pooling = vgg.avgpool
+            <span class="hljs-comment"># Convert the image into one-dimensional vector</span>
+            self.flatten = nn.Flatten()
+            <span class="hljs-comment"># Extract the first part of fully-connected layer from VGG16</span>
+            self.fc = vgg.classifier[<span class="hljs-number">0</span>]
+
+        <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">forward</span><span class="hljs-params">(self, x)</span>:</span>
+            <span class="hljs-comment"># It will take the input 'x' until it returns the feature vector called 'out'</span>
+            out = self.features(x)
+            out = self.pooling(out)
+            out = self.flatten(out)
+            out = self.fc(out) 
+            <span class="hljs-keyword">return</span> out 
+
+    <span class="hljs-comment"># initialize the model based on best available device</span>
+    <span class="hljs-keyword">if</span> torch.backends.mps.is_available():
+        device = torch.device(<span class="hljs-string">"mps"</span>)
+    <span class="hljs-keyword">elif</span> torch.cuda.is_available():
+        device = torch.device(<span class="hljs-string">"cuda"</span>)
+    <span class="hljs-keyword">else</span>:
+        device = torch.device(<span class="hljs-string">"cpu"</span>)
+
+
+    feature_extractor = FeatureExtractor().to(device).eval()
+
+    dataset = datasets.ImageFolder(root=<span class="hljs-string">'./flower_photos'</span>,
+                                   transform=transforms.Compose([transforms.Resize(<span class="hljs-number">224</span>),
+                                                                 transforms.CenterCrop(<span class="hljs-number">224</span>),
+                                                                 transforms.ToTensor(),
+                                                                 transforms.Normalize(mean=[<span class="hljs-number">0.485</span>, <span class="hljs-number">0.456</span>, <span class="hljs-number">0.406</span>], std=[<span class="hljs-number">0.229</span>, <span class="hljs-number">0.224</span>, <span class="hljs-number">0.225</span>])]))
+    dataloader = DataLoader(dataset, batch_size=<span class="hljs-number">64</span>, shuffle=<span class="hljs-literal">True</span>)
+
+    <span class="hljs-comment"># Extract features and store them on disk</span>
+    f_all, y_all = np.zeros((<span class="hljs-number">0</span>, <span class="hljs-number">4096</span>)), np.zeros((<span class="hljs-number">0</span>,))
+    <span class="hljs-keyword">for</span> x, y <span class="hljs-keyword">in</span> tqdm(dataloader):
+        <span class="hljs-keyword">with</span> torch.no_grad():
+            f_all = np.vstack([f_all, feature_extractor(x.to(device)).cpu()])
+            y_all = np.concatenate([y_all, y])
+    np.savez(filename, f_all=f_all, y_all=y_all)
+</div></code></pre>
+<h1 id="question-19">Question 19</h1>
+<p>Even if the VGG network was pre-trained using a dataset with different classes, the features it learns are enough to retain discriminative ability when applied to a custom dataset. Early and mid-layers in VGG capture basic visual patterns such as edges, textures and shapes, which can be applied broadly across different image domains and can be helpful as a foundation for distinguishing new classes. That means the network can tell new types of images apart based on these pre-learned representations.</p>
+<h1 id="question-20">Question 20</h1>
+<p>The provided helper code first loads the flower images are already on the system, and if they aren't, it downloads the flowers dataset. It then loads the images in batches and applies preprocessing steps such as normalization, center cropping, and resizing. It uses a pre-trained VGG-16 model to extract features by passing images through its feature layers, which capture hierarchical patterns such as edges, shapes, and textures. It then applies average pooling to reduce feature dimensionality and flattens the pooled feature maps into a one-dimensional vector. Finally, the helper code passes the flattened features through the first fully connected layer of the VGG-16 classifier, transforming them into a compact 4096-dimensional feature vector. These extracted features provide a more discriminative representation of each image.</p>
+<h1 id="question-21">Question 21</h1>
+<p>224 × 224 × 3 = <strong>150528 pixels</strong></p>
+<pre class="hljs"><code><div>num_features = f_all.shape[<span class="hljs-number">1</span>]
+print(<span class="hljs-string">f"The dimension of each feature vector for an image sample: <span class="hljs-subst">{num_features}</span>"</span>)
+</div></code></pre>
+<h4 id="output">Output:</h4>
+<p>The dimension of each feature vector for an image sample: 4096</p>
+<h1 id="question-22">Question 22</h1>
+<pre class="hljs"><code><div><span class="hljs-comment"># Compute the percentage of zero elements in the feature matrix</span>
+zero_mask = (f_all == <span class="hljs-number">0</span>)  
+num_zeros = np.sum(zero_mask)  
+total_elements = f_all.size  
+percentage_zeros = (num_zeros / total_elements) * <span class="hljs-number">100</span> 
+
+print(<span class="hljs-string">f"Percentage of zero elements in the array: <span class="hljs-subst">{percentage_zeros:<span class="hljs-number">.2</span>f}</span>%"</span>)
+</div></code></pre>
+<h4 id="output">Output:</h4>
+<p>Percentage of zero elements in the array: 0.00%
+<br>
+<br></p>
+<p>The extracted features are dense because most of their elements are nonzero since they capture detailed visual patterns. In contrast, TF-IDF features are sparse, as most of their elements are zero due to documents only containing a fraction of all possible words.</p>
+<h1 id="question-23">Question 23</h1>
+<pre class="hljs"><code><div><span class="hljs-comment"># applying t-SNE to reduce 4096-dimensional features to 2D</span>
+tsne = TSNE(n_components=<span class="hljs-number">2</span>, perplexity=<span class="hljs-number">30</span>, random_state=<span class="hljs-number">42</span>)
+f_all_2d = tsne.fit_transform(f_all)
+
+<span class="hljs-comment"># plot the 2D mapped features</span>
+plt.figure(figsize=(<span class="hljs-number">10</span>, <span class="hljs-number">7</span>))
+scatter = plt.scatter(f_all_2d[:, <span class="hljs-number">0</span>], f_all_2d[:, <span class="hljs-number">1</span>], c=y_all, cmap=<span class="hljs-string">'tab10'</span>, alpha=<span class="hljs-number">0.7</span>)
+
+<span class="hljs-comment"># legend for interpretation</span>
+plt.colorbar(scatter, label=<span class="hljs-string">"Flower Categories (Ground Truth Labels)"</span>)
+plt.xlabel(<span class="hljs-string">"t-SNE Dimension 1"</span>)
+plt.ylabel(<span class="hljs-string">"t-SNE Dimension 2"</span>)
+plt.title(<span class="hljs-string">"t-SNE Visualization of Extracted VGG-16 Features"</span>)
+plt.show()
+</div></code></pre>
+<p><img src="lorenzo_images/Q23.png" alt="Alt Text"></p>
+<p>Here, the t-SNE visualization maps the high dimensional feature vector onto a 2D space, which shows clusters where each point represents an image, and the colors indicate different flower categories based on ground-truth labels. Some of the clusters are very clearly separated, which shows that VGG-16 does successfully capture visual features that differentiate certain flower types. There is some overlap though between the categories, which means that some flowers could have similar textures, colors, or shapes. This can make it harder to distinguish between them. Also, the clusters differ in size and density, as some of them are tightly packed, while some of them are more spread out. Tightly packed clusters represents more consistent features, while the spread out ones mean that they have greater intra-class variability.</p>
+<h1 id="question-24">Question 24</h1>
+<pre class="hljs"><code><div><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Autoencoder</span><span class="hljs-params">(torch.nn.Module, TransformerMixin)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, n_components)</span>:</span>
+        super().__init__()
+        self.n_components = n_components
+        self.n_features = <span class="hljs-literal">None</span>  <span class="hljs-comment"># to be determined with data</span>
+        self.encoder = <span class="hljs-literal">None</span>
+        self.decoder = <span class="hljs-literal">None</span>
+        
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">_create_encoder</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">return</span> nn.Sequential(
+            nn.Linear(<span class="hljs-number">4096</span>, <span class="hljs-number">1280</span>),
+            nn.ReLU(<span class="hljs-literal">True</span>),
+            nn.Linear(<span class="hljs-number">1280</span>, <span class="hljs-number">640</span>),
+            nn.ReLU(<span class="hljs-literal">True</span>), nn.Linear(<span class="hljs-number">640</span>, <span class="hljs-number">120</span>), nn.ReLU(<span class="hljs-literal">True</span>), nn.Linear(<span class="hljs-number">120</span>, self.n_components))
+    
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">_create_decoder</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">return</span> nn.Sequential(
+            nn.Linear(self.n_components, <span class="hljs-number">120</span>),
+            nn.ReLU(<span class="hljs-literal">True</span>),
+            nn.Linear(<span class="hljs-number">120</span>, <span class="hljs-number">640</span>),
+            nn.ReLU(<span class="hljs-literal">True</span>),
+            nn.Linear(<span class="hljs-number">640</span>, <span class="hljs-number">1280</span>),
+            nn.ReLU(<span class="hljs-literal">True</span>), nn.Linear(<span class="hljs-number">1280</span>, <span class="hljs-number">4096</span>))
+    
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">forward</span><span class="hljs-params">(self, X)</span>:</span>
+        encoded = self.encoder(X)
+        decoded = self.decoder(encoded)
+        <span class="hljs-keyword">return</span> decoded
+    
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">fit</span><span class="hljs-params">(self, X)</span>:</span>
+        X = torch.tensor(X, dtype=torch.float32, device=device)
+        self.n_features = X.shape[<span class="hljs-number">1</span>]
+        self.encoder = self._create_encoder()
+        self.decoder = self._create_decoder()
+        self.to(device)
+        self.train()
+        
+        criterion = nn.MSELoss()
+        optimizer = torch.optim.Adam(self.parameters(), lr=<span class="hljs-number">1e-3</span>, weight_decay=<span class="hljs-number">1e-5</span>)
+
+        dataset = TensorDataset(X)
+        dataloader = DataLoader(dataset, batch_size=<span class="hljs-number">128</span>, shuffle=<span class="hljs-literal">True</span>)
+
+        <span class="hljs-keyword">for</span> epoch <span class="hljs-keyword">in</span> tqdm(range(<span class="hljs-number">100</span>)):
+            <span class="hljs-keyword">for</span> (X_,) <span class="hljs-keyword">in</span> dataloader:
+                X_ = X_.to(device)
+                <span class="hljs-comment"># ===================forward=====================</span>
+                output = self(X_)
+                loss = criterion(output, X_)
+                <span class="hljs-comment"># ===================backward====================</span>
+                optimizer.zero_grad()
+                loss.backward()
+                optimizer.step()
+
+        <span class="hljs-keyword">return</span> self     
+        
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">transform</span><span class="hljs-params">(self, X)</span>:</span>
+        X = torch.tensor(X, dtype=torch.float32, device=device)
+        self.eval()
+        <span class="hljs-keyword">with</span> torch.no_grad():
+            <span class="hljs-keyword">return</span> self.encoder(X).cpu().numpy()
+</div></code></pre>
+<pre class="hljs"><code><div><span class="hljs-comment"># splitting data</span>
+X_train, X_test, y_train, y_test = train_test_split(f_all, y_all, test_size=<span class="hljs-number">0.2</span>)
+
+<span class="hljs-comment"># train autoencoder</span>
+autoencoder = Autoencoder(n_components=<span class="hljs-number">50</span>).fit(X_train)
+X_autoencoded = autoencoder.transform(X_train)
+
+<span class="hljs-comment"># define possible dimensionality reduction approaches</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">apply_dimensionality_reduction</span><span class="hljs-params">(method, X)</span>:</span>
+    <span class="hljs-keyword">if</span> method == <span class="hljs-string">'None'</span>:
+        <span class="hljs-keyword">return</span> X
+    <span class="hljs-keyword">elif</span> method == <span class="hljs-string">'SVD'</span>:
+        <span class="hljs-keyword">return</span> TruncatedSVD(n_components=<span class="hljs-number">50</span>).fit_transform(X)
+    <span class="hljs-keyword">elif</span> method == <span class="hljs-string">'UMAP'</span>:
+        <span class="hljs-keyword">return</span> umap.UMAP(n_components=<span class="hljs-number">50</span>, random_state=<span class="hljs-number">42</span>).fit_transform(X)
+    <span class="hljs-keyword">elif</span> method == <span class="hljs-string">'Autoencoder'</span>:
+        <span class="hljs-keyword">return</span> autoencoder.transform(X)
+    <span class="hljs-keyword">else</span>:
+        <span class="hljs-keyword">raise</span> ValueError(<span class="hljs-string">f"Unknown dimensionality reduction method: <span class="hljs-subst">{method}</span>"</span>)
+
+<span class="hljs-comment"># helper for the standard clustering methods</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">apply_clustering</span><span class="hljs-params">(method, X, k=<span class="hljs-number">5</span>, min_cluster_size=<span class="hljs-number">10</span>, min_samples=<span class="hljs-number">2</span>)</span>:</span>
+    <span class="hljs-keyword">if</span> method == <span class="hljs-string">'K-Means'</span>:
+        <span class="hljs-keyword">return</span> KMeans(n_clusters=k, random_state=<span class="hljs-number">42</span>).fit_predict(X)
+    <span class="hljs-keyword">elif</span> method == <span class="hljs-string">'Agglomerative'</span>:
+        <span class="hljs-keyword">return</span> AgglomerativeClustering(n_clusters=k).fit_predict(X)
+    <span class="hljs-keyword">elif</span> method == <span class="hljs-string">'HDBSCAN'</span>:
+        <span class="hljs-keyword">return</span> hdbscan.HDBSCAN(min_cluster_size=min_cluster_size, min_samples=min_samples).fit_predict(X)
+    <span class="hljs-keyword">else</span>:
+        <span class="hljs-keyword">raise</span> ValueError(<span class="hljs-string">f"Unknown clustering method: <span class="hljs-subst">{method}</span>"</span>)
+
+<span class="hljs-comment"># store results</span>
+results = []
+dim_reduction_methods = [<span class="hljs-string">"None"</span>, <span class="hljs-string">"SVD"</span>, <span class="hljs-string">"UMAP"</span>, <span class="hljs-string">"Autoencoder"</span>]
+clustering_methods = [<span class="hljs-string">"K-Means"</span>, <span class="hljs-string">"Agglomerative"</span>]
+hdbscan_configs = {<span class="hljs-string">'min_cluster_size'</span>: [<span class="hljs-number">5</span>, <span class="hljs-number">10</span>, <span class="hljs-number">15</span>], <span class="hljs-string">'min_samples'</span>: [<span class="hljs-number">5</span>, <span class="hljs-number">10</span>, <span class="hljs-number">15</span>]}
+
+<span class="hljs-keyword">for</span> dr_method <span class="hljs-keyword">in</span> tqdm(dim_reduction_methods, desc=<span class="hljs-string">"Dimensionality Reduction Methods"</span>):
+    X_reduced = apply_dimensionality_reduction(dr_method, X_train)
+
+    <span class="hljs-keyword">for</span> cluster_method <span class="hljs-keyword">in</span> clustering_methods:
+        y_pred = apply_clustering(cluster_method, X_reduced)
+        score = adjusted_rand_score(y_train, y_pred)
+        results.append([dr_method, cluster_method, cluster_method, <span class="hljs-string">"k=5"</span> <span class="hljs-keyword">if</span> cluster_method == <span class="hljs-string">"K-Means"</span> <span class="hljs-keyword">else</span> <span class="hljs-string">"n_clusters=5"</span>, score])
+
+    <span class="hljs-comment"># HDBSCAN </span>
+    <span class="hljs-keyword">for</span> min_size <span class="hljs-keyword">in</span> hdbscan_configs[<span class="hljs-string">'min_cluster_size'</span>]:
+        <span class="hljs-keyword">for</span> min_samp <span class="hljs-keyword">in</span> hdbscan_configs[<span class="hljs-string">'min_samples'</span>]:
+            y_pred = apply_clustering(<span class="hljs-string">"HDBSCAN"</span>, X_reduced, min_cluster_size=min_size, min_samples=min_samp)
+            valid_indices = y_pred != <span class="hljs-number">-1</span>
+            score = adjusted_rand_score(y_train[valid_indices], y_pred[valid_indices]) <span class="hljs-keyword">if</span> np.any(valid_indices) <span class="hljs-keyword">else</span> <span class="hljs-number">-1</span>
+            results.append([dr_method, <span class="hljs-string">"HDBSCAN"</span>, <span class="hljs-string">"HDBSCAN"</span>, <span class="hljs-string">f"min_cluster_size=<span class="hljs-subst">{min_size}</span>, min_samples=<span class="hljs-subst">{min_samp}</span>"</span>, score])
+
+<span class="hljs-comment"># convert to dataframe</span>
+df_results = pd.DataFrame(results, columns=[<span class="hljs-string">"Dimensionality Reduction"</span>, <span class="hljs-string">"Clustering"</span>, <span class="hljs-string">"Alternatives"</span>, <span class="hljs-string">"Hyperparameters"</span>, <span class="hljs-string">"ARI Score"</span>])
+df_results = df_results.sort_values(by=<span class="hljs-string">"ARI Score"</span>, ascending=<span class="hljs-literal">False</span>)
+
+<span class="hljs-comment"># display results</span>
+df_results.to_csv(<span class="hljs-string">"clustering_results.csv.gz"</span>, index=<span class="hljs-literal">False</span>)
+display(df_results)  
+</div></code></pre>
+<table>
+<thead>
+<tr>
+<th>Index</th>
+<th>Dimensionality Reduction</th>
+<th>Clustering</th>
+<th>Alternatives</th>
+<th>Hyperparameters</th>
+<th>ARI Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>26</td>
+<td>UMAP</td>
+<td>HDBSCAN</td>
+<td>HDBSCAN</td>
+<td>min_cluster_size=5, min_samples=15</td>
+<td>0.540438</td>
+</tr>
+<tr>
+<td>32</td>
+<td>UMAP</td>
+<td>HDBSCAN</td>
+<td>HDBSCAN</td>
+<td>min_cluster_size=15, min_samples=15</td>
+<td>0.540204</td>
+</tr>
+<tr>
+<td>29</td>
+<td>UMAP</td>
+<td>HDBSCAN</td>
+<td>HDBSCAN</td>
+<td>min_cluster_size=10, min_samples=15</td>
+<td>0.534312</td>
+</tr>
+<tr>
+<td>22</td>
+<td>UMAP</td>
+<td>K-Means</td>
+<td>K-Means</td>
+<td>k=5</td>
+<td>0.382423</td>
+</tr>
+<tr>
+<td>23</td>
+<td>UMAP</td>
+<td>Agglomerative</td>
+<td>Agglomerative</td>
+<td>n_clusters=5</td>
+<td>0.380267</td>
+</tr>
+<tr>
+<td>1</td>
+<td>None</td>
+<td>Agglomerative</td>
+<td>Agglomerative</td>
+<td>n_clusters=5</td>
+<td>0.277268</td>
+</tr>
+<tr>
+<td>11</td>
+<td>SVD</td>
+<td>K-Means</td>
+<td>K-Means</td>
+<td>k=5</td>
+<td>0.235118</td>
+</tr>
+<tr>
+<td>33</td>
+<td>Autoencoder</td>
+<td>K-Means</td>
+<td>K-Means</td>
+<td>k=5</td>
+<td>0.209088</td>
+</tr>
+<tr>
+<td>0</td>
+<td>None</td>
+<td>K-Means</td>
+<td>K-Means</td>
+<td>k=5</td>
+<td>0.207309</td>
+</tr>
+<tr>
+<td>34</td>
+<td>Autoencoder</td>
+<td>Agglomerative</td>
+<td>Agglomerative</td>
+<td>n_clusters=5</td>
+<td>0.159290</td>
+</tr>
+<tr>
+<td>12</td>
+<td>SVD</td>
+<td>Agglomerative</td>
+<td>Agglomerative</td>
+<td>n_clusters=5</td>
+<td>0.132145</td>
+</tr>
+<tr>
+<td>41</td>
+<td>Autoencoder</td>
+<td>HDBSCAN</td>
+<td>HDBSCAN</td>
+<td>min_cluster_size=15, min_samples=5</td>
+<td>0.127113</td>
+</tr>
+<tr>
+<td>38</td>
+<td>Autoencoder</td>
+<td>HDBSCAN</td>
+<td>HDBSCAN</td>
+<td>min_cluster_size=10, min_samples=5</td>
+<td>0.127113</td>
+</tr>
+<tr>
+<td>36</td>
+<td>Autoencoder</td>
+<td>HDBSCAN</td>
+<td>HDBSCAN</td>
+<td>min_cluster_size=5, min_samples=10</td>
+<td>0.078671</td>
+</tr>
+<tr>
+<td>2</td>
+<td>None</td>
+<td>HDBSCAN</td>
+<td>HDBSCAN</td>
+<td>min_cluster_size=5, min_samples=5</td>
+<td>0.011805</td>
+</tr>
+<tr>
+<td>35</td>
+<td>Autoencoder</td>
+<td>HDBSCAN</td>
+<td>HDBSCAN</td>
+<td>min_cluster_size=5, min_samples=5</td>
+<td>0.009570</td>
+</tr>
+<tr>
+<td>15</td>
+<td>SVD</td>
+<td>HDBSCAN</td>
+<td>HDBSCAN</td>
+<td>min_cluster_size=5, min_samples=15</td>
+<td>0.006583</td>
+</tr>
+<tr>
+<td>13</td>
+<td>SVD</td>
+<td>HDBSCAN</td>
+<td>HDBSCAN</td>
+<td>min_cluster_size=5, min_samples=5</td>
+<td>0.004890</td>
+</tr>
+<tr>
+<td>16</td>
+<td>SVD</td>
+<td>HDBSCAN</td>
+<td>HDBSCAN</td>
+<td>min_cluster_size=10, min_samples=5</td>
+<td>0.004890</td>
+</tr>
+<tr>
+<td>28</td>
+<td>UMAP</td>
+<td>HDBSCAN</td>
+<td>HDBSCAN</td>
+<td>min_cluster_size=10, min_samples=10</td>
+<td>-0.001124</td>
+</tr>
+<tr>
+<td>25</td>
+<td>UMAP</td>
+<td>HDBSCAN</td>
+<td>HDBSCAN</td>
+<td>min_cluster_size=5, min_samples=10</td>
+<td>-0.001124</td>
+</tr>
+<tr>
+<td>31</td>
+<td>UMAP</td>
+<td>HDBSCAN</td>
+<td>HDBSCAN</td>
+<td>min_cluster_size=15, min_samples=10</td>
+<td>-0.001124</td>
+</tr>
+<tr>
+<td>3</td>
+<td>None</td>
+<td>HDBSCAN</td>
+<td>HDBSCAN</td>
+<td>min_cluster_size=5, min_samples=10</td>
+<td>-1.000000</td>
+</tr>
+<tr>
+<td>9</td>
+<td>None</td>
+<td>HDBSCAN</td>
+<td>HDBSCAN</td>
+<td>min_cluster_size=15, min_samples=10</td>
+<td>-1.000000</td>
+</tr>
+<tr>
+<td>39</td>
+<td>Autoencoder</td>
+<td>HDBSCAN</td>
+<td>HDBSCAN</td>
+<td>min_cluster_size=10, min_samples=10</td>
+<td>-1.000000</td>
+</tr>
+<tr>
+<td>40</td>
+<td>Autoencoder</td>
+<td>HDBSCAN</td>
+<td>HDBSCAN</td>
+<td>min_cluster_size=10, min_samples=15</td>
+<td>-1.000000</td>
+</tr>
+<tr>
+<td>42</td>
+<td>Autoencoder</td>
+<td>HDBSCAN</td>
+<td>HDBSCAN</td>
+<td>min_cluster_size=15, min_samples=10</td>
+<td>-1.000000</td>
+</tr>
+<tr>
+<td>37</td>
+<td>Autoencoder</td>
+<td>HDBSCAN</td>
+<td>HDBSCAN</td>
+<td>min_cluster_size=5, min_samples=15</td>
+<td>-1.000000</td>
+</tr>
+<tr>
+<td>5</td>
+<td>None</td>
+<td>HDBSCAN</td>
+<td>HDBSCAN</td>
+<td>min_cluster_size=10, min_samples=5</td>
+<td>-1.000000</td>
+</tr>
+<tr>
+<td>4</td>
+<td>None</td>
+<td>HDBSCAN</td>
+<td>HDBSCAN</td>
+<td>min_cluster_size=5, min_samples=15</td>
+<td>-1.000000</td>
+</tr>
+<tr>
+<td>10</td>
+<td>None</td>
+<td>HDBSCAN</td>
+<td>HDBSCAN</td>
+<td>min_cluster_size=15, min_samples=15</td>
+<td>-1.000000</td>
+</tr>
+<tr>
+<td>6</td>
+<td>None</td>
+<td>HDBSCAN</td>
+<td>HDBSCAN</td>
+<td>min_cluster_size=10, min_samples=10</td>
+<td>-1.000000</td>
+</tr>
+<tr>
+<td>7</td>
+<td>None</td>
+<td>HDBSCAN</td>
+<td>HDBSCAN</td>
+<td>min_cluster_size=10, min_samples=15</td>
+<td>-1.000000</td>
+</tr>
+<tr>
+<td>21</td>
+<td>SVD</td>
+<td>HDBSCAN</td>
+<td>HDBSCAN</td>
+<td>min_cluster_size=15, min_samples=15</td>
+<td>-1.000000</td>
+</tr>
+<tr>
+<td>20</td>
+<td>SVD</td>
+<td>HDBSCAN</td>
+<td>HDBSCAN</td>
+<td>min_cluster_size=15, min_samples=10</td>
+<td>-1.000000</td>
+</tr>
+<tr>
+<td>19</td>
+<td>SVD</td>
+<td>HDBSCAN</td>
+<td>HDBSCAN</td>
+<td>min_cluster_size=15, min_samples=5</td>
+<td>-1.000000</td>
+</tr>
+<tr>
+<td>18</td>
+<td>SVD</td>
+<td>HDBSCAN</td>
+<td>HDBSCAN</td>
+<td>min_cluster_size=10, min_samples=15</td>
+<td>-1.000000</td>
+</tr>
+<tr>
+<td>17</td>
+<td>SVD</td>
+<td>HDBSCAN</td>
+<td>HDBSCAN</td>
+<td>min_cluster_size=10, min_samples=10</td>
+<td>-1.000000</td>
+</tr>
+<tr>
+<td>14</td>
+<td>SVD</td>
+<td>HDBSCAN</td>
+<td>HDBSCAN</td>
+<td>min_cluster_size=5, min_samples=10</td>
+<td>-1.000000</td>
+</tr>
+<tr>
+<td>8</td>
+<td>None</td>
+<td>HDBSCAN</td>
+<td>HDBSCAN</td>
+<td>min_cluster_size=15, min_samples=5</td>
+<td>-1.000000</td>
+</tr>
+<tr>
+<td>43</td>
+<td>Autoencoder</td>
+<td>HDBSCAN</td>
+<td>HDBSCAN</td>
+<td>min_cluster_size=15, min_samples=15</td>
+<td>-1.000000</td>
+</tr>
+</tbody>
+</table>
+<h1 id="question-25">Question 25</h1>
+<pre class="hljs"><code><div><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MLP</span><span class="hljs-params">(torch.nn.Module)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, num_features)</span>:</span>
+        super().__init__()
+        self.model = nn.Sequential(
+            nn.Linear(num_features, <span class="hljs-number">1280</span>),
+            nn.ReLU(<span class="hljs-literal">True</span>),
+            nn.Linear(<span class="hljs-number">1280</span>, <span class="hljs-number">640</span>),
+            nn.ReLU(<span class="hljs-literal">True</span>), 
+            nn.Linear(<span class="hljs-number">640</span>, <span class="hljs-number">5</span>),
+            nn.LogSoftmax(dim=<span class="hljs-number">1</span>)
+        )
+        self.to(device)
+    
+    
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">forward</span><span class="hljs-params">(self, X)</span>:</span>
+        <span class="hljs-keyword">return</span> self.model(X)
+    
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">train</span><span class="hljs-params">(self, X, y)</span>:</span>
+        X = torch.tensor(X, dtype=torch.float32, device=device)
+        y = torch.tensor(y, dtype=torch.int64, device=device)
+
+        self.model.train()
+        
+        criterion = nn.NLLLoss()
+        optimizer = torch.optim.Adam(self.parameters(), lr=<span class="hljs-number">1e-3</span>, weight_decay=<span class="hljs-number">1e-5</span>)
+
+        dataset = TensorDataset(X, y)
+        dataloader = DataLoader(dataset, batch_size=<span class="hljs-number">128</span>, shuffle=<span class="hljs-literal">True</span>)
+
+        total_loss = <span class="hljs-number">0</span> 
+        <span class="hljs-keyword">for</span> epoch <span class="hljs-keyword">in</span> tqdm(range(<span class="hljs-number">100</span>)):
+            <span class="hljs-keyword">for</span> (X_, y_) <span class="hljs-keyword">in</span> dataloader:
+                optimizer.zero_grad()  <span class="hljs-comment"># reset gradients</span>
+                output = self.model(X_)  
+                loss = criterion(output, y_)  <span class="hljs-comment"># calculate loss</span>
+                loss.backward()  
+                optimizer.step()  <span class="hljs-comment"># update parameters</span>
+
+                total_loss += loss.item()  
+        <span class="hljs-keyword">return</span> self
+    
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">eval</span><span class="hljs-params">(self, X_test, y_test)</span>:</span>
+        X_test = torch.tensor(X_test, dtype=torch.float32, device=device)
+        y_test = torch.tensor(y_test, dtype=torch.int64, device=device)
+
+        self.model.eval()  
+        
+        <span class="hljs-comment"># disable gradient computation during evaluation</span>
+        <span class="hljs-keyword">with</span> torch.no_grad():
+            outputs = self.model(X_test)  
+            _, predicted = torch.max(outputs, <span class="hljs-number">1</span>)
+            
+            <span class="hljs-comment"># calculate accuracy</span>
+            correct = (predicted == y_test).sum().item()  
+            accuracy = correct / len(y_test)  
+        
+        <span class="hljs-keyword">return</span> accuracy * <span class="hljs-number">100</span> 
+</div></code></pre>
+<pre class="hljs"><code><div><span class="hljs-comment"># train + evaluate MLP on original VGG features</span>
+X_train, X_test, y_train, y_test = train_test_split(f_all, y_all, test_size=<span class="hljs-number">0.2</span>, random_state=<span class="hljs-number">42</span>)
+
+mlp_vgg = MLP(num_features=<span class="hljs-number">4096</span>)
+mlp_vgg.train(X_train, y_train)
+accuracy_vgg = mlp_vgg.eval(X_test, y_test)
+print(<span class="hljs-string">f"Test Accuracy on VGG Features: <span class="hljs-subst">{accuracy_vgg:<span class="hljs-number">.2</span>f}</span>%"</span>)
+</div></code></pre>
+<h4 id="output">Output:</h4>
+<p>Test Accuracy on VGG Features: 90.19%</p>
+<pre class="hljs"><code><div>X_train, X_test, y_train, y_test = train_test_split(
+    f_all, y_all, test_size=<span class="hljs-number">0.2</span>, random_state=<span class="hljs-number">42</span>
+)
+
+<span class="hljs-comment"># apply TruncatedSVD to reduce the dimensionality to 50</span>
+svd = TruncatedSVD(n_components=<span class="hljs-number">50</span>, random_state=<span class="hljs-number">42</span>)
+X_train_reduced = svd.fit_transform(X_train)
+X_test_reduced = svd.transform(X_test)
+
+<span class="hljs-comment"># train an MLP on the 50-D reduced features</span>
+mlp_svd = MLP(num_features=<span class="hljs-number">50</span>)  <span class="hljs-comment"># Notice 50 instead of 4096</span>
+mlp_svd.train(X_train_reduced, y_train)
+
+<span class="hljs-comment"># evaluation</span>
+accuracy_svd = mlp_svd.eval(X_test_reduced, y_test)
+print(<span class="hljs-string">f"Test Accuracy with SVD-reduced features: <span class="hljs-subst">{accuracy_svd:<span class="hljs-number">.2</span>f}</span>%"</span>)
+
+</div></code></pre>
+<h4 id="output">Output:</h4>
+<p>Test Accuracy with SVD-reduced features: 88.56%
+<br>
+<br></p>
+<p>The accuracy rate for Original VGG features is 90.19%, and for SVD-reduced features it is 88.56%. It decreased 1.63%, which shows that while dimensionality reduction techniques like SVD can keep most of the essential information in the data, some of the more highly detailed features that are useful for classification might be lost during the process. Since the remaining information achieved a 88.56% accurate rate, it suggests that the most essential features for discrimination are still kept.</p>
+<p>The success in classification does not align with the clustering events from Question 24. Since the SVD reduced features gave poor clustering performance, seen in ARI scores around 0.235 for K-Means and 0.132 for Agglomerative Clustering, it means that the data’s structural relationships might not have been well maintained for unsupervised learning. Even though classifications are still effective because of the presence of labeled data which is guiding the model, clustering purely relies on feature similarity, which seems to be significantly impacted by SVD. Thus, all of the clustering suggests that SVD removes structure that is necessary for unsupervised learning but still keeps enough for supervised classification.</p>
+
+</body>
+</html>

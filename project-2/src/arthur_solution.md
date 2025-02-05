@@ -1,5 +1,4 @@
 
-```
 
 
 Part 3 - Clustering using both image and text
@@ -220,19 +219,19 @@ for query_index, query in enumerate(type_queries):
 ```
 
 
-![](261.png)
+![](./arthur_images/261.png)
 
 
-![](262.png)
+![](./arthur_images/262.png)
 
 
-![](263.png)
+![](./arthur_images/263.png)
 
 
-![](264.png)
+![](./arthur_images/264.png)
 
 
-![](265.png)
+![](./arthur_images/265.png)
 
 
 QUESTION 27
@@ -269,11 +268,11 @@ Here are some notable patterns in the predictions:
 
 1. Some Pokemon as corectly cassified with high confidence in their primary type, which shows that CLIP does recognize clear visual cues.
 2. Sometimes when a Pokemon has a secondary type, the model sometimes doesn't recognize it or assigns it a less relevant type with higher confidence.
-3. Some Pokemon receive predicted types that are not part of their actual aclssification, however they share visual or a thematic similarity. An example of this is a Pokemon with a dark color palette that might be classified as a dark type.
+3. Some Pokemon receive predicted types that are not part of their actual clssification, however they share visual or a thematic similarity. An example of this is a Pokemon with a dark color palette that might be classified as a dark type.
 4. Some types such as Normal, Psychic, and Fighting seem to be more common in the predictions, which would be because of a learning biases from its training data.
 
 
-Overall, it seems that CLIP can effectively capture primary visual features, but it might struggle with more unique type distinctions, specifically those with secondary types or less common attributes.
+Overall, it seems that CLIP can effectively capture primary visual features, but it might struggle with more unique type distinctions, specifically those with secondary types or less common attributes. 
 
 
 ```
@@ -320,28 +319,28 @@ for i, idx in enumerate(selected_indices):
 ```
 
 
-![](1.png)
+![](./arthur_images/1.png)
 
 
-![](2.png)
+![](./arthur_images/2.png)
 
 
-![](3.png)
+![](./arthur_images/3.png)
 
 
-![](4.png)
+![](./arthur_images/4.png)
 
 
-![](5.png)
+![](./arthur_images/5.png)
 
 
-![](6.png)
+![](./arthur_images/6.png)
 
 
-![](7.png)
+![](./arthur_images/7.png)
 
 
-![](8.png)
+![](./arthur_images/8.png)
 
 
 ![](9.png)
@@ -353,7 +352,7 @@ for i, idx in enumerate(selected_indices):
 QUESTION 28: In the first and second question, we investigated how CLIP creates ’clusters’ by mapping images and texts of various Pokemon into a high-dimensional space and explored neighbor- hood of these items in this space. For this question, please use t-SNE to visualize image clusters, specifically for Pokemon types Bug, Fire, and Grass. You can use scatter plot from python package plotly. For the visualization, color-code each point based on its first type type 1 using the ’color’ argument, and label each point with the Pokemon’s name and types using ’hover name’. This will enable you to identify each Pokemon represented in your visualization. After completing the visualization, analyze it and discuss whether the clustering of Pokemon types make sense to you.
 
 
-ANSWER: Looking at the scatter plot, I noticed that there are some noticable overlap between some types. Fire type okemon seem more distinct compared to the early tones of the Bug and GRass pokemon. This means that even though CLIP embeddings capture visual similarities, they don't perfectly align with the pokemon type classifications, which as based on in game mechanics. Also, since t-SNE is non linear, it means that some information is lost during the dimension reduction process, which could cause even more overlapping in the clusters.
+ANSWER: Looking at the scatter plot, I noticed that there are some overlap between some types. Fire type pokemon seem more distinct compared to the early tones of the Bug and GRass pokemon. This means that even though CLIP embeddings capture visual similarities, they don't perfectly align with the pokemon type classifications, which as based on in game mechanics. Also, since t-SNE is non linear, it means that some information is lost during the dimension reduction process, which could cause even more overlapping in the clusters.
 
 
 ```

@@ -28,3 +28,5 @@ ENV/
 # IDE-specific (optional)
 .idea/
 .vscode/
+
+*.pyc 

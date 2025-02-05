@@ -1,0 +1,1851 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>solution_abhi.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="authors">AUTHORS</h1>
+<h3 id="abhimanyu-borthakur-406530322">Abhimanyu Borthakur (406530322)</h3>
+<h3 id="lorenzo-bolls-505997448">Lorenzo Bolls (505997448)</h3>
+<h3 id="arthur-baghdasian-006001418">Arthur Baghdasian (006001418)</h3>
+<h1 id="part-1">Part 1</h1>
+<pre class="hljs"><code><div><span class="hljs-keyword">import</span> warnings
+warnings.filterwarnings(<span class="hljs-string">'ignore'</span>)
+<span class="hljs-keyword">from</span> sklearn.datasets <span class="hljs-keyword">import</span> fetch_20newsgroups
+<span class="hljs-keyword">from</span> sklearn.feature_extraction.text <span class="hljs-keyword">import</span> CountVectorizer, TfidfTransformer, TfidfVectorizer
+<span class="hljs-keyword">from</span> sklearn.cluster <span class="hljs-keyword">import</span> KMeans,  AgglomerativeClustering, DBSCAN
+<span class="hljs-keyword">from</span> sklearn.metrics.cluster <span class="hljs-keyword">import</span> contingency_matrix, homogeneity_score, completeness_score, adjusted_rand_score, adjusted_mutual_info_score, v_measure_score
+<span class="hljs-keyword">from</span> sklearn.metrics <span class="hljs-keyword">import</span> confusion_matrix 
+<span class="hljs-keyword">from</span> scipy.optimize <span class="hljs-keyword">import</span> linear_sum_assignment
+<span class="hljs-keyword">from</span> sklearn.decomposition <span class="hljs-keyword">import</span> TruncatedSVD, NMF
+<span class="hljs-keyword">from</span> plotmat <span class="hljs-keyword">import</span> plot_mat
+<span class="hljs-keyword">from</span> matplotlib <span class="hljs-keyword">import</span> pyplot <span class="hljs-keyword">as</span> plt
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+<span class="hljs-keyword">import</span> random
+<span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd
+<span class="hljs-keyword">import</span> umap.umap_ <span class="hljs-keyword">as</span> umap
+<span class="hljs-keyword">import</span> hdbscan
+<span class="hljs-keyword">import</span> joblib 
+np.random.seed(<span class="hljs-number">0</span>)
+random.seed(<span class="hljs-number">0</span>)
+</div></code></pre>
+<h1 id="question-1">Question 1</h1>
+<h3 id="as-we-can-see-below-the-shape-of-the-tfidf-matrix-is-7882-x-23522">As we can see below the shape of the TFIDF matrix is 7882 x 23522</h3>
+<pre class="hljs"><code><div>categories = [<span class="hljs-string">'comp.graphics'</span>,<span class="hljs-string">'comp.os.ms-windows.misc'</span>,<span class="hljs-string">'comp.sys.ibm.pc.hardware'</span>,
+              <span class="hljs-string">'comp.sys.mac.hardware'</span>,<span class="hljs-string">'rec.autos'</span>,<span class="hljs-string">'rec.motorcycles'</span>,<span class="hljs-string">'rec.sport.baseball'</span>,<span class="hljs-string">'rec.sport.hockey'</span>]
+dataset = fetch_20newsgroups(subset = <span class="hljs-string">'all'</span>, categories = categories,shuffle = <span class="hljs-literal">True</span>, random_state = <span class="hljs-number">0</span>,remove=(<span class="hljs-string">'headers'</span>,<span class="hljs-string">'footers'</span>))
+vectorizer = CountVectorizer(stop_words=<span class="hljs-string">'english'</span>,min_df=<span class="hljs-number">3</span>)
+tfidf_transformer = TfidfTransformer()
+data_vec = vectorizer.fit_transform(dataset.data)
+features = tfidf_transformer.fit_transform(data_vec)
+
+ground_truth = []
+<span class="hljs-keyword">for</span> label <span class="hljs-keyword">in</span> dataset.target:
+    <span class="hljs-keyword">if</span> label &lt; <span class="hljs-number">4</span>:
+        ground_truth.append(<span class="hljs-number">0</span>)
+    <span class="hljs-keyword">else</span>:
+        ground_truth.append(<span class="hljs-number">1</span>)
+        
+print(<span class="hljs-string">'Shape of TF-IDF matrix: '</span>,features.shape)
+</div></code></pre>
+<pre><code>Shape of TF-IDF matrix:  (7882, 23522)
+</code></pre>
+<h1 id="question-2">Question 2</h1>
+<h3 id="below-is-the-plot-of-the-contingency-matrix">Below is the plot of the contingency matrix.</h3>
+<h3 id="additionally-the-contingency-matrixs-dimensions-depend-on-the-number-of-clusters-and-the-number-of-classes-which-may-not-be-equal-therefore-it-can-be-rectangular-when-these-numbers-differ">Additionally, the contingency matrix’s dimensions depend on the number of clusters and the number of classes, which may not be equal. Therefore, it can be rectangular when these numbers differ.</h3>
+<pre class="hljs"><code><div>kmeans = KMeans(n_clusters=<span class="hljs-number">2</span>, init=<span class="hljs-string">'k-means++'</span>, max_iter=<span class="hljs-number">5000</span>, n_init=<span class="hljs-number">200</span>, random_state=<span class="hljs-number">0</span>)
+kmeans.fit(features)
+plot_mat(contingency_matrix(ground_truth,kmeans.labels_),size=(<span class="hljs-number">6</span>,<span class="hljs-number">4</span>),xticklabels = [<span class="hljs-string">'Class 1'</span>,<span class="hljs-string">'Class 2'</span>],yticklabels = [<span class="hljs-string">'Class 1'</span>,<span class="hljs-string">'Class 2'</span>],pic_fname = <span class="hljs-string">'Q2.png'</span>)
+</div></code></pre>
+<p><img src="solution_abhi_files/solution_abhi_8_0.png" alt="png"></p>
+<h1 id="question-3">Question 3</h1>
+<h3 id="the-5-measures-are-reported-below">The 5 measures are reported below:</h3>
+<pre class="hljs"><code><div>print(<span class="hljs-string">"Homogeneity: %0.3f"</span> % homogeneity_score(ground_truth, kmeans.labels_))
+print(<span class="hljs-string">"Completeness: %0.3f"</span> % completeness_score(ground_truth, kmeans.labels_))
+print(<span class="hljs-string">"V-measure: %0.3f"</span> % v_measure_score(ground_truth, kmeans.labels_))
+print(<span class="hljs-string">"Adjusted Rand-Index: %.3f"</span>% adjusted_rand_score(ground_truth, kmeans.labels_))
+print(<span class="hljs-string">"Adjusted Mutual Information Score: %.3f"</span>% adjusted_mutual_info_score(ground_truth, kmeans.labels_))
+</div></code></pre>
+<pre><code>Homogeneity: 0.572
+Completeness: 0.587
+V-measure: 0.579
+Adjusted Rand-Index: 0.632
+Adjusted Mutual Information Score: 0.579
+</code></pre>
+<h1 id="question-4">Question 4</h1>
+<h3 id="the-plot-is-reported-below---as-r-increases-the-variance-retention-ratio-increases">The plot is reported below - as 'r' increases, the variance retention ratio increases.</h3>
+<pre class="hljs"><code><div>svd = TruncatedSVD(n_components=<span class="hljs-number">1000</span>, random_state=<span class="hljs-number">0</span>)
+LSI = svd.fit_transform(features)
+</div></code></pre>
+<pre class="hljs"><code><div>plt.plot(np.linspace(<span class="hljs-number">1</span>,<span class="hljs-number">1000</span>,<span class="hljs-number">1000</span>),np.cumsum(svd.explained_variance_ratio_),lw=<span class="hljs-number">2</span>,linestyle=<span class="hljs-string">'--'</span>)
+plt.title(<span class="hljs-string">'Variance Retention Percentage of Top r Principal Components'</span>)
+plt.ylabel(<span class="hljs-string">'Cumulative Sum of Explained Variance Ratio'</span>)
+plt.xlabel(<span class="hljs-string">'r (1 to 1000)'</span>)
+plt.savefig(<span class="hljs-string">'Q4.png'</span>,dpi=<span class="hljs-number">300</span>,bbox_inches=<span class="hljs-string">'tight'</span>)
+plt.show()
+</div></code></pre>
+<p><img src="solution_abhi_files/solution_abhi_15_0.png" alt="png"></p>
+<h1 id="question-5">Question 5</h1>
+<h3 id="first-let-us-compute-all-the-scores-for-all-the-values-of-r">First let us compute all the scores for all the values of r.</h3>
+<pre class="hljs"><code><div>svd_hs = []
+svd_cs = []
+svd_vs = []
+svd_ari = []
+svd_ms = []
+nmf_hs = []
+nmf_cs = []
+nmf_vs = []
+nmf_ari = []
+nmf_ms = []
+
+r = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>,<span class="hljs-number">7</span>,<span class="hljs-number">8</span>,<span class="hljs-number">9</span>,<span class="hljs-number">10</span>,<span class="hljs-number">20</span>,<span class="hljs-number">50</span>,<span class="hljs-number">100</span>,<span class="hljs-number">300</span>]
+
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(len(r)):
+    print(<span class="hljs-string">'Testing SVD for r = '</span>,r[i])
+    svd = TruncatedSVD(n_components=r[i], random_state=<span class="hljs-number">0</span>)
+    svd_km = svd.fit_transform(features)
+    kmean_svd = kmeans.fit(svd_km)
+    svd_hs.append(homogeneity_score(ground_truth, kmean_svd.labels_))
+    svd_cs.append(completeness_score(ground_truth, kmean_svd.labels_))
+    svd_vs.append(v_measure_score(ground_truth, kmean_svd.labels_))
+    svd_ari.append(adjusted_rand_score(ground_truth, kmean_svd.labels_))
+    svd_ms.append(adjusted_mutual_info_score(ground_truth, kmean_svd.labels_))    
+    print(<span class="hljs-string">'Testing NMF for r = '</span>,r[i])
+    nmf = NMF(n_components=r[i], init=<span class="hljs-string">'random'</span>, random_state=<span class="hljs-number">0</span>, max_iter=<span class="hljs-number">400</span>)
+    nmf_km = nmf.fit_transform(features)
+    kmean_nmf = kmeans.fit(nmf_km)
+    nmf_hs.append(homogeneity_score(ground_truth, kmean_nmf.labels_))
+    nmf_cs.append(completeness_score(ground_truth, kmean_nmf.labels_))
+    nmf_vs.append(v_measure_score(ground_truth, kmean_nmf.labels_))
+    nmf_ari.append(adjusted_rand_score(ground_truth, kmean_nmf.labels_))
+    nmf_ms.append(adjusted_mutual_info_score(ground_truth, kmean_nmf.labels_))
+
+print(<span class="hljs-string">'Done testing.'</span>)
+</div></code></pre>
+<pre><code>Testing SVD for r =  1
+Testing NMF for r =  1
+Testing SVD for r =  2
+Testing NMF for r =  2
+Testing SVD for r =  3
+Testing NMF for r =  3
+Testing SVD for r =  4
+Testing NMF for r =  4
+Testing SVD for r =  5
+Testing NMF for r =  5
+Testing SVD for r =  6
+Testing NMF for r =  6
+Testing SVD for r =  7
+Testing NMF for r =  7
+Testing SVD for r =  8
+Testing NMF for r =  8
+Testing SVD for r =  9
+Testing NMF for r =  9
+Testing SVD for r =  10
+Testing NMF for r =  10
+Testing SVD for r =  20
+Testing NMF for r =  20
+Testing SVD for r =  50
+Testing NMF for r =  50
+Testing SVD for r =  100
+Testing NMF for r =  100
+Testing SVD for r =  300
+Testing NMF for r =  300
+Done testing.
+</code></pre>
+<h3 id="now-let-us-compare-the-scores-of-nmf-and-svdfor-each-value-of-r-with-those-in-question-3">Now let us compare the scores of NMF and SVD(for each value of 'r') with those in Question 3</h3>
+<pre class="hljs"><code><div>width = <span class="hljs-number">0.35</span> 
+fig, ax = plt.subplots(figsize=(<span class="hljs-number">10</span>, <span class="hljs-number">10</span>))
+rects1 = ax.bar(np.arange(len(r)) - width/<span class="hljs-number">2</span>, svd_hs, width, label=<span class="hljs-string">'SVD'</span>)
+rects2 = ax.bar(np.arange(len(r)) + width/<span class="hljs-number">2</span>, nmf_hs, width, label=<span class="hljs-string">'NMF'</span>)
+rects3 = ax.bar(len(r), <span class="hljs-number">0.572</span>, width, label=<span class="hljs-string">'Question 3 score'</span>, color=<span class="hljs-string">'green'</span>)
+ax.set_ylabel(<span class="hljs-string">'Homogenity Score'</span>)
+ax.set_title(<span class="hljs-string">'Homogenity Score (SVD vs. NMF) for various r'</span>)
+ax.set_xticks(np.arange(len(r) + <span class="hljs-number">1</span>))
+ax.set_xticklabels(list(r) + [<span class="hljs-string">'Q3'</span>])  
+ax.set_xlabel(<span class="hljs-string">'r'</span>)
+ax.legend()
+plt.savefig(<span class="hljs-string">'Q51.png'</span>, dpi=<span class="hljs-number">300</span>, bbox_inches=<span class="hljs-string">'tight'</span>)
+plt.show()
+
+</div></code></pre>
+<p><img src="solution_abhi_files/solution_abhi_20_0.png" alt="png"></p>
+<pre class="hljs"><code><div>fig, ax = plt.subplots(figsize=(<span class="hljs-number">10</span>, <span class="hljs-number">10</span>))
+rects1 = ax.bar(np.arange(len(r)) - width/<span class="hljs-number">2</span>, svd_cs, width, label=<span class="hljs-string">'SVD'</span>)
+rects2 = ax.bar(np.arange(len(r)) + width/<span class="hljs-number">2</span>, nmf_cs, width, label=<span class="hljs-string">'NMF'</span>)
+rects3 = ax.bar(len(r), <span class="hljs-number">0.587</span>, width, label=<span class="hljs-string">'Question 3 score'</span>, color=<span class="hljs-string">'green'</span>)
+ax.set_ylabel(<span class="hljs-string">'Completeness Score'</span>)
+ax.set_title(<span class="hljs-string">'Completeness Score (SVD vs. NMF) for various r'</span>)
+ax.set_xticks(np.arange(len(r)))
+ax.set_xticklabels(r)
+ax.set_xlabel(<span class="hljs-string">'r'</span>)
+ax.legend()
+plt.savefig(<span class="hljs-string">'Q52.png'</span>,dpi=<span class="hljs-number">300</span>,bbox_inches=<span class="hljs-string">'tight'</span>)
+plt.show()
+</div></code></pre>
+<p><img src="solution_abhi_files/solution_abhi_21_0.png" alt="png"></p>
+<pre class="hljs"><code><div>fig, ax = plt.subplots(figsize=(<span class="hljs-number">10</span>, <span class="hljs-number">10</span>))
+rects1 = ax.bar(np.arange(len(r)) - width/<span class="hljs-number">2</span>, svd_vs, width, label=<span class="hljs-string">'SVD'</span>)
+rects2 = ax.bar(np.arange(len(r)) + width/<span class="hljs-number">2</span>, nmf_vs, width, label=<span class="hljs-string">'NMF'</span>)
+rects3 = ax.bar(len(r), <span class="hljs-number">0.579</span>, width, label=<span class="hljs-string">'Question 3 score'</span>, color=<span class="hljs-string">'green'</span>)
+ax.set_ylabel(<span class="hljs-string">'V-Measure Score'</span>)
+ax.set_title(<span class="hljs-string">'V-Measure Score (SVD vs. NMF) for various r'</span>)
+ax.set_xticks(np.arange(len(r)))
+ax.set_xticklabels(r)
+ax.set_xlabel(<span class="hljs-string">'r'</span>)
+ax.legend()
+plt.savefig(<span class="hljs-string">'Q53.png'</span>,dpi=<span class="hljs-number">300</span>,bbox_inches=<span class="hljs-string">'tight'</span>)
+plt.show()
+</div></code></pre>
+<p><img src="solution_abhi_files/solution_abhi_22_0.png" alt="png"></p>
+<pre class="hljs"><code><div>fig, ax = plt.subplots(figsize=(<span class="hljs-number">10</span>, <span class="hljs-number">10</span>))
+rects1 = ax.bar(np.arange(len(r)) - width/<span class="hljs-number">2</span>, svd_ari, width, label=<span class="hljs-string">'SVD'</span>)
+rects2 = ax.bar(np.arange(len(r)) + width/<span class="hljs-number">2</span>, nmf_ari, width, label=<span class="hljs-string">'NMF'</span>)
+rects3 = ax.bar(len(r), <span class="hljs-number">0.632</span>, width, label=<span class="hljs-string">'Question 3 score'</span>, color=<span class="hljs-string">'green'</span>)
+ax.set_ylabel(<span class="hljs-string">'Adjusted Rand Index Score'</span>)
+ax.set_title(<span class="hljs-string">'Adjusted Rand Index Score (SVD vs. NMF) for various r'</span>)
+ax.set_xticks(np.arange(len(r)))
+ax.set_xticklabels(r)
+ax.set_xlabel(<span class="hljs-string">'r'</span>)
+ax.legend()
+plt.savefig(<span class="hljs-string">'Q54.png'</span>,dpi=<span class="hljs-number">300</span>,bbox_inches=<span class="hljs-string">'tight'</span>)
+plt.show()
+</div></code></pre>
+<p><img src="solution_abhi_files/solution_abhi_23_0.png" alt="png"></p>
+<pre class="hljs"><code><div>fig, ax = plt.subplots(figsize=(<span class="hljs-number">10</span>, <span class="hljs-number">10</span>))
+rects1 = ax.bar(np.arange(len(r)) - width/<span class="hljs-number">2</span>, svd_ms, width, label=<span class="hljs-string">'SVD'</span>)
+rects2 = ax.bar(np.arange(len(r)) + width/<span class="hljs-number">2</span>, nmf_ms, width, label=<span class="hljs-string">'NMF'</span>)
+rects3 = ax.bar(len(r), <span class="hljs-number">0.579</span>, width, label=<span class="hljs-string">'Question 3 score'</span>, color=<span class="hljs-string">'green'</span>)
+ax.set_ylabel(<span class="hljs-string">'Adjusted Mutual Information Score'</span>)
+ax.set_title(<span class="hljs-string">'Adjusted Mutual Information Score (SVD vs. NMF) for various r'</span>)
+ax.set_xticks(np.arange(len(r)))
+ax.set_xticklabels(r)
+ax.set_xlabel(<span class="hljs-string">'r'</span>)
+ax.legend()
+plt.savefig(<span class="hljs-string">'Q55.png'</span>,dpi=<span class="hljs-number">300</span>,bbox_inches=<span class="hljs-string">'tight'</span>)
+plt.show()
+</div></code></pre>
+<p><img src="solution_abhi_files/solution_abhi_24_0.png" alt="png"></p>
+<pre class="hljs"><code><div>fig, ax = plt.subplots(figsize=(<span class="hljs-number">10</span>, <span class="hljs-number">10</span>))
+rects1 = ax.bar(np.arange(len(r)) - width/<span class="hljs-number">2</span>, [y/<span class="hljs-number">5</span> <span class="hljs-keyword">for</span> y <span class="hljs-keyword">in</span> [sum(x) <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> zip(svd_hs, svd_cs, svd_vs, svd_ari, svd_ms)]], width, label=<span class="hljs-string">'SVD'</span>)
+rects2 = ax.bar(np.arange(len(r)) + width/<span class="hljs-number">2</span>, [y/<span class="hljs-number">5</span> <span class="hljs-keyword">for</span> y <span class="hljs-keyword">in</span> [sum(x) <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> zip(nmf_hs, nmf_cs, nmf_vs, nmf_ari, nmf_ms)]], width, label=<span class="hljs-string">'NMF'</span>)
+rects3 = ax.bar(len(r), (<span class="hljs-number">0.572</span>+<span class="hljs-number">0.587</span>+<span class="hljs-number">0.579</span>+<span class="hljs-number">0.632</span>+<span class="hljs-number">0.579</span>)/<span class="hljs-number">5</span>, width, label=<span class="hljs-string">'Question 3 score'</span>, color=<span class="hljs-string">'green'</span>)
+ax.set_ylabel(<span class="hljs-string">'Average score for all 5 measures'</span>)
+ax.set_title(<span class="hljs-string">'Average score for all 5 measures (SVD vs. NMF) for various r'</span>)
+ax.set_xticks(np.arange(len(r)))
+ax.set_xticklabels(r)
+ax.set_xlabel(<span class="hljs-string">'r'</span>)
+ax.legend()
+plt.savefig(<span class="hljs-string">'Q56.png'</span>,dpi=<span class="hljs-number">300</span>,bbox_inches=<span class="hljs-string">'tight'</span>)
+plt.show()
+</div></code></pre>
+<p><img src="solution_abhi_files/solution_abhi_25_0.png" alt="png"></p>
+<h3 id="thus-we-need-to-choose-a-value-of-r-that-contains-sufficient-information-but-is-also-not-too-large-as-k-means-does-not-perform-well-in-high-dimensions-for-svd-we-can-see-that-the-clustering-performance-does-not-increase-significantly-after-r--50-as-a-result-a-good-choice-for-r-for-svd-is-50-while-a-good-choice-for-r-for-nmf-is-2">Thus, we need to choose a value of r that contains sufficient information but is also not too large as K-means does not perform well in high-dimensions. For SVD, we can see that the clustering performance does not increase significantly after r = 50. As a result, a good choice for r for SVD is 50, while a good choice for r for NMF is 2.</h3>
+<h1 id="question-6">Question 6</h1>
+<h3 id="from-the-figures-we-see-that-as-r-increases-the-clustering-metrics-do-not-necessarily-increase-in-a-uniform-manner-while-a-larger-r-in-principle-preserves-more-semantic-and-complex-structural-informationpotentially-yielding-better-separation-and-compactnessthis-also-corresponds-to-a-higher-dimensional-noisier-feature-matrix-that-undermines-k-means-performance-in-high-dimensional-settings-the-rapid-growth-in-dimensional-volume-makes-data-points-equidistant-rendering-it-difficult-for-the-algorithm-to-place-centroids-with-sufficient-separation-especially-when-inertia-is-not-normalized-this-effect-is-particularly-visible-for-nmf-whose-metrics-initially-improve-but-then-rapidly-decline-moreover-nmf-is-more-volatile-than-svd-which-stabilizes-once-r-exceeds-2-because-nmf-enforces-nonnegative-entries-in-the-factorized-matrices-whereas-svd-does-not-impose-such-constraints-svd-is-better-able-to-capture-high-dimensional-representations-with-fewer-losses-in-contrast-nmf-tends-to-lose-effectiveness-as-r-grows-additionally-svd-is-more-deterministic-and-employs-a-geometric-hierarchical-ordering-of-features-unlike-nmf-consequently-increasing-r-with-svd-does-not-substantially-degrade-clustering-performance-from-a-k-means-standpoint-at-higher-r-svd-neither-adds-nor-removes-crucial-semantic-information-hence-results-remain-fairly-consistent-for-r-values-from-2-through-300-while-nmfs-performance-starts-to-fall-off-noticeably-beyond-r--2-lastly-svd-tends-to-produce-a-unique-solution-whereas-nmf-is-non-unique-and-more-reliant-on-initialization-offering-no-guarantee-of-converging-to-the-same-factorization-on-each-run">From the figures, we see that as r increases, the clustering metrics do not necessarily increase in a uniform manner. While a larger r in principle preserves more semantic and complex structural information—potentially yielding better separation and compactness—this also corresponds to a higher-dimensional, noisier feature matrix that undermines K-means performance. In high-dimensional settings, the rapid growth in dimensional volume makes data points equidistant, rendering it difficult for the algorithm to place centroids with sufficient separation (especially when inertia is not normalized). This effect is particularly visible for NMF, whose metrics initially improve but then rapidly decline. Moreover, NMF is more volatile than SVD, which stabilizes once r exceeds 2. Because NMF enforces nonnegative entries in the factorized matrices, whereas SVD does not impose such constraints, SVD is better able to capture high-dimensional representations with fewer losses. In contrast, NMF tends to lose effectiveness as r grows. Additionally, SVD is more deterministic and employs a geometric, hierarchical ordering of features, unlike NMF. Consequently, increasing r with SVD does not substantially degrade clustering performance; from a K-means standpoint, at higher r, SVD neither adds nor removes crucial semantic information. Hence, results remain fairly consistent for r values from 2 through 300, while NMF’s performance starts to fall off noticeably beyond r = 2. Lastly, SVD tends to produce a unique solution, whereas NMF is non-unique and more reliant on initialization, offering no guarantee of converging to the same factorization on each run.</h3>
+<h1 id="question-7">Question 7</h1>
+<h3 id="from-these-bar-charts-the-green-bar-labeled-question-3-score-is-generally-on-par-withor-slightly-higher-thanmost-of-the-svd-or-nmf-bars-across-the-various-values-of-r-in-particular">From these bar charts, the green bar labeled “Question 3 score” is generally on par with—or slightly higher than—most of the SVD or NMF bars across the various values of <em>r</em>. In particular:</h3>
+<ul>
+<li><strong>SVD</strong> sometimes meets or slightly exceeds the Question 3 score at certain higher <em>r</em> values (e.g. around <em>r</em> = 50-300)</li>
+<li><strong>NMF</strong> frequently falls off more sharply as <em>r</em> grows and never outperforms the Question 3 score.</li>
+</ul>
+<p>Averaging over all plotted <em>r</em> values, neither SVD nor NMF consistently surpasses the Question 3 score. In other words, the results from Question 3 are at least as good as (and often better than) the average outcomes shown here.</p>
+<h1 id="question-8">Question 8</h1>
+<h3 id="the-visualisations-are-reported-below">The visualisations are reported below:</h3>
+<pre class="hljs"><code><div>svd = TruncatedSVD(n_components=<span class="hljs-number">20</span>, random_state=<span class="hljs-number">0</span>)
+svd_km = svd.fit_transform(features)
+y_svd = kmeans.fit_predict(svd_km)
+nmf = NMF(n_components=<span class="hljs-number">2</span>, init=<span class="hljs-string">'random'</span>, random_state=<span class="hljs-number">0</span>, max_iter=<span class="hljs-number">400</span>)
+nmf_km = nmf.fit_transform(features)
+nmf_svd = kmeans.fit_predict(nmf_km)
+</div></code></pre>
+<pre class="hljs"><code><div>plt.scatter(svd_km[:,<span class="hljs-number">0</span>],svd_km[:,<span class="hljs-number">1</span>],c=ground_truth)
+plt.title(<span class="hljs-string">"SVD Data Visualization with Ground Truth Labels"</span>)
+plt.savefig(<span class="hljs-string">'Q81.png'</span>,dpi=<span class="hljs-number">300</span>,bbox_inches=<span class="hljs-string">'tight'</span>)
+plt.show()
+plt.scatter(svd_km[:,<span class="hljs-number">0</span>],svd_km[:,<span class="hljs-number">1</span>],c=y_svd)
+plt.title(<span class="hljs-string">"SVD Data Visualization with K-Means Labels"</span>)
+plt.savefig(<span class="hljs-string">'Q82.png'</span>,dpi=<span class="hljs-number">300</span>,bbox_inches=<span class="hljs-string">'tight'</span>)
+plt.show()
+</div></code></pre>
+<p><img src="solution_abhi_files/solution_abhi_32_0.png" alt="png"></p>
+<p><img src="solution_abhi_files/solution_abhi_32_1.png" alt="png"></p>
+<pre class="hljs"><code><div>plt.scatter(nmf_km[:,<span class="hljs-number">0</span>],nmf_km[:,<span class="hljs-number">1</span>],c=ground_truth)
+plt.title(<span class="hljs-string">"NMF Data Visualization with Ground Truth Labels"</span>)
+plt.savefig(<span class="hljs-string">'Q83.png'</span>,dpi=<span class="hljs-number">300</span>,bbox_inches=<span class="hljs-string">'tight'</span>)
+plt.show()
+plt.scatter(nmf_km[:,<span class="hljs-number">0</span>],nmf_km[:,<span class="hljs-number">1</span>],c=y_svd)
+plt.title(<span class="hljs-string">"NMF Data Visualization with K-Means Labels"</span>)
+plt.savefig(<span class="hljs-string">'Q84.png'</span>,dpi=<span class="hljs-number">300</span>,bbox_inches=<span class="hljs-string">'tight'</span>)
+plt.show()
+</div></code></pre>
+<p><img src="solution_abhi_files/solution_abhi_33_0.png" alt="png"></p>
+<p><img src="solution_abhi_files/solution_abhi_33_1.png" alt="png"></p>
+<h1 id="question-9">Question 9</h1>
+<h3 id="there-are-several-visual-cues-in-the-preceding-figures-indicating-that-the-data-distribution-is-not-well%E2%80%90suited-for-k%E2%80%90means-clustering">There are several visual cues in the preceding figures indicating that the data distribution is not well‐suited for K‐means clustering.</h3>
+<h3 id="k%E2%80%90means-requires-clusters-to-be-convex-and-roughly-isotropic-however-in-both-the-svd-and-nmf-plots-the-data-appear-as-elongated-irregular-shapes-rather-than-spherical-clusters-furthermore-the-nmf-results-show-unevenly-sized-clusters-across-the-two-classes">K‐means requires clusters to be convex and roughly isotropic. However, in both the SVD and NMF plots, the data appear as elongated, irregular shapes rather than spherical clusters. Furthermore, the NMF results show unevenly sized clusters across the two classes.</h3>
+<h3 id="k%E2%80%90means-aims-to-initialize-centroids-so-that-the-resulting-clusters-are-well%E2%80%90spaced-yet-in-both-the-svd-and-nmf-visualizations-the-two-clusters-exhibit-considerable-overlap-with-centroids-that-remain-close-together-in-euclidean-distance-this-overlap-yields-no-clear-boundary-between-the-clusters-and-results-in-low-homogeneity-and-v%E2%80%90measure-scores">K‐means++ aims to initialize centroids so that the resulting clusters are well‐spaced. Yet in both the SVD and NMF visualizations, the two clusters exhibit considerable overlap, with centroids that remain close together in Euclidean distance. This overlap yields no clear boundary between the clusters and results in low homogeneity and V‐measure scores.</h3>
+<h3 id="k%E2%80%90means-assumes-clusters-follow-a-univariate-gaussian-distribution-in-both-svd-and-nmf-plots-we-see-the-two-clusters-having-different-variancesespecially-in-the-nmf-results-where-the-yellow-cluster-is-more-tightly-packed-than-the-brown-one-consequently-outliers-and-noise-can-substantially-shift-the-centroids">K‐means assumes clusters follow a univariate (Gaussian) distribution. In both SVD and NMF plots, we see the two clusters having different variances—especially in the NMF results, where the yellow cluster is more tightly packed than the brown one. Consequently, outliers and noise can substantially shift the centroids.</h3>
+<h1 id="question-10">Question 10</h1>
+<h3 id="%22specify-settings-you-choose-and-why%22">&quot;specify settings you choose and why&quot;</h3>
+<h3 id="instead-of-guessing-appropriate-parameters-for-the-svd-and-nmf-a-better-approach-would-be-to-find-the-best-value-of-r-for-both-svd-and-nmf-decided-by-the-average-value-of-the-five-clustering-metrics">Instead of guessing appropriate parameters for the SVD and NMF, a better approach would be to find the best value of 'r' for both SVD and NMF (decided by the average value of the five clustering metrics.)</h3>
+<pre class="hljs"><code><div>dataset = fetch_20newsgroups(subset = <span class="hljs-string">'all'</span>,shuffle = <span class="hljs-literal">True</span>, random_state = <span class="hljs-number">0</span>,remove=(<span class="hljs-string">'headers'</span>,<span class="hljs-string">'footers'</span>))
+vectorizer = CountVectorizer(stop_words=<span class="hljs-string">'english'</span>,min_df=<span class="hljs-number">3</span>)
+tfidf_transformer = TfidfTransformer()
+data_vec_all = vectorizer.fit_transform(dataset.data)
+features_all = tfidf_transformer.fit_transform(data_vec_all)
+
+</div></code></pre>
+<pre class="hljs"><code><div>svd_hs = []
+svd_cs = []
+svd_vs = []
+svd_ari = []
+svd_ms = []
+
+km = KMeans(n_clusters=<span class="hljs-number">20</span>, init=<span class="hljs-string">'k-means++'</span>, max_iter=<span class="hljs-number">5000</span>, n_init=<span class="hljs-number">200</span>, random_state=<span class="hljs-number">0</span>)
+r = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>,<span class="hljs-number">7</span>,<span class="hljs-number">8</span>,<span class="hljs-number">9</span>,<span class="hljs-number">10</span>,<span class="hljs-number">20</span>,<span class="hljs-number">50</span>,<span class="hljs-number">100</span>,<span class="hljs-number">300</span>]
+
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(len(r)):
+    print(<span class="hljs-string">'Testing SVD for r = '</span>,r[i])
+    svd = TruncatedSVD(n_components=r[i], random_state=<span class="hljs-number">0</span>)
+    svd_km = svd.fit_transform(features_all)
+    kmean_svd = km.fit(svd_km)
+    svd_hs.append(homogeneity_score(dataset.target, kmean_svd.labels_))
+    svd_cs.append(completeness_score(dataset.target, kmean_svd.labels_))
+    svd_vs.append(v_measure_score(dataset.target, kmean_svd.labels_))
+    svd_ari.append(adjusted_rand_score(dataset.target, kmean_svd.labels_))
+    svd_ms.append(adjusted_mutual_info_score(dataset.target, kmean_svd.labels_)) 
+print(<span class="hljs-string">'Done testing SVD'</span>)
+
+
+nmf_hs = []
+nmf_cs = []
+nmf_vs = []
+nmf_ari = []
+nmf_ms = []
+
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(len(r)): 
+    print(<span class="hljs-string">'Testing NMF for r = '</span>,r[i])
+    nmf = NMF(n_components=r[i], init=<span class="hljs-string">'random'</span>, random_state=<span class="hljs-number">0</span>, max_iter=<span class="hljs-number">400</span>)
+    nmf_km = nmf.fit_transform(features_all)
+    kmean_nmf = km.fit(nmf_km)
+    nmf_hs.append(homogeneity_score(dataset.target, kmean_nmf.labels_))
+    nmf_cs.append(completeness_score(dataset.target, kmean_nmf.labels_))
+    nmf_vs.append(v_measure_score(dataset.target, kmean_nmf.labels_))
+    nmf_ari.append(adjusted_rand_score(dataset.target, kmean_nmf.labels_))
+    nmf_ms.append(adjusted_mutual_info_score(dataset.target, kmean_nmf.labels_))
+print(<span class="hljs-string">'Done testing NMF'</span>)
+</div></code></pre>
+<pre><code>Testing SVD for r =  1
+Testing SVD for r =  2
+Testing SVD for r =  3
+Testing SVD for r =  4
+Testing SVD for r =  5
+Testing SVD for r =  6
+Testing SVD for r =  7
+Testing SVD for r =  8
+Testing SVD for r =  9
+Testing SVD for r =  10
+Testing SVD for r =  20
+Testing SVD for r =  50
+Testing SVD for r =  100
+Testing SVD for r =  300
+Done testing SVD
+Testing NMF for r =  1
+Testing NMF for r =  2
+Testing NMF for r =  3
+Testing NMF for r =  4
+Testing NMF for r =  5
+Testing NMF for r =  6
+Testing NMF for r =  7
+Testing NMF for r =  8
+Testing NMF for r =  9
+Testing NMF for r =  10
+Testing NMF for r =  20
+Testing NMF for r =  50
+Testing NMF for r =  100
+Testing NMF for r =  300
+Done testing NMF
+</code></pre>
+<h3 id="the-best-values-of-r-for-svd-and-nmf-are-reported-below">The best values of 'r' for SVD and NMF are reported below:</h3>
+<pre class="hljs"><code><div>avg_metrics = [y/<span class="hljs-number">5</span> <span class="hljs-keyword">for</span> y <span class="hljs-keyword">in</span> [sum(x) <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> zip(svd_hs, svd_cs, svd_vs, svd_ari, svd_ms)]]
+best_r_SVD = r[avg_metrics.index(max(avg_metrics))]
+print(<span class="hljs-string">'Best value of r for SVD (according to avg. metric): '</span>, best_r_SVD, <span class="hljs-string">', avg. value of 5 metrics: '</span>,max(avg_metrics))
+
+avg_metrics_nmf = [y/<span class="hljs-number">5</span> <span class="hljs-keyword">for</span> y <span class="hljs-keyword">in</span> [sum(x) <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> zip(nmf_hs, nmf_cs, nmf_vs, nmf_ari, nmf_ms)]]
+best_r_NMF = r[avg_metrics_nmf.index(max(avg_metrics_nmf))]
+print(<span class="hljs-string">'Best value of r for NMF (according to avg. metric): '</span>, best_r_NMF, <span class="hljs-string">', avg. value of 5 metrics: '</span>,max(avg_metrics_nmf))
+</div></code></pre>
+<pre><code>Best value of r for SVD (according to avg. metric):  100 , avg. value of 5 metrics:  0.30712363595873804
+Best value of r for NMF (according to avg. metric):  20 , avg. value of 5 metrics:  0.2759768413761781
+</code></pre>
+<h3 id="here-are-the-plots-and-metrics-for-svd-followed-by-nmf-respectively">Here are the plots and metrics for SVD followed by NMF respectively:</h3>
+<pre class="hljs"><code><div>svd = TruncatedSVD(n_components=best_r_SVD, random_state=<span class="hljs-number">0</span>)
+svd_km = svd.fit_transform(features_all)
+kmean_svd = km.fit(svd_km)
+cm = confusion_matrix(dataset.target, kmean_svd.labels_)
+rows, cols = linear_sum_assignment(cm, maximize=<span class="hljs-literal">True</span>)
+plot_mat(cm[rows[:, np.newaxis], cols], xticklabels=cols, yticklabels=rows, size=(<span class="hljs-number">15</span>,<span class="hljs-number">13</span>),pic_fname = <span class="hljs-string">'Q10a.png'</span>)
+print(<span class="hljs-string">"Homogeneity (SVD, best r): %0.3f"</span> % homogeneity_score(dataset.target, kmean_svd.labels_))
+print(<span class="hljs-string">"Completeness (SVD, best r): %0.3f"</span> % completeness_score(dataset.target, kmean_svd.labels_))
+print(<span class="hljs-string">"V-measure (SVD, best r): %0.3f"</span> % v_measure_score(dataset.target, kmean_svd.labels_))
+print(<span class="hljs-string">"Adjusted Rand-Index (SVD, best r): %.3f"</span>% adjusted_rand_score(dataset.target, kmean_svd.labels_))
+print(<span class="hljs-string">"Adjusted Mutual Information Score (SVD, best r): %.3f"</span>% adjusted_mutual_info_score(dataset.target, kmean_svd.labels_))
+
+nmf = NMF(n_components=best_r_NMF, init=<span class="hljs-string">'random'</span>, random_state=<span class="hljs-number">0</span>, max_iter=<span class="hljs-number">400</span>)
+nmf_km = nmf.fit_transform(features_all)
+kmean_nmf = km.fit(nmf_km)
+cm = confusion_matrix(dataset.target, kmean_nmf.labels_)
+rows, cols = linear_sum_assignment(cm, maximize=<span class="hljs-literal">True</span>)
+plot_mat(cm[rows[:, np.newaxis], cols], xticklabels=cols, yticklabels=rows, size=(<span class="hljs-number">15</span>,<span class="hljs-number">13</span>),pic_fname = <span class="hljs-string">'Q10b.png'</span>)
+print(<span class="hljs-string">"Homogeneity (NMF, best r): %0.3f"</span> % homogeneity_score(dataset.target, kmean_nmf.labels_))
+print(<span class="hljs-string">"Completeness (NMF, best r): %0.3f"</span> % completeness_score(dataset.target, kmean_nmf.labels_))
+print(<span class="hljs-string">"V-measure (NMF, best r): %0.3f"</span> % v_measure_score(dataset.target, kmean_nmf.labels_))
+print(<span class="hljs-string">"Adjusted Rand-Index (NMF, best r): %.3f"</span>% adjusted_rand_score(dataset.target, kmean_nmf.labels_))
+print(<span class="hljs-string">"Adjusted Mutual Information Score (NMF, best r): %.3f"</span>% adjusted_mutual_info_score(dataset.target, kmean_nmf.labels_))
+</div></code></pre>
+<p><img src="solution_abhi_files/solution_abhi_42_0.png" alt="png"></p>
+<pre><code>Homogeneity (SVD, best r): 0.325
+Completeness (SVD, best r): 0.394
+V-measure (SVD, best r): 0.356
+Adjusted Rand-Index (SVD, best r): 0.106
+Adjusted Mutual Information Score (SVD, best r): 0.354
+</code></pre>
+<p><img src="solution_abhi_files/solution_abhi_42_2.png" alt="png"></p>
+<pre><code>Homogeneity (NMF, best r): 0.292
+Completeness (NMF, best r): 0.363
+V-measure (NMF, best r): 0.323
+Adjusted Rand-Index (NMF, best r): 0.082
+Adjusted Mutual Information Score (NMF, best r): 0.321
+</code></pre>
+<h1 id="question-11">Question 11</h1>
+<h3 id="the-6-results-plots--metrics-are-as-follows-we-also-report-the-performance-of-the-best-ncomponents-value-for-both-cosine-and-euclidean">The 6 results (plots + metrics) are as follows. We also report the performance of the best 'n_components' value for both 'cosine' and 'euclidean'.</h3>
+<pre class="hljs"><code><div>euc_hs = []
+euc_cs = []
+euc_vs = []
+euc_ari = []
+euc_ms = []
+cos_hs = []
+cos_cs = []
+cos_vs = []
+cos_ari = []
+cos_ms = []
+
+km = KMeans(n_clusters=<span class="hljs-number">20</span>, init=<span class="hljs-string">'k-means++'</span>, max_iter=<span class="hljs-number">5000</span>, n_init=<span class="hljs-number">200</span>, random_state=<span class="hljs-number">0</span>)
+r = [<span class="hljs-number">5</span>,<span class="hljs-number">20</span>,<span class="hljs-number">200</span>]
+
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(len(r)):
+    print(<span class="hljs-string">"="</span> * <span class="hljs-number">30</span>, <span class="hljs-string">"Testing UMAP (euclidean) for r ="</span>, r[i], <span class="hljs-string">"="</span> * <span class="hljs-number">30</span>)
+    Umap_euc = umap.UMAP(n_components=r[i], metric=<span class="hljs-string">'euclidean'</span>).fit_transform(features_all)
+    kmean_euc = km.fit(Umap_euc)
+    euc_hs.append(homogeneity_score(dataset.target, kmean_euc.labels_))
+    euc_cs.append(completeness_score(dataset.target, kmean_euc.labels_))
+    euc_vs.append(v_measure_score(dataset.target, kmean_euc.labels_))
+    euc_ari.append(adjusted_rand_score(dataset.target, kmean_euc.labels_))
+    euc_ms.append(adjusted_mutual_info_score(dataset.target, kmean_euc.labels_)) 
+    cm = confusion_matrix(dataset.target, kmean_euc.labels_)
+    rows, cols = linear_sum_assignment(cm, maximize=<span class="hljs-literal">True</span>)
+    plot_mat(cm[rows[:, np.newaxis], cols], xticklabels=cols, yticklabels=rows, title = <span class="hljs-string">'Euclidean UMAP'</span>, size=(<span class="hljs-number">15</span>,<span class="hljs-number">13</span>),pic_fname = <span class="hljs-string">f'Q11_euc_<span class="hljs-subst">{i}</span>.png'</span>)
+    print(<span class="hljs-string">'Homogeneity (UMAP (euclidean)): '</span>,euc_hs[<span class="hljs-number">-1</span>])
+    print(<span class="hljs-string">'Completeness (UMAP (euclidean)): '</span>,euc_cs[<span class="hljs-number">-1</span>]) 
+    print(<span class="hljs-string">'V-measure (UMAP (euclidean)): '</span>,euc_vs[<span class="hljs-number">-1</span>]) 
+    print(<span class="hljs-string">'Adjusted Rand-Index (UMAP (euclidean)): '</span>,euc_ari[<span class="hljs-number">-1</span>]) 
+    print(<span class="hljs-string">'Adjusted Mutual Information Score (UMAP (euclidean)): '</span>,euc_ms[<span class="hljs-number">-1</span>])
+    
+    print(<span class="hljs-string">"="</span> * <span class="hljs-number">30</span>, <span class="hljs-string">"Testing UMAP (cosine) for r ="</span>, r[i], <span class="hljs-string">"="</span> * <span class="hljs-number">30</span>)
+    Umap_cos = umap.UMAP(n_components=r[i], metric=<span class="hljs-string">'cosine'</span>).fit_transform(features_all)
+    kmean_cos = km.fit(Umap_cos)
+    cos_hs.append(homogeneity_score(dataset.target, kmean_cos.labels_))
+    cos_cs.append(completeness_score(dataset.target, kmean_cos.labels_))
+    cos_vs.append(v_measure_score(dataset.target, kmean_cos.labels_))
+    cos_ari.append(adjusted_rand_score(dataset.target, kmean_cos.labels_))
+    cos_ms.append(adjusted_mutual_info_score(dataset.target, kmean_cos.labels_))
+    cm = confusion_matrix(dataset.target, kmean_cos.labels_)
+    rows, cols = linear_sum_assignment(cm, maximize=<span class="hljs-literal">True</span>)
+    plot_mat(cm[rows[:, np.newaxis], cols], xticklabels=cols, yticklabels=rows, title = <span class="hljs-string">'Cosine UMAP'</span>, size=(<span class="hljs-number">15</span>,<span class="hljs-number">13</span>),pic_fname = <span class="hljs-string">f'Q11_cos_<span class="hljs-subst">{i}</span>.png'</span>) 
+    print(<span class="hljs-string">'Homogeneity (UMAP (cosine)): '</span>,cos_hs[<span class="hljs-number">-1</span>])
+    print(<span class="hljs-string">'Completeness (UMAP (cosine)): '</span>,cos_cs[<span class="hljs-number">-1</span>]) 
+    print(<span class="hljs-string">'V-measure (UMAP (cosine)): '</span>,cos_vs[<span class="hljs-number">-1</span>]) 
+    print(<span class="hljs-string">'Adjusted Rand-Index (UMAP (cosine)): '</span>,cos_ari[<span class="hljs-number">-1</span>]) 
+    print(<span class="hljs-string">'Adjusted Mutual Information Score (UMAP (cosine)): '</span>,cos_ms[<span class="hljs-number">-1</span>])
+    print(<span class="hljs-string">'Done testing'</span>)
+</div></code></pre>
+<pre><code>============================== Testing UMAP (euclidean) for r = 5 ==============================
+</code></pre>
+<p><img src="solution_abhi_files/solution_abhi_45_1.png" alt="png"></p>
+<pre><code>Homogeneity (UMAP (euclidean)):  0.01589457751660951
+Completeness (UMAP (euclidean)):  0.01726636885537997
+V-measure (UMAP (euclidean)):  0.016552099275069277
+Adjusted Rand-Index (UMAP (euclidean)):  0.003173324908904825
+Adjusted Mutual Information Score (UMAP (euclidean)):  0.013270084869054455
+============================== Testing UMAP (cosine) for r = 5 ==============================
+</code></pre>
+<p><img src="solution_abhi_files/solution_abhi_45_3.png" alt="png"></p>
+<pre><code>Homogeneity (UMAP (cosine)):  0.5583071634472664
+Completeness (UMAP (cosine)):  0.590476136211523
+V-measure (UMAP (cosine)):  0.5739412416414384
+Adjusted Rand-Index (UMAP (cosine)):  0.439210756516871
+Adjusted Mutual Information Score (UMAP (cosine)):  0.5725139366459726
+Done testing
+============================== Testing UMAP (euclidean) for r = 20 ==============================
+</code></pre>
+<p><img src="solution_abhi_files/solution_abhi_45_5.png" alt="png"></p>
+<pre><code>Homogeneity (UMAP (euclidean)):  0.015998273225196178
+Completeness (UMAP (euclidean)):  0.016935016526173356
+V-measure (UMAP (euclidean)):  0.0164533226716391
+Adjusted Rand-Index (UMAP (euclidean)):  0.0031383832487236374
+Adjusted Mutual Information Score (UMAP (euclidean)):  0.01318277537341495
+============================== Testing UMAP (cosine) for r = 20 ==============================
+</code></pre>
+<p><img src="solution_abhi_files/solution_abhi_45_7.png" alt="png"></p>
+<pre><code>Homogeneity (UMAP (cosine)):  0.5750867653998235
+Completeness (UMAP (cosine)):  0.5984367535808426
+V-measure (UMAP (cosine)):  0.5865294582457328
+Adjusted Rand-Index (UMAP (cosine)):  0.45876914152625276
+Adjusted Mutual Information Score (UMAP (cosine)):  0.5851573659357263
+Done testing
+============================== Testing UMAP (euclidean) for r = 200 ==============================
+</code></pre>
+<p><img src="solution_abhi_files/solution_abhi_45_9.png" alt="png"></p>
+<pre><code>Homogeneity (UMAP (euclidean)):  0.017197368010840364
+Completeness (UMAP (euclidean)):  0.01915596187162877
+V-measure (UMAP (euclidean)):  0.018123903750940307
+Adjusted Rand-Index (UMAP (euclidean)):  0.003139368919604878
+Adjusted Mutual Information Score (UMAP (euclidean)):  0.01479681400356057
+============================== Testing UMAP (cosine) for r = 200 ==============================
+</code></pre>
+<p><img src="solution_abhi_files/solution_abhi_45_11.png" alt="png"></p>
+<pre><code>Homogeneity (UMAP (cosine)):  0.5639679509605356
+Completeness (UMAP (cosine)):  0.591519872441897
+V-measure (UMAP (cosine)):  0.5774154320920242
+Adjusted Rand-Index (UMAP (cosine)):  0.4354622252861088
+Adjusted Mutual Information Score (UMAP (cosine)):  0.5760060989968413
+Done testing
+</code></pre>
+<pre class="hljs"><code><div>avg_metrics = [y/<span class="hljs-number">5</span> <span class="hljs-keyword">for</span> y <span class="hljs-keyword">in</span> [sum(x) <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> zip(euc_hs, euc_cs, euc_vs, euc_ari, euc_ms)]]
+best_r_euc = r[avg_metrics.index(max(avg_metrics))]
+print(<span class="hljs-string">'Best value of r for Euclidean UMAP (according to avg. metric): '</span>, best_r_euc, <span class="hljs-string">', avg. value of 5 metrics: '</span>,max(avg_metrics))
+print(<span class="hljs-string">'Metrics: '</span>)
+print(<span class="hljs-string">'Homogeneity (UMAP (euclidean), best r): '</span>,euc_hs[avg_metrics.index(max(avg_metrics))])
+print(<span class="hljs-string">'Completeness (UMAP (euclidean), best r): '</span>,euc_cs[avg_metrics.index(max(avg_metrics))]) 
+print(<span class="hljs-string">'V-measure (UMAP (euclidean), best r): '</span>,euc_vs[avg_metrics.index(max(avg_metrics))]) 
+print(<span class="hljs-string">'Adjusted Rand-Index (UMAP (euclidean), best r): '</span>,euc_ari[avg_metrics.index(max(avg_metrics))]) 
+print(<span class="hljs-string">'Adjusted Mutual Information Score (UMAP (euclidean), best r): '</span>,euc_ms[avg_metrics.index(max(avg_metrics))])
+avg_metrics = [y/<span class="hljs-number">5</span> <span class="hljs-keyword">for</span> y <span class="hljs-keyword">in</span> [sum(x) <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> zip(cos_hs, cos_cs, cos_vs, cos_ari, cos_ms)]]
+best_r_cos = r[avg_metrics.index(max(avg_metrics))]
+print(<span class="hljs-string">'Best value of r for Cosine UMAP (according to avg. metric): '</span>, best_r_cos, <span class="hljs-string">', avg. value of 5 metrics: '</span>,max(avg_metrics))
+print(<span class="hljs-string">'Metrics: '</span>)
+print(<span class="hljs-string">'Homogeneity (UMAP (cosine), best r): '</span>,cos_hs[avg_metrics.index(max(avg_metrics))])
+print(<span class="hljs-string">'Completeness (UMAP (cosine), best r): '</span>,cos_cs[avg_metrics.index(max(avg_metrics))]) 
+print(<span class="hljs-string">'V-measure (UMAP (cosine), best r): '</span>,cos_vs[avg_metrics.index(max(avg_metrics))]) 
+print(<span class="hljs-string">'Adjusted Rand-Index (UMAP (cosine), best r): '</span>,cos_ari[avg_metrics.index(max(avg_metrics))]) 
+print(<span class="hljs-string">'Adjusted Mutual Information Score (UMAP (cosine), best r): '</span>,cos_ms[avg_metrics.index(max(avg_metrics))])
+</div></code></pre>
+<pre><code>Best value of r for Euclidean UMAP (according to avg. metric):  200 , avg. value of 5 metrics:  0.014482683311314975
+Metrics: 
+Homogeneity (UMAP (euclidean), best r):  0.017197368010840364
+Completeness (UMAP (euclidean), best r):  0.01915596187162877
+V-measure (UMAP (euclidean), best r):  0.018123903750940307
+Adjusted Rand-Index (UMAP (euclidean), best r):  0.003139368919604878
+Adjusted Mutual Information Score (UMAP (euclidean), best r):  0.01479681400356057
+Best value of r for Cosine UMAP (according to avg. metric):  20 , avg. value of 5 metrics:  0.5607958969376756
+Metrics: 
+Homogeneity (UMAP (cosine), best r):  0.5750867653998235
+Completeness (UMAP (cosine), best r):  0.5984367535808426
+V-measure (UMAP (cosine), best r):  0.5865294582457328
+Adjusted Rand-Index (UMAP (cosine), best r):  0.45876914152625276
+Adjusted Mutual Information Score (UMAP (cosine), best r):  0.5851573659357263
+</code></pre>
+<h1 id="question-12">Question 12</h1>
+<h3 id="based-on-the-reported-metrics-umap-with-the-cosine-distance-and-ncomponents20-clearly-performs-the-best-overall-its-average-score-around-056-and-individual-metrics-homogeneity-%E2%89%88-058-completeness-%E2%89%88-060-v-measure-%E2%89%88-059-ari-%E2%89%88-046-ami-%E2%89%88-059-are-much-higher-than-those-achieved-by-euclidean-umap-whose-best-average-metrics-are-around-0014-this-strong-performance-difference-arises-largely-because-text-data-with-meaningful-frequency-based-features-is-generally-better-captured-by-cosine-similarity-while-euclidean-distance-fails-to-separate-the-clusters-effectively-as-seen-by-its-highly-non-diagonal-and-stochastic-contingency-matrices">Based on the reported metrics, UMAP with the Cosine distance and n_components=20 clearly performs the best overall. Its average score (around 0.56) and individual metrics (Homogeneity ≈ 0.58, Completeness ≈ 0.60, V-measure ≈ 0.59, ARI ≈ 0.46, AMI ≈ 0.59) are much higher than those achieved by Euclidean UMAP (whose best average metrics are around 0.014). This strong performance difference arises largely because text data (with meaningful frequency-based features) is generally better captured by cosine similarity, while Euclidean distance fails to separate the clusters effectively, as seen by its highly non-diagonal and stochastic contingency matrices.</h3>
+<h3 id="which-setting-works-best-and-why">Which setting works best and why ?</h3>
+<h3 id="cosine-ncomponents20-gives-the-highest-scores-across-homogeneity-completeness-v-measure-ari-and-ami-indicating-it-best-aligns-cluster-assignments-with-the-ground-truth-classes-ncomponents20-strikes-a-balance-between-preserving-enough-localglobal-structure-and-reducing-irrelevant-variance-in-text-features-thus-producing-more-coherent-clusters">Cosine, n_components=20 gives the highest scores across Homogeneity, Completeness, V-measure, ARI, and AMI, indicating it best aligns cluster assignments with the ground-truth classes. n_components=20 strikes a balance between preserving enough local/global structure and reducing irrelevant variance in text features, thus producing more coherent clusters.</h3>
+<h3 id="what-about-the-metric-choice">What about the metric choice?</h3>
+<h3 id="cosine-works-better-than-euclidean-for-textual-data-because-textual-feature-vectors-often-vary-more-meaningfully-in-angle-than-in-raw-magnitude-making-cosine-distance-more-suitable-for-capturing-semantic-similarity-euclidean-not-only-shows-worse-metrics-but-also-lumps-many-different-ground-truth-classes-into-single-clusters-as-evident-from-the-non-diagonal-contingency-table-this-suggests-it-does-not-adequately-capture-the-structure-of-the-text-based-feature-space">Cosine works better than Euclidean for textual data because textual feature vectors often vary more meaningfully in angle than in raw magnitude, making cosine distance more suitable for capturing semantic similarity. Euclidean not only shows worse metrics but also lumps many different ground-truth classes into single clusters (as evident from the non-diagonal contingency table). This suggests it does not adequately capture the structure of the text-based feature space.</h3>
+<h1 id="question-13">Question 13</h1>
+<h3 id="first-let-us-perform-k20-clustering-on-sparse-tf-idf-representations">First let us perform k=20 clustering on Sparse TF-IDF representations</h3>
+<pre class="hljs"><code><div>kmeans = KMeans(n_clusters=<span class="hljs-number">20</span>, init=<span class="hljs-string">'k-means++'</span>, max_iter=<span class="hljs-number">5000</span>, n_init=<span class="hljs-number">200</span>, random_state=<span class="hljs-number">0</span>)
+kmean_tfidf = kmeans.fit(features_all)
+print(<span class="hljs-string">"Homogeneity: %0.3f"</span> % homogeneity_score(dataset.target, kmean_tfidf.labels_))
+print(<span class="hljs-string">"Completeness: %0.3f"</span> % completeness_score(dataset.target, kmean_tfidf.labels_))
+print(<span class="hljs-string">"V-measure: %0.3f"</span> % v_measure_score(dataset.target, kmean_tfidf.labels_))
+print(<span class="hljs-string">"Adjusted Rand-Index: %.3f"</span>% adjusted_rand_score(dataset.target, kmean_tfidf.labels_))
+print(<span class="hljs-string">"Adjusted Mutual Information Score: %.3f"</span>% adjusted_mutual_info_score(dataset.target, kmean_tfidf.labels_))
+print(<span class="hljs-string">'Average:'</span>,(homogeneity_score(dataset.target, kmean_tfidf.labels_)+completeness_score(dataset.target, kmean_tfidf.labels_)+v_measure_score(dataset.target, kmean_tfidf.labels_)+adjusted_rand_score(dataset.target, kmean_tfidf.labels_)+adjusted_mutual_info_score(dataset.target, kmean_tfidf.labels_))/<span class="hljs-number">5</span>)
+</div></code></pre>
+<pre><code>Homogeneity: 0.338
+Completeness: 0.387
+V-measure: 0.361
+Adjusted Rand-Index: 0.122
+Adjusted Mutual Information Score: 0.359
+Average: 0.31343186521609223
+</code></pre>
+<h3 id="now-let-us-compare-the-average-score-of-the-5-clustering-metrics-for-each-of-the-representations">Now, let us compare the average score of the 5 clustering metrics for each of the representations:</h3>
+<pre class="hljs"><code><div>scores = {
+    <span class="hljs-string">"Sparse TF-IDF"</span>: <span class="hljs-number">0.31343186521609223</span>,
+    <span class="hljs-string">"SVD (r=100)"</span>:          <span class="hljs-number">0.30712363595873804</span>,
+    <span class="hljs-string">"NMF (r=20)"</span>:           <span class="hljs-number">0.2759768413761781</span>,
+    <span class="hljs-string">"Cosine UMAP (r=20)"</span>:   <span class="hljs-number">0.5607958969376756</span>
+}
+labels = list(scores.keys())
+values = list(scores.values())
+plt.figure(figsize=(<span class="hljs-number">7</span>, <span class="hljs-number">5</span>))
+bars = plt.bar(labels, values, color=[<span class="hljs-string">"gray"</span>, <span class="hljs-string">"blue"</span>, <span class="hljs-string">"orange"</span>, <span class="hljs-string">"green"</span>])
+plt.ylabel(<span class="hljs-string">"Average Clustering Score (5 metrics)"</span>)
+plt.title(<span class="hljs-string">"Comparison of 4 Representation Techniques for K-Means (20-Class Data)"</span>)
+<span class="hljs-keyword">for</span> bar <span class="hljs-keyword">in</span> bars:
+    height = bar.get_height()
+    plt.text(
+        bar.get_x() + bar.get_width() / <span class="hljs-number">2</span>, 
+        height + <span class="hljs-number">0.01</span>, 
+        <span class="hljs-string">f"<span class="hljs-subst">{height:<span class="hljs-number">.3</span>f}</span>"</span>,
+        ha=<span class="hljs-string">"center"</span>, 
+        va=<span class="hljs-string">"bottom"</span>
+    )
+
+plt.ylim([<span class="hljs-number">0</span>, max(values) + <span class="hljs-number">0.1</span>])
+plt.tight_layout()
+plt.savefig(<span class="hljs-string">"Q13.png"</span>, dpi=<span class="hljs-number">300</span>)
+plt.show()
+</div></code></pre>
+<p><img src="solution_abhi_files/solution_abhi_53_0.png" alt="png"></p>
+<h3 id="hence-we-see-that-umap-with-ncomponents--20-and-metric--cosine-is-the-clear-winner-in-terms-of-the-mean-of-the-5-clustering-scores">Hence, we see that UMAP with n_components = 20 and metric = 'cosine' is the clear winner in terms of the mean of the 5 clustering scores.</h3>
+<h1 id="question-14">Question 14</h1>
+<h3 id="to-compare-the-performance-of-ward-and-single-linkage-we-report-the-5-clustering-scores-for-each-of-them-below">To compare the performance of 'ward' and 'single' linkage, we report the 5 clustering scores for each of them below:</h3>
+<pre class="hljs"><code><div>print(<span class="hljs-string">'best r:'</span>, best_r_cos)
+Umap_cos = umap.UMAP(n_components=best_r_cos, metric=<span class="hljs-string">'cosine'</span>).fit_transform(features_all)
+ac_w = AgglomerativeClustering(n_clusters=<span class="hljs-number">20</span>, linkage=<span class="hljs-string">'ward'</span>).fit(Umap_cos)
+ac_s = AgglomerativeClustering(n_clusters=<span class="hljs-number">20</span>, linkage=<span class="hljs-string">'single'</span>).fit(Umap_cos)
+print(<span class="hljs-string">"Agglomerative Clustering, Ward - Homogeneity: %0.3f"</span> % homogeneity_score(dataset.target, ac_w.labels_))
+print(<span class="hljs-string">"Agglomerative Clustering, Ward - Completeness: %0.3f"</span> % completeness_score(dataset.target, ac_w.labels_))
+print(<span class="hljs-string">"Agglomerative Clustering, Ward - V-measure: %0.3f"</span> % v_measure_score(dataset.target, ac_w.labels_))
+print(<span class="hljs-string">"Agglomerative Clustering, Ward - Adjusted Rand-Index: %.3f"</span>% adjusted_rand_score(dataset.target, ac_w.labels_))
+print(<span class="hljs-string">"Agglomerative Clustering, Ward - Adjusted Mutual Information Score: %.3f"</span>% adjusted_mutual_info_score(dataset.target, ac_w.labels_))
+print()
+print(<span class="hljs-string">"Agglomerative Clustering, Single - Homogeneity: %0.3f"</span> % homogeneity_score(dataset.target, ac_s.labels_))
+print(<span class="hljs-string">"Agglomerative Clustering, Single - Completeness: %0.3f"</span> % completeness_score(dataset.target, ac_s.labels_))
+print(<span class="hljs-string">"Agglomerative Clustering, Single - V-measure: %0.3f"</span> % v_measure_score(dataset.target, ac_s.labels_))
+print(<span class="hljs-string">"Agglomerative Clustering, Single - Adjusted Rand-Index: %.3f"</span>% adjusted_rand_score(dataset.target, ac_s.labels_))
+print(<span class="hljs-string">"Agglomerative Clustering, Single - Adjusted Mutual Information Score: %.3f"</span>% adjusted_mutual_info_score(dataset.target, ac_s.labels_))
+</div></code></pre>
+<pre><code>best r: 20
+Agglomerative Clustering, Ward - Homogeneity: 0.562
+Agglomerative Clustering, Ward - Completeness: 0.592
+Agglomerative Clustering, Ward - V-measure: 0.577
+Agglomerative Clustering, Ward - Adjusted Rand-Index: 0.435
+Agglomerative Clustering, Ward - Adjusted Mutual Information Score: 0.575
+
+Agglomerative Clustering, Single - Homogeneity: 0.017
+Agglomerative Clustering, Single - Completeness: 0.393
+Agglomerative Clustering, Single - V-measure: 0.032
+Agglomerative Clustering, Single - Adjusted Rand-Index: 0.000
+Agglomerative Clustering, Single - Adjusted Mutual Information Score: 0.027
+</code></pre>
+<h1 id="question-15">Question 15</h1>
+<h3 id="two-important-hyperparameters-for-both-algorithms-are-cluster-selection-epsilon-and-minimum-samples-per-cluster-if-epsilon-is-too-small-most-of-the-samples-will-be-treated-as-outliers-while-a-large-value-erroneously-merges-different-clusters-together-large-values-of-minimum-samples-per-cluster-are-helpful-for-rejecting-noise-in-the-data-thus-we-must-also-find-a-suitable-value-for-both-of-the-aforementioned-parameters-and-hence-introduce-a-search-over-these-as-well-we-report-the-best-parameters-after-the-search">Two important hyperparameters for both algorithms are cluster selection epsilon and minimum samples per cluster. If epsilon is too small, most of the samples will be treated as outliers, while a large value erroneously merges different clusters together. Large values of minimum samples per cluster are helpful for rejecting noise in the data. Thus, we must also find a suitable value for both of the aforementioned parameters and hence, introduce a search over these as well. We report the best parameters after the search:</h3>
+<pre class="hljs"><code><div>eps = [<span class="hljs-number">0.01</span>, <span class="hljs-number">0.05</span>, <span class="hljs-number">0.1</span>, <span class="hljs-number">0.15</span>, <span class="hljs-number">0.2</span>, <span class="hljs-number">0.3</span>, <span class="hljs-number">0.4</span>, <span class="hljs-number">0.5</span>, <span class="hljs-number">0.6</span>, <span class="hljs-number">0.7</span>, <span class="hljs-number">0.8</span>, <span class="hljs-number">0.9</span>, <span class="hljs-number">1.0</span>, <span class="hljs-number">3.0</span>, <span class="hljs-number">5.0</span>, <span class="hljs-number">10.0</span>, <span class="hljs-number">30.0</span>, <span class="hljs-number">50.0</span>]
+min_samples = [<span class="hljs-number">5</span>, <span class="hljs-number">15</span>, <span class="hljs-number">30</span>, <span class="hljs-number">60</span>, <span class="hljs-number">100</span>, <span class="hljs-number">200</span>, <span class="hljs-number">500</span>, <span class="hljs-number">1000</span>, <span class="hljs-number">3000</span>]
+min_cluster_sizes = [<span class="hljs-number">20</span>, <span class="hljs-number">100</span>, <span class="hljs-number">200</span>]
+
+eps_rec = []
+min_samples_rec = []
+min_cluster_size_rec = []
+
+hdb_hs = []
+hdb_cs = []
+hdb_vs = []
+hdb_ari = []
+hdb_ms = []
+
+<span class="hljs-keyword">for</span> e <span class="hljs-keyword">in</span> eps:
+    <span class="hljs-keyword">for</span> ms <span class="hljs-keyword">in</span> min_samples:
+        <span class="hljs-keyword">for</span> mcs <span class="hljs-keyword">in</span> min_cluster_sizes:
+            print(<span class="hljs-string">f"Testing for eps=<span class="hljs-subst">{e}</span>, min_samples=<span class="hljs-subst">{ms}</span>, min_cluster_size=<span class="hljs-subst">{mcs}</span>"</span>)
+            hdb_labels = hdbscan.HDBSCAN(
+                cluster_selection_epsilon=e,
+                min_samples=ms,
+                min_cluster_size=mcs,
+                core_dist_n_jobs=<span class="hljs-number">-1</span>
+            ).fit_predict(Umap_cos)
+
+            <span class="hljs-comment"># Compute and store clustering metrics</span>
+            hdb_hs.append(homogeneity_score(dataset.target, hdb_labels))
+            hdb_cs.append(completeness_score(dataset.target, hdb_labels))
+            hdb_vs.append(v_measure_score(dataset.target, hdb_labels))
+            hdb_ari.append(adjusted_rand_score(dataset.target, hdb_labels))
+            hdb_ms.append(adjusted_mutual_info_score(dataset.target, hdb_labels))
+
+            <span class="hljs-comment"># Record the hyperparameters used</span>
+            eps_rec.append(e)
+            min_samples_rec.append(ms)
+            min_cluster_size_rec.append(mcs)
+
+print(<span class="hljs-string">"Done testing all combinations."</span>)
+
+all_avg_metrics = [
+    (h + c + v + ari + ms_) / <span class="hljs-number">5.0</span>
+    <span class="hljs-keyword">for</span> h, c, v, ari, ms_ <span class="hljs-keyword">in</span> zip(hdb_hs, hdb_cs, hdb_vs, hdb_ari, hdb_ms)
+]
+
+best_index = np.argmax(all_avg_metrics)
+best_eps_hdb = eps_rec[best_index]
+best_minSample_hdb = min_samples_rec[best_index]
+best_minCluster_hdb = min_cluster_size_rec[best_index]
+best_avg_metric = all_avg_metrics[best_index]
+
+print(<span class="hljs-string">"Best hyperparameters for HDBSCAN:"</span>)
+print(<span class="hljs-string">f"  Epsilon:        <span class="hljs-subst">{best_eps_hdb}</span>"</span>)
+print(<span class="hljs-string">f"  Min Samples:    <span class="hljs-subst">{best_minSample_hdb}</span>"</span>)
+print(<span class="hljs-string">f"  Min Cluster Size: <span class="hljs-subst">{best_minCluster_hdb}</span>"</span>)
+print(<span class="hljs-string">f"  (Avg. of 5 metrics: <span class="hljs-subst">{best_avg_metric:<span class="hljs-number">.4</span>f}</span>)"</span>)
+
+print(<span class="hljs-string">"Metrics at this best combination:"</span>)
+print(<span class="hljs-string">"  Homogeneity:                "</span>, hdb_hs[best_index])
+print(<span class="hljs-string">"  Completeness:               "</span>, hdb_cs[best_index])
+print(<span class="hljs-string">"  V-measure:                  "</span>, hdb_vs[best_index])
+print(<span class="hljs-string">"  Adjusted Rand-Index (ARI):  "</span>, hdb_ari[best_index])
+print(<span class="hljs-string">"  Adjusted Mutual Info (AMI): "</span>, hdb_ms[best_index])
+
+</div></code></pre>
+<pre><code>Testing for eps=0.01, min_samples=5, min_cluster_size=20
+Testing for eps=0.01, min_samples=5, min_cluster_size=100
+Testing for eps=0.01, min_samples=5, min_cluster_size=200
+Testing for eps=0.01, min_samples=15, min_cluster_size=20
+Testing for eps=0.01, min_samples=15, min_cluster_size=100
+Testing for eps=0.01, min_samples=15, min_cluster_size=200
+Testing for eps=0.01, min_samples=30, min_cluster_size=20
+Testing for eps=0.01, min_samples=30, min_cluster_size=100
+Testing for eps=0.01, min_samples=30, min_cluster_size=200
+Testing for eps=0.01, min_samples=60, min_cluster_size=20
+Testing for eps=0.01, min_samples=60, min_cluster_size=100
+Testing for eps=0.01, min_samples=60, min_cluster_size=200
+Testing for eps=0.01, min_samples=100, min_cluster_size=20
+Testing for eps=0.01, min_samples=100, min_cluster_size=100
+Testing for eps=0.01, min_samples=100, min_cluster_size=200
+Testing for eps=0.01, min_samples=200, min_cluster_size=20
+Testing for eps=0.01, min_samples=200, min_cluster_size=100
+Testing for eps=0.01, min_samples=200, min_cluster_size=200
+Testing for eps=0.01, min_samples=500, min_cluster_size=20
+Testing for eps=0.01, min_samples=500, min_cluster_size=100
+Testing for eps=0.01, min_samples=500, min_cluster_size=200
+Testing for eps=0.01, min_samples=1000, min_cluster_size=20
+Testing for eps=0.01, min_samples=1000, min_cluster_size=100
+Testing for eps=0.01, min_samples=1000, min_cluster_size=200
+Testing for eps=0.01, min_samples=3000, min_cluster_size=20
+Testing for eps=0.01, min_samples=3000, min_cluster_size=100
+Testing for eps=0.01, min_samples=3000, min_cluster_size=200
+Testing for eps=0.05, min_samples=5, min_cluster_size=20
+Testing for eps=0.05, min_samples=5, min_cluster_size=100
+Testing for eps=0.05, min_samples=5, min_cluster_size=200
+Testing for eps=0.05, min_samples=15, min_cluster_size=20
+Testing for eps=0.05, min_samples=15, min_cluster_size=100
+Testing for eps=0.05, min_samples=15, min_cluster_size=200
+Testing for eps=0.05, min_samples=30, min_cluster_size=20
+Testing for eps=0.05, min_samples=30, min_cluster_size=100
+Testing for eps=0.05, min_samples=30, min_cluster_size=200
+Testing for eps=0.05, min_samples=60, min_cluster_size=20
+Testing for eps=0.05, min_samples=60, min_cluster_size=100
+Testing for eps=0.05, min_samples=60, min_cluster_size=200
+Testing for eps=0.05, min_samples=100, min_cluster_size=20
+Testing for eps=0.05, min_samples=100, min_cluster_size=100
+Testing for eps=0.05, min_samples=100, min_cluster_size=200
+Testing for eps=0.05, min_samples=200, min_cluster_size=20
+Testing for eps=0.05, min_samples=200, min_cluster_size=100
+Testing for eps=0.05, min_samples=200, min_cluster_size=200
+Testing for eps=0.05, min_samples=500, min_cluster_size=20
+Testing for eps=0.05, min_samples=500, min_cluster_size=100
+Testing for eps=0.05, min_samples=500, min_cluster_size=200
+Testing for eps=0.05, min_samples=1000, min_cluster_size=20
+Testing for eps=0.05, min_samples=1000, min_cluster_size=100
+Testing for eps=0.05, min_samples=1000, min_cluster_size=200
+Testing for eps=0.05, min_samples=3000, min_cluster_size=20
+Testing for eps=0.05, min_samples=3000, min_cluster_size=100
+Testing for eps=0.05, min_samples=3000, min_cluster_size=200
+Testing for eps=0.1, min_samples=5, min_cluster_size=20
+Testing for eps=0.1, min_samples=5, min_cluster_size=100
+Testing for eps=0.1, min_samples=5, min_cluster_size=200
+Testing for eps=0.1, min_samples=15, min_cluster_size=20
+Testing for eps=0.1, min_samples=15, min_cluster_size=100
+Testing for eps=0.1, min_samples=15, min_cluster_size=200
+Testing for eps=0.1, min_samples=30, min_cluster_size=20
+Testing for eps=0.1, min_samples=30, min_cluster_size=100
+Testing for eps=0.1, min_samples=30, min_cluster_size=200
+Testing for eps=0.1, min_samples=60, min_cluster_size=20
+Testing for eps=0.1, min_samples=60, min_cluster_size=100
+Testing for eps=0.1, min_samples=60, min_cluster_size=200
+Testing for eps=0.1, min_samples=100, min_cluster_size=20
+Testing for eps=0.1, min_samples=100, min_cluster_size=100
+Testing for eps=0.1, min_samples=100, min_cluster_size=200
+Testing for eps=0.1, min_samples=200, min_cluster_size=20
+Testing for eps=0.1, min_samples=200, min_cluster_size=100
+Testing for eps=0.1, min_samples=200, min_cluster_size=200
+Testing for eps=0.1, min_samples=500, min_cluster_size=20
+Testing for eps=0.1, min_samples=500, min_cluster_size=100
+Testing for eps=0.1, min_samples=500, min_cluster_size=200
+Testing for eps=0.1, min_samples=1000, min_cluster_size=20
+Testing for eps=0.1, min_samples=1000, min_cluster_size=100
+Testing for eps=0.1, min_samples=1000, min_cluster_size=200
+Testing for eps=0.1, min_samples=3000, min_cluster_size=20
+Testing for eps=0.1, min_samples=3000, min_cluster_size=100
+Testing for eps=0.1, min_samples=3000, min_cluster_size=200
+Testing for eps=0.15, min_samples=5, min_cluster_size=20
+Testing for eps=0.15, min_samples=5, min_cluster_size=100
+Testing for eps=0.15, min_samples=5, min_cluster_size=200
+Testing for eps=0.15, min_samples=15, min_cluster_size=20
+Testing for eps=0.15, min_samples=15, min_cluster_size=100
+Testing for eps=0.15, min_samples=15, min_cluster_size=200
+Testing for eps=0.15, min_samples=30, min_cluster_size=20
+Testing for eps=0.15, min_samples=30, min_cluster_size=100
+Testing for eps=0.15, min_samples=30, min_cluster_size=200
+Testing for eps=0.15, min_samples=60, min_cluster_size=20
+Testing for eps=0.15, min_samples=60, min_cluster_size=100
+Testing for eps=0.15, min_samples=60, min_cluster_size=200
+Testing for eps=0.15, min_samples=100, min_cluster_size=20
+Testing for eps=0.15, min_samples=100, min_cluster_size=100
+Testing for eps=0.15, min_samples=100, min_cluster_size=200
+Testing for eps=0.15, min_samples=200, min_cluster_size=20
+Testing for eps=0.15, min_samples=200, min_cluster_size=100
+Testing for eps=0.15, min_samples=200, min_cluster_size=200
+Testing for eps=0.15, min_samples=500, min_cluster_size=20
+Testing for eps=0.15, min_samples=500, min_cluster_size=100
+Testing for eps=0.15, min_samples=500, min_cluster_size=200
+Testing for eps=0.15, min_samples=1000, min_cluster_size=20
+Testing for eps=0.15, min_samples=1000, min_cluster_size=100
+Testing for eps=0.15, min_samples=1000, min_cluster_size=200
+Testing for eps=0.15, min_samples=3000, min_cluster_size=20
+Testing for eps=0.15, min_samples=3000, min_cluster_size=100
+Testing for eps=0.15, min_samples=3000, min_cluster_size=200
+Testing for eps=0.2, min_samples=5, min_cluster_size=20
+Testing for eps=0.2, min_samples=5, min_cluster_size=100
+Testing for eps=0.2, min_samples=5, min_cluster_size=200
+Testing for eps=0.2, min_samples=15, min_cluster_size=20
+Testing for eps=0.2, min_samples=15, min_cluster_size=100
+Testing for eps=0.2, min_samples=15, min_cluster_size=200
+Testing for eps=0.2, min_samples=30, min_cluster_size=20
+Testing for eps=0.2, min_samples=30, min_cluster_size=100
+Testing for eps=0.2, min_samples=30, min_cluster_size=200
+Testing for eps=0.2, min_samples=60, min_cluster_size=20
+Testing for eps=0.2, min_samples=60, min_cluster_size=100
+Testing for eps=0.2, min_samples=60, min_cluster_size=200
+Testing for eps=0.2, min_samples=100, min_cluster_size=20
+Testing for eps=0.2, min_samples=100, min_cluster_size=100
+Testing for eps=0.2, min_samples=100, min_cluster_size=200
+Testing for eps=0.2, min_samples=200, min_cluster_size=20
+Testing for eps=0.2, min_samples=200, min_cluster_size=100
+Testing for eps=0.2, min_samples=200, min_cluster_size=200
+Testing for eps=0.2, min_samples=500, min_cluster_size=20
+Testing for eps=0.2, min_samples=500, min_cluster_size=100
+Testing for eps=0.2, min_samples=500, min_cluster_size=200
+Testing for eps=0.2, min_samples=1000, min_cluster_size=20
+Testing for eps=0.2, min_samples=1000, min_cluster_size=100
+Testing for eps=0.2, min_samples=1000, min_cluster_size=200
+Testing for eps=0.2, min_samples=3000, min_cluster_size=20
+Testing for eps=0.2, min_samples=3000, min_cluster_size=100
+Testing for eps=0.2, min_samples=3000, min_cluster_size=200
+Testing for eps=0.3, min_samples=5, min_cluster_size=20
+Testing for eps=0.3, min_samples=5, min_cluster_size=100
+Testing for eps=0.3, min_samples=5, min_cluster_size=200
+Testing for eps=0.3, min_samples=15, min_cluster_size=20
+Testing for eps=0.3, min_samples=15, min_cluster_size=100
+Testing for eps=0.3, min_samples=15, min_cluster_size=200
+Testing for eps=0.3, min_samples=30, min_cluster_size=20
+Testing for eps=0.3, min_samples=30, min_cluster_size=100
+Testing for eps=0.3, min_samples=30, min_cluster_size=200
+Testing for eps=0.3, min_samples=60, min_cluster_size=20
+Testing for eps=0.3, min_samples=60, min_cluster_size=100
+Testing for eps=0.3, min_samples=60, min_cluster_size=200
+Testing for eps=0.3, min_samples=100, min_cluster_size=20
+Testing for eps=0.3, min_samples=100, min_cluster_size=100
+Testing for eps=0.3, min_samples=100, min_cluster_size=200
+Testing for eps=0.3, min_samples=200, min_cluster_size=20
+Testing for eps=0.3, min_samples=200, min_cluster_size=100
+Testing for eps=0.3, min_samples=200, min_cluster_size=200
+Testing for eps=0.3, min_samples=500, min_cluster_size=20
+Testing for eps=0.3, min_samples=500, min_cluster_size=100
+Testing for eps=0.3, min_samples=500, min_cluster_size=200
+Testing for eps=0.3, min_samples=1000, min_cluster_size=20
+Testing for eps=0.3, min_samples=1000, min_cluster_size=100
+Testing for eps=0.3, min_samples=1000, min_cluster_size=200
+Testing for eps=0.3, min_samples=3000, min_cluster_size=20
+Testing for eps=0.3, min_samples=3000, min_cluster_size=100
+Testing for eps=0.3, min_samples=3000, min_cluster_size=200
+Testing for eps=0.4, min_samples=5, min_cluster_size=20
+Testing for eps=0.4, min_samples=5, min_cluster_size=100
+Testing for eps=0.4, min_samples=5, min_cluster_size=200
+Testing for eps=0.4, min_samples=15, min_cluster_size=20
+Testing for eps=0.4, min_samples=15, min_cluster_size=100
+Testing for eps=0.4, min_samples=15, min_cluster_size=200
+Testing for eps=0.4, min_samples=30, min_cluster_size=20
+Testing for eps=0.4, min_samples=30, min_cluster_size=100
+Testing for eps=0.4, min_samples=30, min_cluster_size=200
+Testing for eps=0.4, min_samples=60, min_cluster_size=20
+Testing for eps=0.4, min_samples=60, min_cluster_size=100
+Testing for eps=0.4, min_samples=60, min_cluster_size=200
+Testing for eps=0.4, min_samples=100, min_cluster_size=20
+Testing for eps=0.4, min_samples=100, min_cluster_size=100
+Testing for eps=0.4, min_samples=100, min_cluster_size=200
+Testing for eps=0.4, min_samples=200, min_cluster_size=20
+Testing for eps=0.4, min_samples=200, min_cluster_size=100
+Testing for eps=0.4, min_samples=200, min_cluster_size=200
+Testing for eps=0.4, min_samples=500, min_cluster_size=20
+Testing for eps=0.4, min_samples=500, min_cluster_size=100
+Testing for eps=0.4, min_samples=500, min_cluster_size=200
+Testing for eps=0.4, min_samples=1000, min_cluster_size=20
+Testing for eps=0.4, min_samples=1000, min_cluster_size=100
+Testing for eps=0.4, min_samples=1000, min_cluster_size=200
+Testing for eps=0.4, min_samples=3000, min_cluster_size=20
+Testing for eps=0.4, min_samples=3000, min_cluster_size=100
+Testing for eps=0.4, min_samples=3000, min_cluster_size=200
+Testing for eps=0.5, min_samples=5, min_cluster_size=20
+Testing for eps=0.5, min_samples=5, min_cluster_size=100
+Testing for eps=0.5, min_samples=5, min_cluster_size=200
+Testing for eps=0.5, min_samples=15, min_cluster_size=20
+Testing for eps=0.5, min_samples=15, min_cluster_size=100
+Testing for eps=0.5, min_samples=15, min_cluster_size=200
+Testing for eps=0.5, min_samples=30, min_cluster_size=20
+Testing for eps=0.5, min_samples=30, min_cluster_size=100
+Testing for eps=0.5, min_samples=30, min_cluster_size=200
+Testing for eps=0.5, min_samples=60, min_cluster_size=20
+Testing for eps=0.5, min_samples=60, min_cluster_size=100
+Testing for eps=0.5, min_samples=60, min_cluster_size=200
+Testing for eps=0.5, min_samples=100, min_cluster_size=20
+Testing for eps=0.5, min_samples=100, min_cluster_size=100
+Testing for eps=0.5, min_samples=100, min_cluster_size=200
+Testing for eps=0.5, min_samples=200, min_cluster_size=20
+Testing for eps=0.5, min_samples=200, min_cluster_size=100
+Testing for eps=0.5, min_samples=200, min_cluster_size=200
+Testing for eps=0.5, min_samples=500, min_cluster_size=20
+Testing for eps=0.5, min_samples=500, min_cluster_size=100
+Testing for eps=0.5, min_samples=500, min_cluster_size=200
+Testing for eps=0.5, min_samples=1000, min_cluster_size=20
+Testing for eps=0.5, min_samples=1000, min_cluster_size=100
+Testing for eps=0.5, min_samples=1000, min_cluster_size=200
+Testing for eps=0.5, min_samples=3000, min_cluster_size=20
+Testing for eps=0.5, min_samples=3000, min_cluster_size=100
+Testing for eps=0.5, min_samples=3000, min_cluster_size=200
+Testing for eps=0.6, min_samples=5, min_cluster_size=20
+Testing for eps=0.6, min_samples=5, min_cluster_size=100
+Testing for eps=0.6, min_samples=5, min_cluster_size=200
+Testing for eps=0.6, min_samples=15, min_cluster_size=20
+Testing for eps=0.6, min_samples=15, min_cluster_size=100
+Testing for eps=0.6, min_samples=15, min_cluster_size=200
+Testing for eps=0.6, min_samples=30, min_cluster_size=20
+Testing for eps=0.6, min_samples=30, min_cluster_size=100
+Testing for eps=0.6, min_samples=30, min_cluster_size=200
+Testing for eps=0.6, min_samples=60, min_cluster_size=20
+Testing for eps=0.6, min_samples=60, min_cluster_size=100
+Testing for eps=0.6, min_samples=60, min_cluster_size=200
+Testing for eps=0.6, min_samples=100, min_cluster_size=20
+Testing for eps=0.6, min_samples=100, min_cluster_size=100
+Testing for eps=0.6, min_samples=100, min_cluster_size=200
+Testing for eps=0.6, min_samples=200, min_cluster_size=20
+Testing for eps=0.6, min_samples=200, min_cluster_size=100
+Testing for eps=0.6, min_samples=200, min_cluster_size=200
+Testing for eps=0.6, min_samples=500, min_cluster_size=20
+Testing for eps=0.6, min_samples=500, min_cluster_size=100
+Testing for eps=0.6, min_samples=500, min_cluster_size=200
+Testing for eps=0.6, min_samples=1000, min_cluster_size=20
+Testing for eps=0.6, min_samples=1000, min_cluster_size=100
+Testing for eps=0.6, min_samples=1000, min_cluster_size=200
+Testing for eps=0.6, min_samples=3000, min_cluster_size=20
+Testing for eps=0.6, min_samples=3000, min_cluster_size=100
+Testing for eps=0.6, min_samples=3000, min_cluster_size=200
+Testing for eps=0.7, min_samples=5, min_cluster_size=20
+Testing for eps=0.7, min_samples=5, min_cluster_size=100
+Testing for eps=0.7, min_samples=5, min_cluster_size=200
+Testing for eps=0.7, min_samples=15, min_cluster_size=20
+Testing for eps=0.7, min_samples=15, min_cluster_size=100
+Testing for eps=0.7, min_samples=15, min_cluster_size=200
+Testing for eps=0.7, min_samples=30, min_cluster_size=20
+Testing for eps=0.7, min_samples=30, min_cluster_size=100
+Testing for eps=0.7, min_samples=30, min_cluster_size=200
+Testing for eps=0.7, min_samples=60, min_cluster_size=20
+Testing for eps=0.7, min_samples=60, min_cluster_size=100
+Testing for eps=0.7, min_samples=60, min_cluster_size=200
+Testing for eps=0.7, min_samples=100, min_cluster_size=20
+Testing for eps=0.7, min_samples=100, min_cluster_size=100
+Testing for eps=0.7, min_samples=100, min_cluster_size=200
+Testing for eps=0.7, min_samples=200, min_cluster_size=20
+Testing for eps=0.7, min_samples=200, min_cluster_size=100
+Testing for eps=0.7, min_samples=200, min_cluster_size=200
+Testing for eps=0.7, min_samples=500, min_cluster_size=20
+Testing for eps=0.7, min_samples=500, min_cluster_size=100
+Testing for eps=0.7, min_samples=500, min_cluster_size=200
+Testing for eps=0.7, min_samples=1000, min_cluster_size=20
+Testing for eps=0.7, min_samples=1000, min_cluster_size=100
+Testing for eps=0.7, min_samples=1000, min_cluster_size=200
+Testing for eps=0.7, min_samples=3000, min_cluster_size=20
+Testing for eps=0.7, min_samples=3000, min_cluster_size=100
+Testing for eps=0.7, min_samples=3000, min_cluster_size=200
+Testing for eps=0.8, min_samples=5, min_cluster_size=20
+Testing for eps=0.8, min_samples=5, min_cluster_size=100
+Testing for eps=0.8, min_samples=5, min_cluster_size=200
+Testing for eps=0.8, min_samples=15, min_cluster_size=20
+Testing for eps=0.8, min_samples=15, min_cluster_size=100
+Testing for eps=0.8, min_samples=15, min_cluster_size=200
+Testing for eps=0.8, min_samples=30, min_cluster_size=20
+Testing for eps=0.8, min_samples=30, min_cluster_size=100
+Testing for eps=0.8, min_samples=30, min_cluster_size=200
+Testing for eps=0.8, min_samples=60, min_cluster_size=20
+Testing for eps=0.8, min_samples=60, min_cluster_size=100
+Testing for eps=0.8, min_samples=60, min_cluster_size=200
+Testing for eps=0.8, min_samples=100, min_cluster_size=20
+Testing for eps=0.8, min_samples=100, min_cluster_size=100
+Testing for eps=0.8, min_samples=100, min_cluster_size=200
+Testing for eps=0.8, min_samples=200, min_cluster_size=20
+Testing for eps=0.8, min_samples=200, min_cluster_size=100
+Testing for eps=0.8, min_samples=200, min_cluster_size=200
+Testing for eps=0.8, min_samples=500, min_cluster_size=20
+Testing for eps=0.8, min_samples=500, min_cluster_size=100
+Testing for eps=0.8, min_samples=500, min_cluster_size=200
+Testing for eps=0.8, min_samples=1000, min_cluster_size=20
+Testing for eps=0.8, min_samples=1000, min_cluster_size=100
+Testing for eps=0.8, min_samples=1000, min_cluster_size=200
+Testing for eps=0.8, min_samples=3000, min_cluster_size=20
+Testing for eps=0.8, min_samples=3000, min_cluster_size=100
+Testing for eps=0.8, min_samples=3000, min_cluster_size=200
+Testing for eps=0.9, min_samples=5, min_cluster_size=20
+Testing for eps=0.9, min_samples=5, min_cluster_size=100
+Testing for eps=0.9, min_samples=5, min_cluster_size=200
+Testing for eps=0.9, min_samples=15, min_cluster_size=20
+Testing for eps=0.9, min_samples=15, min_cluster_size=100
+Testing for eps=0.9, min_samples=15, min_cluster_size=200
+Testing for eps=0.9, min_samples=30, min_cluster_size=20
+Testing for eps=0.9, min_samples=30, min_cluster_size=100
+Testing for eps=0.9, min_samples=30, min_cluster_size=200
+Testing for eps=0.9, min_samples=60, min_cluster_size=20
+Testing for eps=0.9, min_samples=60, min_cluster_size=100
+Testing for eps=0.9, min_samples=60, min_cluster_size=200
+Testing for eps=0.9, min_samples=100, min_cluster_size=20
+Testing for eps=0.9, min_samples=100, min_cluster_size=100
+Testing for eps=0.9, min_samples=100, min_cluster_size=200
+Testing for eps=0.9, min_samples=200, min_cluster_size=20
+Testing for eps=0.9, min_samples=200, min_cluster_size=100
+Testing for eps=0.9, min_samples=200, min_cluster_size=200
+Testing for eps=0.9, min_samples=500, min_cluster_size=20
+Testing for eps=0.9, min_samples=500, min_cluster_size=100
+Testing for eps=0.9, min_samples=500, min_cluster_size=200
+Testing for eps=0.9, min_samples=1000, min_cluster_size=20
+Testing for eps=0.9, min_samples=1000, min_cluster_size=100
+Testing for eps=0.9, min_samples=1000, min_cluster_size=200
+Testing for eps=0.9, min_samples=3000, min_cluster_size=20
+Testing for eps=0.9, min_samples=3000, min_cluster_size=100
+Testing for eps=0.9, min_samples=3000, min_cluster_size=200
+Testing for eps=1.0, min_samples=5, min_cluster_size=20
+Testing for eps=1.0, min_samples=5, min_cluster_size=100
+Testing for eps=1.0, min_samples=5, min_cluster_size=200
+Testing for eps=1.0, min_samples=15, min_cluster_size=20
+Testing for eps=1.0, min_samples=15, min_cluster_size=100
+Testing for eps=1.0, min_samples=15, min_cluster_size=200
+Testing for eps=1.0, min_samples=30, min_cluster_size=20
+Testing for eps=1.0, min_samples=30, min_cluster_size=100
+Testing for eps=1.0, min_samples=30, min_cluster_size=200
+Testing for eps=1.0, min_samples=60, min_cluster_size=20
+Testing for eps=1.0, min_samples=60, min_cluster_size=100
+Testing for eps=1.0, min_samples=60, min_cluster_size=200
+Testing for eps=1.0, min_samples=100, min_cluster_size=20
+Testing for eps=1.0, min_samples=100, min_cluster_size=100
+Testing for eps=1.0, min_samples=100, min_cluster_size=200
+Testing for eps=1.0, min_samples=200, min_cluster_size=20
+Testing for eps=1.0, min_samples=200, min_cluster_size=100
+Testing for eps=1.0, min_samples=200, min_cluster_size=200
+Testing for eps=1.0, min_samples=500, min_cluster_size=20
+Testing for eps=1.0, min_samples=500, min_cluster_size=100
+Testing for eps=1.0, min_samples=500, min_cluster_size=200
+Testing for eps=1.0, min_samples=1000, min_cluster_size=20
+Testing for eps=1.0, min_samples=1000, min_cluster_size=100
+Testing for eps=1.0, min_samples=1000, min_cluster_size=200
+Testing for eps=1.0, min_samples=3000, min_cluster_size=20
+Testing for eps=1.0, min_samples=3000, min_cluster_size=100
+Testing for eps=1.0, min_samples=3000, min_cluster_size=200
+Testing for eps=3.0, min_samples=5, min_cluster_size=20
+Testing for eps=3.0, min_samples=5, min_cluster_size=100
+Testing for eps=3.0, min_samples=5, min_cluster_size=200
+Testing for eps=3.0, min_samples=15, min_cluster_size=20
+Testing for eps=3.0, min_samples=15, min_cluster_size=100
+Testing for eps=3.0, min_samples=15, min_cluster_size=200
+Testing for eps=3.0, min_samples=30, min_cluster_size=20
+Testing for eps=3.0, min_samples=30, min_cluster_size=100
+Testing for eps=3.0, min_samples=30, min_cluster_size=200
+Testing for eps=3.0, min_samples=60, min_cluster_size=20
+Testing for eps=3.0, min_samples=60, min_cluster_size=100
+Testing for eps=3.0, min_samples=60, min_cluster_size=200
+Testing for eps=3.0, min_samples=100, min_cluster_size=20
+Testing for eps=3.0, min_samples=100, min_cluster_size=100
+Testing for eps=3.0, min_samples=100, min_cluster_size=200
+Testing for eps=3.0, min_samples=200, min_cluster_size=20
+Testing for eps=3.0, min_samples=200, min_cluster_size=100
+Testing for eps=3.0, min_samples=200, min_cluster_size=200
+Testing for eps=3.0, min_samples=500, min_cluster_size=20
+Testing for eps=3.0, min_samples=500, min_cluster_size=100
+Testing for eps=3.0, min_samples=500, min_cluster_size=200
+Testing for eps=3.0, min_samples=1000, min_cluster_size=20
+Testing for eps=3.0, min_samples=1000, min_cluster_size=100
+Testing for eps=3.0, min_samples=1000, min_cluster_size=200
+Testing for eps=3.0, min_samples=3000, min_cluster_size=20
+Testing for eps=3.0, min_samples=3000, min_cluster_size=100
+Testing for eps=3.0, min_samples=3000, min_cluster_size=200
+Testing for eps=5.0, min_samples=5, min_cluster_size=20
+Testing for eps=5.0, min_samples=5, min_cluster_size=100
+Testing for eps=5.0, min_samples=5, min_cluster_size=200
+Testing for eps=5.0, min_samples=15, min_cluster_size=20
+Testing for eps=5.0, min_samples=15, min_cluster_size=100
+Testing for eps=5.0, min_samples=15, min_cluster_size=200
+Testing for eps=5.0, min_samples=30, min_cluster_size=20
+Testing for eps=5.0, min_samples=30, min_cluster_size=100
+Testing for eps=5.0, min_samples=30, min_cluster_size=200
+Testing for eps=5.0, min_samples=60, min_cluster_size=20
+Testing for eps=5.0, min_samples=60, min_cluster_size=100
+Testing for eps=5.0, min_samples=60, min_cluster_size=200
+Testing for eps=5.0, min_samples=100, min_cluster_size=20
+Testing for eps=5.0, min_samples=100, min_cluster_size=100
+Testing for eps=5.0, min_samples=100, min_cluster_size=200
+Testing for eps=5.0, min_samples=200, min_cluster_size=20
+Testing for eps=5.0, min_samples=200, min_cluster_size=100
+Testing for eps=5.0, min_samples=200, min_cluster_size=200
+Testing for eps=5.0, min_samples=500, min_cluster_size=20
+Testing for eps=5.0, min_samples=500, min_cluster_size=100
+Testing for eps=5.0, min_samples=500, min_cluster_size=200
+Testing for eps=5.0, min_samples=1000, min_cluster_size=20
+Testing for eps=5.0, min_samples=1000, min_cluster_size=100
+Testing for eps=5.0, min_samples=1000, min_cluster_size=200
+Testing for eps=5.0, min_samples=3000, min_cluster_size=20
+Testing for eps=5.0, min_samples=3000, min_cluster_size=100
+Testing for eps=5.0, min_samples=3000, min_cluster_size=200
+Testing for eps=10.0, min_samples=5, min_cluster_size=20
+Testing for eps=10.0, min_samples=5, min_cluster_size=100
+Testing for eps=10.0, min_samples=5, min_cluster_size=200
+Testing for eps=10.0, min_samples=15, min_cluster_size=20
+Testing for eps=10.0, min_samples=15, min_cluster_size=100
+Testing for eps=10.0, min_samples=15, min_cluster_size=200
+Testing for eps=10.0, min_samples=30, min_cluster_size=20
+Testing for eps=10.0, min_samples=30, min_cluster_size=100
+Testing for eps=10.0, min_samples=30, min_cluster_size=200
+Testing for eps=10.0, min_samples=60, min_cluster_size=20
+Testing for eps=10.0, min_samples=60, min_cluster_size=100
+Testing for eps=10.0, min_samples=60, min_cluster_size=200
+Testing for eps=10.0, min_samples=100, min_cluster_size=20
+Testing for eps=10.0, min_samples=100, min_cluster_size=100
+Testing for eps=10.0, min_samples=100, min_cluster_size=200
+Testing for eps=10.0, min_samples=200, min_cluster_size=20
+Testing for eps=10.0, min_samples=200, min_cluster_size=100
+Testing for eps=10.0, min_samples=200, min_cluster_size=200
+Testing for eps=10.0, min_samples=500, min_cluster_size=20
+Testing for eps=10.0, min_samples=500, min_cluster_size=100
+Testing for eps=10.0, min_samples=500, min_cluster_size=200
+Testing for eps=10.0, min_samples=1000, min_cluster_size=20
+Testing for eps=10.0, min_samples=1000, min_cluster_size=100
+Testing for eps=10.0, min_samples=1000, min_cluster_size=200
+Testing for eps=10.0, min_samples=3000, min_cluster_size=20
+Testing for eps=10.0, min_samples=3000, min_cluster_size=100
+Testing for eps=10.0, min_samples=3000, min_cluster_size=200
+Testing for eps=30.0, min_samples=5, min_cluster_size=20
+Testing for eps=30.0, min_samples=5, min_cluster_size=100
+Testing for eps=30.0, min_samples=5, min_cluster_size=200
+Testing for eps=30.0, min_samples=15, min_cluster_size=20
+Testing for eps=30.0, min_samples=15, min_cluster_size=100
+Testing for eps=30.0, min_samples=15, min_cluster_size=200
+Testing for eps=30.0, min_samples=30, min_cluster_size=20
+Testing for eps=30.0, min_samples=30, min_cluster_size=100
+Testing for eps=30.0, min_samples=30, min_cluster_size=200
+Testing for eps=30.0, min_samples=60, min_cluster_size=20
+Testing for eps=30.0, min_samples=60, min_cluster_size=100
+Testing for eps=30.0, min_samples=60, min_cluster_size=200
+Testing for eps=30.0, min_samples=100, min_cluster_size=20
+Testing for eps=30.0, min_samples=100, min_cluster_size=100
+Testing for eps=30.0, min_samples=100, min_cluster_size=200
+Testing for eps=30.0, min_samples=200, min_cluster_size=20
+Testing for eps=30.0, min_samples=200, min_cluster_size=100
+Testing for eps=30.0, min_samples=200, min_cluster_size=200
+Testing for eps=30.0, min_samples=500, min_cluster_size=20
+Testing for eps=30.0, min_samples=500, min_cluster_size=100
+Testing for eps=30.0, min_samples=500, min_cluster_size=200
+Testing for eps=30.0, min_samples=1000, min_cluster_size=20
+Testing for eps=30.0, min_samples=1000, min_cluster_size=100
+Testing for eps=30.0, min_samples=1000, min_cluster_size=200
+Testing for eps=30.0, min_samples=3000, min_cluster_size=20
+Testing for eps=30.0, min_samples=3000, min_cluster_size=100
+Testing for eps=30.0, min_samples=3000, min_cluster_size=200
+Testing for eps=50.0, min_samples=5, min_cluster_size=20
+Testing for eps=50.0, min_samples=5, min_cluster_size=100
+Testing for eps=50.0, min_samples=5, min_cluster_size=200
+Testing for eps=50.0, min_samples=15, min_cluster_size=20
+Testing for eps=50.0, min_samples=15, min_cluster_size=100
+Testing for eps=50.0, min_samples=15, min_cluster_size=200
+Testing for eps=50.0, min_samples=30, min_cluster_size=20
+Testing for eps=50.0, min_samples=30, min_cluster_size=100
+Testing for eps=50.0, min_samples=30, min_cluster_size=200
+Testing for eps=50.0, min_samples=60, min_cluster_size=20
+Testing for eps=50.0, min_samples=60, min_cluster_size=100
+Testing for eps=50.0, min_samples=60, min_cluster_size=200
+Testing for eps=50.0, min_samples=100, min_cluster_size=20
+Testing for eps=50.0, min_samples=100, min_cluster_size=100
+Testing for eps=50.0, min_samples=100, min_cluster_size=200
+Testing for eps=50.0, min_samples=200, min_cluster_size=20
+Testing for eps=50.0, min_samples=200, min_cluster_size=100
+Testing for eps=50.0, min_samples=200, min_cluster_size=200
+Testing for eps=50.0, min_samples=500, min_cluster_size=20
+Testing for eps=50.0, min_samples=500, min_cluster_size=100
+Testing for eps=50.0, min_samples=500, min_cluster_size=200
+Testing for eps=50.0, min_samples=1000, min_cluster_size=20
+Testing for eps=50.0, min_samples=1000, min_cluster_size=100
+Testing for eps=50.0, min_samples=1000, min_cluster_size=200
+Testing for eps=50.0, min_samples=3000, min_cluster_size=20
+Testing for eps=50.0, min_samples=3000, min_cluster_size=100
+Testing for eps=50.0, min_samples=3000, min_cluster_size=200
+Done testing all combinations.
+Best hyperparameters for HDBSCAN:
+  Epsilon:        0.3
+  Min Samples:    5
+  Min Cluster Size: 200
+  (Avg. of 5 metrics: 0.4680)
+Metrics at this best combination:
+  Homogeneity:                 0.4346188934335828
+  Completeness:                0.6332692492131528
+  V-measure:                   0.5154674339887008
+  Adjusted Rand-Index (ARI):   0.24235092542349987
+  Adjusted Mutual Info (AMI):  0.5144919072357194
+</code></pre>
+<h1 id="question-16">Question 16</h1>
+<h3 id="from-the-contingency-matrix-we-observe-that-hdbscan-identifies-11-major-clusters-many-missing-ground-truth-clusters-appear-merged-with-other-clusters-because-they-form-a-hierarchical-tree-like-rather-than-a-strictly-flat-structure-the--1-label-marks-outliers-or-noisy-samples-that-the-algorithm-leaves-unassigned-this-merging-seems-to-result-from-excessive-smoothing-influenced-by-hyperparameter-choicesspecifically-not-adjusting-the-minimum-cluster-sizewhich-leads-to-the-loss-of-low-density-clusters-moreover-the-algorithm-struggles-with-widely-varying-or-sparsely-distributed-clusters-in-high-dimensional-spaces-as-often-is-the-case-with-text-data-adjusting-the-minimum-cluster-size-might-enable-the-formation-of-more-microclusters-for-low-density-categories">From the contingency matrix, we observe that HDBSCAN identifies 11 major clusters. Many missing ground truth clusters appear merged with other clusters because they form a hierarchical (tree-like) rather than a strictly flat structure. The “-1” label marks outliers or noisy samples that the algorithm leaves unassigned. This merging seems to result from excessive smoothing influenced by hyperparameter choices—specifically not adjusting the minimum cluster size—which leads to the loss of low-density clusters. Moreover, the algorithm struggles with widely varying or sparsely distributed clusters in high-dimensional spaces, as often is the case with text data. Adjusting the minimum cluster size might enable the formation of more microclusters for low-density categories.</h3>
+<pre class="hljs"><code><div>hdbs = hdbscan.HDBSCAN(min_cluster_size=best_minCluster_hdb,cluster_selection_epsilon=best_eps_hdb,min_samples=best_minSample_hdb,core_dist_n_jobs=<span class="hljs-number">-1</span>).fit_predict(Umap_cos)
+cm = confusion_matrix(dataset.target, hdbs)
+rows, cols = linear_sum_assignment(cm, maximize=<span class="hljs-literal">True</span>)
+plot_mat(cm[rows[:, np.newaxis], cols], xticklabels=cols, yticklabels=rows, title = <span class="hljs-string">'HDBSCAN, min. clus. size = 200, (e = 0.3, m_s = 5)'</span>, size=(<span class="hljs-number">15</span>,<span class="hljs-number">13</span>),pic_fname = <span class="hljs-string">'Q16.png'</span>)
+</div></code></pre>
+<p><img src="solution_abhi_files/solution_abhi_63_0.png" alt="png"></p>
+<h1 id="question-17">Question 17</h1>
+<h3 id="we-report-the-best-choice-of-dimensionality-reduction-and-clustering-below-and-also-the-top-5-choices">We report the best choice of Dimensionality Reduction and Clustering below and also the Top 5 choices.</h3>
+<h3 id="we-can-see-that-umapncomponents--20-metric--cosine-randomstate0-followed-by-kmeansnclusters20-randomstate0-initk-means-maxiter5000-ninit200-is-the-best-combination-we-decide-the-best-combination-based-on-the-average-score-of-the-5-clustering-metrics">We can see that UMAP(n_components = 20, metric = 'cosine', random_state=0) followed by KMeans(n_clusters=20, random_state=0, init='k-means++', max_iter=5000, n_init=200) is the best combination. We decide the best combination based on the average score of the 5 clustering metrics.</h3>
+<pre class="hljs"><code><div><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+<span class="hljs-keyword">import</span> scipy.sparse <span class="hljs-keyword">as</span> sp
+<span class="hljs-keyword">import</span> umap
+<span class="hljs-keyword">import</span> hdbscan
+<span class="hljs-keyword">from</span> tqdm <span class="hljs-keyword">import</span> tqdm
+<span class="hljs-keyword">from</span> sklearn.decomposition <span class="hljs-keyword">import</span> TruncatedSVD, NMF
+<span class="hljs-keyword">from</span> sklearn.cluster <span class="hljs-keyword">import</span> KMeans, AgglomerativeClustering
+<span class="hljs-keyword">from</span> sklearn.metrics <span class="hljs-keyword">import</span> (
+    homogeneity_score, completeness_score, v_measure_score,
+    adjusted_rand_score, adjusted_mutual_info_score
+)
+
+
+dim_reductions = [
+    (<span class="hljs-string">"None"</span>, <span class="hljs-literal">None</span>),
+    (<span class="hljs-string">"SVD5"</span>, TruncatedSVD(n_components=<span class="hljs-number">5</span>, random_state=<span class="hljs-number">0</span>)),
+    (<span class="hljs-string">"SVD20"</span>, TruncatedSVD(n_components=<span class="hljs-number">20</span>, random_state=<span class="hljs-number">0</span>)),
+    (<span class="hljs-string">"SVD200"</span>, TruncatedSVD(n_components=<span class="hljs-number">200</span>, random_state=<span class="hljs-number">0</span>)),
+    (<span class="hljs-string">"NMF5"</span>, NMF(n_components=<span class="hljs-number">5</span>, random_state=<span class="hljs-number">0</span>, init=<span class="hljs-string">'random'</span>, max_iter=<span class="hljs-number">400</span>)),
+    (<span class="hljs-string">"NMF20"</span>, NMF(n_components=<span class="hljs-number">20</span>, random_state=<span class="hljs-number">0</span>, init=<span class="hljs-string">'random'</span>, max_iter=<span class="hljs-number">400</span>)),
+    (<span class="hljs-string">"NMF200"</span>, NMF(n_components=<span class="hljs-number">200</span>, random_state=<span class="hljs-number">0</span>, init=<span class="hljs-string">'random'</span>, max_iter=<span class="hljs-number">400</span>)),
+    (<span class="hljs-string">"UMAP5"</span>, umap.UMAP(n_components=<span class="hljs-number">5</span>, metric=<span class="hljs-string">"cosine"</span>, random_state=<span class="hljs-number">0</span>)),
+    (<span class="hljs-string">"UMAP20"</span>, umap.UMAP(n_components=<span class="hljs-number">20</span>, metric=<span class="hljs-string">"cosine"</span>, random_state=<span class="hljs-number">0</span>)),
+    (<span class="hljs-string">"UMAP200"</span>, umap.UMAP(n_components=<span class="hljs-number">200</span>, metric=<span class="hljs-string">"cosine"</span>, random_state=<span class="hljs-number">0</span>))
+]
+
+clusterings = [
+    (<span class="hljs-string">"KMeans10"</span>,
+        KMeans(
+            n_clusters=<span class="hljs-number">10</span>, random_state=<span class="hljs-number">0</span>, init=<span class="hljs-string">'k-means++'</span>,
+            max_iter=<span class="hljs-number">5000</span>, n_init=<span class="hljs-number">200</span>
+        )
+    ),
+    (<span class="hljs-string">"KMeans20"</span>,
+        KMeans(
+            n_clusters=<span class="hljs-number">20</span>, random_state=<span class="hljs-number">0</span>, init=<span class="hljs-string">'k-means++'</span>,
+            max_iter=<span class="hljs-number">5000</span>, n_init=<span class="hljs-number">200</span>
+        )
+    ),
+    (<span class="hljs-string">"KMeans50"</span>,
+        KMeans(
+            n_clusters=<span class="hljs-number">50</span>, random_state=<span class="hljs-number">0</span>, init=<span class="hljs-string">'k-means++'</span>,
+            max_iter=<span class="hljs-number">5000</span>, n_init=<span class="hljs-number">200</span>
+        )
+    ),
+    (<span class="hljs-string">"Agglo20"</span>,
+        AgglomerativeClustering(
+            n_clusters=<span class="hljs-number">20</span>, linkage=<span class="hljs-string">'ward'</span>
+        )
+    ),
+    (<span class="hljs-string">"HDBSCAN100"</span>,
+        hdbscan.HDBSCAN(
+            cluster_selection_epsilon=best_eps_hdb,
+            min_samples=best_minSample_hdb,
+            min_cluster_size=<span class="hljs-number">100</span>,
+            core_dist_n_jobs=<span class="hljs-number">-1</span>
+        )
+    ),
+    (<span class="hljs-string">"HDBSCAN200"</span>,
+        hdbscan.HDBSCAN(
+            cluster_selection_epsilon=best_eps_hdb,
+            min_samples=best_minSample_hdb,
+            min_cluster_size=<span class="hljs-number">200</span>,
+            core_dist_n_jobs=<span class="hljs-number">-1</span>
+        )
+    )
+]
+
+dim_outputs = {}
+
+print(<span class="hljs-string">"Fitting all dimensionality reductions (if any)..."</span>)
+<span class="hljs-keyword">for</span> dim_name, dim_method <span class="hljs-keyword">in</span> tqdm(dim_reductions, desc=<span class="hljs-string">"DimRed"</span>):
+    <span class="hljs-keyword">if</span> dim_method <span class="hljs-keyword">is</span> <span class="hljs-literal">None</span>:
+        X_transformed = features_all  
+    <span class="hljs-keyword">else</span>:
+        <span class="hljs-keyword">if</span> isinstance(dim_method, NMF) <span class="hljs-keyword">and</span> sp.issparse(features_all):
+            X_transformed = dim_method.fit_transform(features_all.toarray())
+        <span class="hljs-keyword">else</span>:
+            X_transformed = dim_method.fit_transform(features_all)
+    dim_outputs[dim_name] = X_transformed
+
+
+results = []
+best_score = <span class="hljs-number">-1.0</span>
+best_combo = <span class="hljs-literal">None</span>
+best_metrics = <span class="hljs-literal">None</span>
+
+all_combos = [(dn, cn) <span class="hljs-keyword">for</span> dn, _ <span class="hljs-keyword">in</span> dim_reductions <span class="hljs-keyword">for</span> cn, _ <span class="hljs-keyword">in</span> clusterings]
+
+print(<span class="hljs-string">"Running clustering for each DimRed + Clustering combo..."</span>)
+<span class="hljs-keyword">for</span> (dim_name, cluster_name) <span class="hljs-keyword">in</span> tqdm(all_combos, desc=<span class="hljs-string">"Clustering"</span>, leave=<span class="hljs-literal">True</span>):
+    
+    X_transformed = dim_outputs[dim_name]
+    
+    
+    clusterer = next(c <span class="hljs-keyword">for</span> (cn, c) <span class="hljs-keyword">in</span> clusterings <span class="hljs-keyword">if</span> cn == cluster_name)
+    
+    <span class="hljs-keyword">if</span> sp.issparse(X_transformed) <span class="hljs-keyword">and</span> (<span class="hljs-string">"Agglo"</span> <span class="hljs-keyword">in</span> cluster_name):
+        X_for_clustering = X_transformed.toarray()
+    <span class="hljs-keyword">else</span>:
+        X_for_clustering = X_transformed
+
+    labels = clusterer.fit_predict(X_for_clustering)
+
+    h = homogeneity_score(dataset.target, labels)
+    c = completeness_score(dataset.target, labels)
+    v = v_measure_score(dataset.target, labels)
+    ari = adjusted_rand_score(dataset.target, labels)
+    ami = adjusted_mutual_info_score(dataset.target, labels)
+
+    avg_5 = (h + c + v + ari + ami) / <span class="hljs-number">5.0</span>
+    results.append((dim_name, cluster_name, h, c, v, ari, ami, avg_5))
+
+    <span class="hljs-comment"># Track best so far</span>
+    <span class="hljs-keyword">if</span> avg_5 &gt; best_score:
+        best_score = avg_5
+        best_combo = (dim_name, cluster_name)
+        best_metrics = (h, c, v, ari, ami)
+
+
+print(<span class="hljs-string">"=================================================="</span>)
+print(<span class="hljs-string">"BEST COMBINATION FOUND:"</span>)
+print(<span class="hljs-string">f"Dimensionality Reduction: <span class="hljs-subst">{best_combo[<span class="hljs-number">0</span>]}</span>"</span>)
+print(<span class="hljs-string">f"Clustering Method:        <span class="hljs-subst">{best_combo[<span class="hljs-number">1</span>]}</span>"</span>)
+print(<span class="hljs-string">f"Avg of 5 metrics:         <span class="hljs-subst">{best_score:<span class="hljs-number">.4</span>f}</span>"</span>)
+print(<span class="hljs-string">"Individual Metrics:"</span>)
+print(<span class="hljs-string">f"  Homogeneity:  <span class="hljs-subst">{best_metrics[<span class="hljs-number">0</span>]:<span class="hljs-number">.4</span>f}</span>"</span>)
+print(<span class="hljs-string">f"  Completeness: <span class="hljs-subst">{best_metrics[<span class="hljs-number">1</span>]:<span class="hljs-number">.4</span>f}</span>"</span>)
+print(<span class="hljs-string">f"  V-measure:    <span class="hljs-subst">{best_metrics[<span class="hljs-number">2</span>]:<span class="hljs-number">.4</span>f}</span>"</span>)
+print(<span class="hljs-string">f"  Adj. Rand:    <span class="hljs-subst">{best_metrics[<span class="hljs-number">3</span>]:<span class="hljs-number">.4</span>f}</span>"</span>)
+print(<span class="hljs-string">f"  Adj. MI:      <span class="hljs-subst">{best_metrics[<span class="hljs-number">4</span>]:<span class="hljs-number">.4</span>f}</span>"</span>)
+print(<span class="hljs-string">"=================================================="</span>)
+
+
+results_sorted = sorted(results, key=<span class="hljs-keyword">lambda</span> x: x[<span class="hljs-number">-1</span>], reverse=<span class="hljs-literal">True</span>)
+print(<span class="hljs-string">"Top 5 combinations by average of 5 metrics:"</span>)
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(min(<span class="hljs-number">5</span>, len(results_sorted))):
+    dn, cn, hh, cc, vv, rr, mm, avg = results_sorted[i]
+    print(<span class="hljs-string">f"<span class="hljs-subst">{i+<span class="hljs-number">1</span>}</span>) <span class="hljs-subst">{dn}</span> + <span class="hljs-subst">{cn}</span> =&gt; avg=<span class="hljs-subst">{avg:<span class="hljs-number">.4</span>f}</span> "</span>
+          <span class="hljs-string">f"(h=<span class="hljs-subst">{hh:<span class="hljs-number">.3</span>f}</span>, c=<span class="hljs-subst">{cc:<span class="hljs-number">.3</span>f}</span>, v=<span class="hljs-subst">{vv:<span class="hljs-number">.3</span>f}</span>, ARI=<span class="hljs-subst">{rr:<span class="hljs-number">.3</span>f}</span>, AMI=<span class="hljs-subst">{mm:<span class="hljs-number">.3</span>f}</span>)"</span>)
+
+</div></code></pre>
+<pre><code>Fitting all dimensionality reductions (if any)...
+
+
+DimRed: 100%|██████████| 10/10 [44:34&lt;00:00, 267.46s/it]
+
+
+Running clustering for each DimRed + Clustering combo...
+
+
+Clustering: 100%|██████████| 60/60 [2:01:57&lt;00:00, 121.96s/it]   
+
+==================================================
+BEST COMBINATION FOUND:
+Dimensionality Reduction: UMAP20
+Clustering Method:        KMeans20
+Avg of 5 metrics:         0.5552
+Individual Metrics:
+  Homogeneity:  0.5704
+  Completeness: 0.5919
+  V-measure:    0.5809
+  Adj. Rand:    0.4533
+  Adj. MI:      0.5796
+==================================================
+Top 5 combinations by average of 5 metrics:
+1) UMAP20 + KMeans20 =&gt; avg=0.5552 (h=0.570, c=0.592, v=0.581, ARI=0.453, AMI=0.580)
+2) UMAP200 + KMeans20 =&gt; avg=0.5551 (h=0.570, c=0.592, v=0.581, ARI=0.453, AMI=0.579)
+3) UMAP5 + KMeans20 =&gt; avg=0.5529 (h=0.568, c=0.589, v=0.578, ARI=0.452, AMI=0.577)
+4) UMAP20 + Agglo20 =&gt; avg=0.5494 (h=0.563, c=0.594, v=0.578, ARI=0.435, AMI=0.577)
+5) UMAP200 + Agglo20 =&gt; avg=0.5312 (h=0.546, c=0.577, v=0.561, ARI=0.412, AMI=0.560)
+</code></pre>
+<h1 id="question-18">Question 18</h1>
+<h3 id="extra-credit">Extra Credit:</h3>
+<h3 id="we-already-know-that-%22umap-ncomponents20--kmeansk20%22-gave-us-a-05552-average-score-across-5-metrics-below-is-a-script-exploring-additional-umap-parameters-nneighbors-mindist-to-see-if-we-can-surpass-0552">We already know that &quot;UMAP (n_components=20) + KMeans(k=20)&quot; gave us a 0.5552 average score across 5 metrics. Below is a script exploring additional UMAP parameters (n_neighbors, min_dist) to see if we can surpass 0.552.</h3>
+<h3 id="from-the-results-below-we-observe-that-using-nneighbours--30-and-mindist--05-improves-our-average-score-of-the-5-clustering-metrics-from-0552-to-05908-and-also-improves-upon-each-individual-metric-from-the-5-clustering-metrics">From the results below, we observe that using n_neighbours = 30 and min_dist = 0.5, <strong>IMPROVES</strong> our average score (of the 5 clustering metrics) from 0.552 to 0.5908 and also <strong>IMPROVES</strong> upon each individual metric from the 5 clustering metrics.</h3>
+<h3 id="a-description-of-these-parameters-from-the-umap-documentation-is-provided-below">A description of these parameters from the <a href="https://umap-learn.readthedocs.io/en/latest/parameters.html">UMAP documentation</a> is provided below:</h3>
+<h3 id="nneighbours-this-parameter-controls-how-umap-balances-local-versus-global-structure-in-the-data-it-does-this-by-constraining-the-size-of-the-local-neighborhood-umap-will-look-at-when-attempting-to-learn-the-manifold-structure-of-the-data-this-means-that-low-values-of-nneighbors-will-force-umap-to-concentrate-on-very-local-structure-potentially-to-the-detriment-of-the-big-picture-while-large-values-will-push-umap-to-look-at-larger-neighborhoods-of-each-point-when-estimating-the-manifold-structure-of-the-data-losing-fine-detail-structure-for-the-sake-of-getting-the-broader-of-the-data"><strong>n_neighbours</strong>: This parameter controls how UMAP balances local versus global structure in the data. It does this by constraining the size of the local neighborhood UMAP will look at when attempting to learn the manifold structure of the data. This means that low values of n_neighbors will force UMAP to concentrate on very local structure (potentially to the detriment of the big picture), while large values will push UMAP to look at larger neighborhoods of each point when estimating the manifold structure of the data, losing fine detail structure for the sake of getting the broader of the data</h3>
+<h3 id="the-mindist-parameter-controls-how-tightly-umap-is-allowed-to-pack-points-together-it-quite-literally-provides-the-minimum-distance-apart-that-points-are-allowed-to-be-in-the-low-dimensional-representation-this-means-that-low-values-of-mindist-will-result-in-clumpier-embeddings-this-can-be-useful-if-you-are-interested-in-clustering-or-in-finer-topological-structure-larger-values-of-mindist-will-prevent-umap-from-packing-points-together-and-will-focus-on-the-preservation-of-the-broad-topological-structure-instead">The <strong>min_dist</strong> parameter controls how tightly UMAP is allowed to pack points together. It, quite literally, provides the minimum distance apart that points are allowed to be in the low dimensional representation. This means that low values of min_dist will result in clumpier embeddings. This can be useful if you are interested in clustering, or in finer topological structure. Larger values of min_dist will prevent UMAP from packing points together and will focus on the preservation of the broad topological structure instead.</h3>
+<pre class="hljs"><code><div><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+<span class="hljs-keyword">import</span> umap
+<span class="hljs-keyword">from</span> tqdm <span class="hljs-keyword">import</span> tqdm
+<span class="hljs-keyword">from</span> sklearn.cluster <span class="hljs-keyword">import</span> KMeans
+<span class="hljs-keyword">from</span> sklearn.metrics <span class="hljs-keyword">import</span> (
+    homogeneity_score, completeness_score, v_measure_score,
+    adjusted_rand_score, adjusted_mutual_info_score
+)
+
+
+n_neighbors_list = [<span class="hljs-number">2</span>, <span class="hljs-number">5</span>, <span class="hljs-number">15</span>, <span class="hljs-number">30</span>, <span class="hljs-number">50</span>]     <span class="hljs-comment"># Neighborhood sizes</span>
+min_dist_list    = [<span class="hljs-number">0.0</span>, <span class="hljs-number">0.01</span>, <span class="hljs-number">0.1</span>, <span class="hljs-number">0.5</span>]  <span class="hljs-comment"># Controls how tightly UMAP packs points</span>
+n_components     = <span class="hljs-number">20</span>                    
+metric_used      = <span class="hljs-string">"cosine"</span>              
+
+
+kmeans_config = {
+    <span class="hljs-string">"n_clusters"</span>: <span class="hljs-number">20</span>,
+    <span class="hljs-string">"random_state"</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-string">"init"</span>: <span class="hljs-string">"k-means++"</span>,
+    <span class="hljs-string">"max_iter"</span>: <span class="hljs-number">5000</span>,
+    <span class="hljs-string">"n_init"</span>: <span class="hljs-number">200</span>
+}
+
+
+best_avg = <span class="hljs-number">-1.0</span>
+best_params = <span class="hljs-literal">None</span>
+best_metrics = <span class="hljs-literal">None</span>
+
+
+<span class="hljs-keyword">for</span> nn <span class="hljs-keyword">in</span> tqdm(n_neighbors_list, desc=<span class="hljs-string">"n_neighbors"</span>):
+    <span class="hljs-keyword">for</span> md <span class="hljs-keyword">in</span> tqdm(min_dist_list, desc=<span class="hljs-string">f"min_dist(nn=<span class="hljs-subst">{nn}</span>)"</span>, leave=<span class="hljs-literal">False</span>):
+        
+        reducer = umap.UMAP(
+            n_components=n_components,
+            n_neighbors=nn,
+            min_dist=md,
+            metric=metric_used,
+            random_state=<span class="hljs-number">0</span>
+        )
+        
+        X_umap = reducer.fit_transform(features_all)
+        
+        km = KMeans(**kmeans_config)
+        labels = km.fit_predict(X_umap)
+        
+        h = homogeneity_score(dataset.target, labels)
+        c = completeness_score(dataset.target, labels)
+        v = v_measure_score(dataset.target, labels)
+        ari = adjusted_rand_score(dataset.target, labels)
+        ami = adjusted_mutual_info_score(dataset.target, labels)
+        
+        avg_5 = (h + c + v + ari + ami) / <span class="hljs-number">5.0</span>
+        
+        <span class="hljs-keyword">if</span> avg_5 &gt; best_avg:
+            best_avg = avg_5
+            best_params = (nn, md)
+            best_metrics = (h, c, v, ari, ami)
+
+print(<span class="hljs-string">"=================================================="</span>)
+print(<span class="hljs-string">"Extra Credit: Searching UMAP hyperparams to exceed average=0.552"</span>)
+print(<span class="hljs-string">f"BEST AVERAGE METRIC = <span class="hljs-subst">{best_avg:<span class="hljs-number">.4</span>f}</span>  (target &gt; 0.552)"</span>)
+<span class="hljs-keyword">if</span> best_params <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">None</span>:
+    print(<span class="hljs-string">f"  Best n_neighbors   = <span class="hljs-subst">{best_params[<span class="hljs-number">0</span>]}</span>"</span>)
+    print(<span class="hljs-string">f"  Best min_dist      = <span class="hljs-subst">{best_params[<span class="hljs-number">1</span>]}</span>"</span>)
+    print(<span class="hljs-string">"Individual Metrics:"</span>)
+    print(<span class="hljs-string">f"  Homogeneity:       <span class="hljs-subst">{best_metrics[<span class="hljs-number">0</span>]:<span class="hljs-number">.4</span>f}</span>"</span>)
+    print(<span class="hljs-string">f"  Completeness:      <span class="hljs-subst">{best_metrics[<span class="hljs-number">1</span>]:<span class="hljs-number">.4</span>f}</span>"</span>)
+    print(<span class="hljs-string">f"  V-measure:         <span class="hljs-subst">{best_metrics[<span class="hljs-number">2</span>]:<span class="hljs-number">.4</span>f}</span>"</span>)
+    print(<span class="hljs-string">f"  Adj. Rand:         <span class="hljs-subst">{best_metrics[<span class="hljs-number">3</span>]:<span class="hljs-number">.4</span>f}</span>"</span>)
+    print(<span class="hljs-string">f"  Adj. MI:           <span class="hljs-subst">{best_metrics[<span class="hljs-number">4</span>]:<span class="hljs-number">.4</span>f}</span>"</span>)
+print(<span class="hljs-string">"=================================================="</span>)
+
+
+</div></code></pre>
+<pre><code>n_neighbors: 100%|██████████| 5/5 [47:01&lt;00:00, 564.35s/it]
+
+==================================================
+Extra Credit: Searching UMAP hyperparams to exceed average=0.552
+BEST AVERAGE METRIC = 0.5908  (target &gt; 0.552)
+  Best n_neighbors   = 30
+  Best min_dist      = 0.5
+Individual Metrics:
+  Homogeneity:       0.6083
+  Completeness:      0.6249
+  V-measure:         0.6165
+  Adj. Rand:         0.4891
+  Adj. MI:           0.6152
+==================================================
+</code></pre>
+
+</body>
+</html>

@@ -398,48 +398,17 @@ for fold_idx in range(1, 6):
 ```
 
 # Resulted Output:
-# Define LightGBM parameters
-params = {
-    'objective': 'lambdarank',
-    'metric': 'ndcg',
-    'learning_rate': 0.1,
-    'num_leaves': 31,
-    'verbose': -1
-}
+Fold 1, Top 20 Features Removed, NDCG Score: 0.47827689648179766
+Fold 1, Bottom 60 Features Removed, NDCG Score: 0.3725346737876415
+Fold 2, Top 20 Features Removed, NDCG Score: 0.4738541279047724
+Fold 2, Bottom 60 Features Removed, NDCG Score: 0.35378669585571704
+Fold 3, Top 20 Features Removed, NDCG Score: 0.47214671154446586
+Fold 3, Bottom 60 Features Removed, NDCG Score: 0.367133083900162
+Fold 4, Top 20 Features Removed, NDCG Score: 0.4800954917400635
+Fold 4, Bottom 60 Features Removed, NDCG Score: 0.37409776466008327
+Fold 5, Top 20 Features Removed, NDCG Score: 0.4839351910646641
+Fold 5, Bottom 60 Features Removed, NDCG Score: 0.35427364869638417
 
-# Base path for dataset folds
-base_data_path = './MSLR-WEB10K/Fold'
+Answer to questions: 
 
-# Iterate through each fold
-for fold_idx in range(1, 6):
-    data_path = base_data_path + str(fold_idx) + "/"  # Generate the fold-specific path
-    X_train, y_train, qid_train, group_train, X_test, y_test, qid_test, group_test = load_one_fole(data_path)
-
-    # Prepare LightGBM datasets
-    train_data = lgb.Dataset(X_train, label=y_train, group=group_train)
-    test_data = lgb.Dataset(X_test, label=y_test, group=group_test, reference=train_data)
-
-    # Train the initial model
-    model = lgb.train(params, train_data, num_boost_round=100, valid_sets=[test_data])
-
-    # Identify and remove the top 20 most important features
-    top_features_indices = get_important_features_indices(model, 20)
-    X_train_reduced_top, X_test_reduced_top = X_train[:, top_features_indices], X_test[:, top_features_indices]
-    train_data_reduced_top = lgb.Dataset(X_train_reduced_top, label=y_train, group=group_train)
-    test_data_reduced_top = lgb.Dataset(X_test_reduced_top, label=y_test, group=group_test)
-
-    # Retrain with top features removed
-    model_reduced_top = lgb.train(params, train_data_reduced_top, num_boost_round=100, valid_sets=[test_data_reduced_top])
-    ndcg_score_reduced_top = compute_ndcg_all(model_reduced_top, X_test_reduced_top, y_test, qid_test)
-    print("Fold {}, Top 20 Features Removed, NDCG Score: {}".format(fold_idx, ndcg_score_reduced_top))
-
-    # Identify and remove the bottom 60 least important features
-    bottom_features_indices = get_important_features_indices(model, 60, least_important=True)
-    X_train_reduced_bottom, X_test_reduced_bottom = X_train[:, bottom_features_indices], X_test[:, bottom_features_indices]
-    train_data_reduced_bottom = lgb.Dataset(X_train_reduced_bottom, label=y_train, group=group_train)
-    test_data_reduced_bottom = lgb.Dataset(X_test_reduced_bottom, label=y_test, group=group_test)
-
-    # Retrain with bottom features removed
-    model_reduced_bottom = lgb.train(params, train_data_reduced_bottom, num_boost_round=100, valid_sets=[test_data_reduced_bottom])
-    ndcg_score_reduced_bottom = compute_ndcg_all(model_reduced_bottom, X_test_reduced_bottom, y_test, qid_test)
-    print("Fold {}, Bottom 60 Features Removed, NDCG Score: {}".format(fold_idx, ndcg_score_reduced_bottom))
+As we can see, removing the top 20 most important features significantly dropped nDCG scores from around 0.85-1.0 to 0.47-0.48. This is expected since these features had the highest predictive power. Also, when we remove the 60 least important features, it lowered scores even more to 0.35-0.37, which shows that these features still contributed useful ranking signals. This suggests that feature interactions and regularization effects did play a role where unimportant features improved performance. This also might mean that low importance features might not be useful alone, but together they could contribute meaningfully to the model when combined with other features.  Overall, the results show that removing high importance features weakens the model, but blindly eliminating low importance ones can also be harmful because of the loss of weak but still useful signals.

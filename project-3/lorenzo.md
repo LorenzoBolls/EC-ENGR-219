@@ -1,3 +1,6 @@
+# Part 9
+
+
 ```python
 !!pip install lightgbm
 ```
@@ -254,7 +257,7 @@ for fold in range(1, 6):
         print(f"{feature_name}: {feature_value}")
 ```
 
-Resulted Output:
+Resulting Output:
 
 Top 5 Features in Fold 1 (by gain):
 Column_133: 23856.702950954437
@@ -397,7 +400,7 @@ for fold_idx in range(1, 6):
     print("Fold {}, Bottom 60 Features Removed, NDCG Score: {}".format(fold_idx, ndcg_score_reduced_bottom))
 ```
 
-# Resulted Output:
+# Resulting Output:
 Fold 1, Top 20 Features Removed, NDCG Score: 0.47827689648179766
 Fold 1, Bottom 60 Features Removed, NDCG Score: 0.3725346737876415
 Fold 2, Top 20 Features Removed, NDCG Score: 0.4738541279047724

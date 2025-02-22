@@ -1,0 +1,1790 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>solution_abhi.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="authors">AUTHORS:</h1>
+<h3 id="abhimanyu-borthakur-406530322">Abhimanyu Borthakur (406530322)</h3>
+<h3 id="lorenzo-bolls-505997448">Lorenzo Bolls (505997448)</h3>
+<h3 id="arthur-baghdasian-006001418">Arthur Baghdasian (006001418)</h3>
+<pre class="hljs"><code><div><span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd
+<span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+<span class="hljs-keyword">from</span> surprise <span class="hljs-keyword">import</span> Reader, Dataset, accuracy
+<span class="hljs-keyword">from</span> surprise.prediction_algorithms.knns <span class="hljs-keyword">import</span> KNNWithMeans
+<span class="hljs-keyword">from</span> surprise.model_selection <span class="hljs-keyword">import</span> cross_validate, KFold, train_test_split
+<span class="hljs-keyword">from</span> sklearn.metrics <span class="hljs-keyword">import</span> roc_curve, auc, mean_squared_error
+<span class="hljs-keyword">from</span> surprise.prediction_algorithms.matrix_factorization <span class="hljs-keyword">import</span> NMF, SVD
+</div></code></pre>
+<h2 id="here-is-some-ad-hoc-code-to-find-the-number-of-unique-genres-for-future-reference-its-19-if-we-ignore-%22no-genres-listed%22">Here is some ad-hoc code to find the number of unique genres for future reference. It's 19 if we ignore &quot;(no genres listed)&quot;</h2>
+<pre class="hljs"><code><div>df = pd.read_csv(<span class="hljs-string">'../data/Synthetic_Movie_Lens/movies.csv'</span>)
+genres_column = df[<span class="hljs-string">'genres'</span>]
+
+unique_genres = set()
+<span class="hljs-keyword">for</span> row <span class="hljs-keyword">in</span> genres_column:
+    <span class="hljs-comment"># Split by "|" and strip whitespace</span>
+    <span class="hljs-keyword">for</span> g <span class="hljs-keyword">in</span> row.split(<span class="hljs-string">'|'</span>):
+        unique_genres.add(g.strip())
+
+print(<span class="hljs-string">"Number of unique genres:"</span>, len(unique_genres))
+print(<span class="hljs-string">"Unique genres:"</span>, unique_genres)
+</div></code></pre>
+<pre><code>Number of unique genres: 20
+Unique genres: {'War', 'Musical', 'Horror', 'IMAX', 'Children', 'Drama', 'Adventure', '(no genres listed)', 'Crime', 'Mystery', 'Thriller', 'Sci-Fi', 'Documentary', 'Film-Noir', 'Comedy', 'Animation', 'Western', 'Fantasy', 'Romance', 'Action'}
+</code></pre>
+<h1 id="question-1-a">Question 1 (A)</h1>
+<h3 id="the-sparsity-is-reported-below">The sparsity is reported below:</h3>
+<pre class="hljs"><code><div>dataset_folder = <span class="hljs-string">'../data/Synthetic_Movie_Lens/'</span>
+ratings_file = pd.read_csv(dataset_folder+<span class="hljs-string">"ratings.csv"</span>,usecols=[<span class="hljs-string">'userId'</span>,<span class="hljs-string">'movieId'</span>,<span class="hljs-string">'rating'</span>]) 
+user_ID = ratings_file.pop(<span class="hljs-string">'userId'</span>).values
+movie_ID = ratings_file.pop(<span class="hljs-string">'movieId'</span>).values
+rating = ratings_file.pop(<span class="hljs-string">'rating'</span>).values
+sparsity = len(rating)/(len(set(movie_ID))*len(set(user_ID)))
+print(<span class="hljs-string">f'Sparsity = <span class="hljs-subst">{sparsity}</span>'</span>)
+</div></code></pre>
+<pre><code>Sparsity = 0.016999683055613623
+</code></pre>
+<h1 id="question-1-b">Question 1 (B)</h1>
+<h3 id="histogram-of-number-of-ratings-for-a-particular-rating-vs-ratings">Histogram of number of ratings (for a particular rating) vs ratings</h3>
+<pre class="hljs"><code><div>u, inv = np.unique(rating, return_inverse=<span class="hljs-literal">True</span>)
+plt.bar(u, np.bincount(inv), width=<span class="hljs-number">0.25</span>)
+locs, labels = plt.xticks()  
+plt.grid(linestyle=<span class="hljs-string">':'</span>)
+plt.xticks(np.arange(<span class="hljs-number">0</span>,<span class="hljs-number">6</span>,<span class="hljs-number">0.5</span>),rotation=<span class="hljs-number">0</span>)
+plt.ylabel(<span class="hljs-string">'Number of ratings'</span>)
+plt.xlabel(<span class="hljs-string">'Ratings'</span>)
+plt.savefig(<span class="hljs-string">'../abhi_images/Q1B.png'</span>,dpi=<span class="hljs-number">300</span>,bbox_inches=<span class="hljs-string">'tight'</span>)
+plt.show()
+</div></code></pre>
+<p><img src="solution_abhi_files/solution_abhi_7_0.png" alt="png"></p>
+<h1 id="question-1-c">Question 1 (C)</h1>
+<h3 id="number-of-ratings-for-each-movie-vs-the-movies-represented-by-their-indices-1-indexed-disitribution---ties-are-broken-as-per-the-functionality-of-npargsort">Number of ratings for each movie vs the movies (represented by their indices) (1-indexed disitribution) - ties are broken as per the functionality of np.argsort()</h3>
+<pre class="hljs"><code><div>unique, counts = np.unique(movie_ID, return_counts=<span class="hljs-literal">True</span>)
+plt.plot(range(<span class="hljs-number">1</span>,len(unique)+<span class="hljs-number">1</span>),counts[np.argsort(counts)[::<span class="hljs-number">-1</span>]],linestyle=<span class="hljs-string">'--'</span>,color=<span class="hljs-string">'g'</span>)
+plt.grid(linestyle=<span class="hljs-string">':'</span>)
+plt.ylabel(<span class="hljs-string">'Number of ratings'</span>)
+plt.xlabel(<span class="hljs-string">'Movie Index (index of movie with largest no. of ratings = 1)'</span>)
+plt.savefig(<span class="hljs-string">'../abhi_images/Q1C.png'</span>,dpi=<span class="hljs-number">300</span>,bbox_inches=<span class="hljs-string">'tight'</span>)
+plt.show()
+</div></code></pre>
+<p><img src="solution_abhi_files/solution_abhi_9_0.png" alt="png"></p>
+<pre class="hljs"><code><div>movie_count_dict = {} 
+x = list(range(<span class="hljs-number">1</span>,len(unique)+<span class="hljs-number">1</span>))
+<span class="hljs-keyword">for</span> key <span class="hljs-keyword">in</span> unique[np.argsort(counts)[::<span class="hljs-number">-1</span>]]: 
+    <span class="hljs-keyword">for</span> value <span class="hljs-keyword">in</span> x: 
+        movie_count_dict[key] = value 
+        x.remove(value) 
+        <span class="hljs-keyword">break</span> 
+print(<span class="hljs-string">'Top 5 rated movies (Movie ID, Index):'</span>)
+print(list(movie_count_dict.items())[<span class="hljs-number">0</span>:<span class="hljs-number">5</span>])
+</div></code></pre>
+<pre><code>Top 5 rated movies (Movie ID, Index):
+[(356, 1), (318, 2), (296, 3), (593, 4), (2571, 5)]
+</code></pre>
+<h1 id="question-1-d">Question 1 (D)</h1>
+<h3 id="number-of-ratings-from-each-user-vs-the-users-represented-by-their-indices-1-indexed-disitribution---ties-are-broken-as-per-the-functionality-of-npargsort">Number of ratings from each user vs the users (represented by their indices) (1-indexed disitribution) - ties are broken as per the functionality of np.argsort()</h3>
+<pre class="hljs"><code><div>unique, counts = np.unique(user_ID, return_counts=<span class="hljs-literal">True</span>)
+plt.plot(range(<span class="hljs-number">1</span>,len(unique)+<span class="hljs-number">1</span>),counts[np.argsort(counts)[::<span class="hljs-number">-1</span>]],linestyle=<span class="hljs-string">'--'</span>,color=<span class="hljs-string">'r'</span>)
+plt.grid(linestyle=<span class="hljs-string">':'</span>)
+plt.ylabel(<span class="hljs-string">'Number of ratings'</span>)
+plt.xlabel(<span class="hljs-string">'User Index (index of user who gave largest no. of ratings = 1)'</span>)
+plt.savefig(<span class="hljs-string">'../abhi_images/Q1D.png'</span>,dpi=<span class="hljs-number">300</span>,bbox_inches=<span class="hljs-string">'tight'</span>)
+plt.show()
+</div></code></pre>
+<p><img src="solution_abhi_files/solution_abhi_12_0.png" alt="png"></p>
+<pre class="hljs"><code><div>user_count_dict = {} 
+x = list(range(<span class="hljs-number">1</span>,len(unique)+<span class="hljs-number">1</span>))
+<span class="hljs-keyword">for</span> key <span class="hljs-keyword">in</span> unique[np.argsort(counts)[::<span class="hljs-number">-1</span>]]: 
+    <span class="hljs-keyword">for</span> value <span class="hljs-keyword">in</span> x: 
+        user_count_dict[key] = value 
+        x.remove(value) 
+        <span class="hljs-keyword">break</span> 
+print(<span class="hljs-string">'Top 5 users who rated most number of times (User ID, Index):'</span>)
+print(list(user_count_dict.items())[<span class="hljs-number">0</span>:<span class="hljs-number">5</span>])
+</div></code></pre>
+<pre><code>Top 5 users who rated most number of times (User ID, Index):
+[(414, 1), (599, 2), (474, 3), (448, 4), (274, 5)]
+</code></pre>
+<h1 id="question-1-e">Question 1 (E)</h1>
+<h3 id="both-the-number-of-ratings-per-movie-and-the-number-of-ratings-submitted-per-user-exhibit-strongly-skewed-roughly-exponential%E2%80%90like-distributions-a-small-fraction-of-movies-gather-a-large-number-of-ratings-while-many-movies-receive-only-a-handful-likewise-a-small-subset-of-users-rates-a-large-number-of-movies-but-most-users-contribute-few-ratings-this-behavior-leads-to-data-sparsity-in-the-overall-ratings-matrix-large-portions-of-the-matrix-remain-unobserved-because-many-users-rate-only-a-few-movies-and-many-movies-receive-only-a-few-ratings-as-a-result-any-recommendation-approach-trained-on-such-data-must-handle-potential-overfitting-for-popular-highly-rated-items-while-still-making-reasonable-predictions-for-items-with-very-few-ratings-likewise-models-must-handle-users-who-generate-limited-information-few-ratings-without-ignoring-them-techniques-such-as-regularization-smoothing-or-relying-on-broader-patterns-eg-latent-factors-side-information-become-valuable-to-address-the-risk-of-overfitting-popular-items-and-under%E2%80%90representing-the-long-tail-of-rare-movies-and-less-active-users-in-summary-skewed-sitributions-lead-to">Both the “number of ratings per movie” and the “number of ratings submitted per user” exhibit strongly skewed, roughly exponential‐like distributions. A small fraction of movies gather a large number of ratings, while many movies receive only a handful. Likewise, a small subset of users rates a large number of movies, but most users contribute few ratings. This behavior leads to data sparsity in the overall ratings matrix. Large portions of the matrix remain unobserved because many users rate only a few movies, and many movies receive only a few ratings. As a result, any recommendation approach trained on such data must handle potential overfitting for popular (highly rated) items, while still making reasonable predictions for items with very few ratings. Likewise, models must handle users who generate limited information (few ratings) without ignoring them. Techniques such as regularization, smoothing, or relying on broader patterns (e.g., latent factors, side information) become valuable to address the risk of overfitting “popular” items and under‐representing the long tail of rare movies (and less active users). In summary, skewed sitributions lead to:</h3>
+<h3 id="limited-overlaps">Limited Overlaps:</h3>
+<h3 id="many-items-are-rated-by-only-a-few-users-and-many-users-only-rate-a-few-items-this-leaves-large-parts-of-the-user%E2%80%93item-rating-matrix-blank-making-it-difficult-to-draw-confident-inferences-for-less%E2%80%90rated-items-or-less%E2%80%90active-users">Many items are rated by only a few users, and many users only rate a few items. This leaves large parts of the user–item rating matrix blank, making it difficult to draw confident inferences for less‐rated items or less‐active users.</h3>
+<h3 id="dependence-on-power-users-and-popular-items">Dependence on “Power Users” and “Popular Items”:</h3>
+<h3 id="the-small-fraction-of-highly-active-users-contributes-most-of-the-rating-volume-which-can-bias-the-system-toward-items-those-active-users-prefer-similarly-methods-that-rely-on-common-items-or-users-might-mostly-capture-the-tastes-of-the-small-set-of-popular-items-and-prolific-raters">The small fraction of highly active users contributes most of the rating volume, which can bias the system toward items those active users prefer. Similarly, methods that rely on common items or users might mostly capture the tastes of the small set of popular items and prolific raters.</h3>
+<h3 id="long%E2%80%90tail-challenge">Long‐Tail Challenge:</h3>
+<h3 id="the-long-tail-of-infrequently-rated-items-and-less-active-users-is-essential-to-recommendation-diversity-and-novelty-but-the-system-sees-little-direct-data-about-them-risking-poor-coverage-or-irrelevant-recommendations-for-rare-items">The long tail of infrequently rated items (and less active users) is essential to recommendation diversity and novelty, but the system sees little direct data about them, risking poor coverage or irrelevant recommendations for rare items.</h3>
+<h3 id="risk-of-overfitting">Risk of Overfitting:</h3>
+<h3 id="if-a-model-or-strategy-focuses-too-strongly-on-the-few-popular-items-or-power-users-it-may-overfit-to-a-small-subset-of-the-data-and-fail-to-generalize-well-for-the-many-sparsely-rated-items-or-lightly-engaged-users">If a model or strategy focuses too strongly on the few “popular” items or “power users,” it may overfit to a small subset of the data and fail to generalize well for the many sparsely rated items or lightly engaged users.</h3>
+<h3 id="cold%E2%80%90start--sparsity-issues">Cold‐Start / Sparsity Issues:</h3>
+<h3 id="movies-with-only-a-handful-of-ratings-and-users-who-have-rated-very-few-items-fall-under-a-cold-start-additional-techniques-or-external-data-may-be-needed-to-handle-their-sparse-information-effectively">Movies with only a handful of ratings and users who have rated very few items fall under a “cold start.” Additional techniques or external data may be needed to handle their sparse information effectively.</h3>
+<h3 id="implications">Implications:</h3>
+<h3 id="recommender-systems-must-often-regularize-or-smooth-estimates-eg-weighting-damping-or-bayesian-priors-to-avoid-overspecializing-on-high%E2%80%90frequency-signals">Recommender systems must often regularize or smooth estimates (e.g., weighting, damping, or Bayesian priors) to avoid overspecializing on high‐frequency signals.</h3>
+<h3 id="systems-may-include-auxiliary-information-eg-textual-descriptions-metadata-user-demographics-or-other-side-information-to-mitigate-the-sparse-overlaps-and-produce-recommendations-even-for-relatively-obscure-items-and-less%E2%80%90active-users">Systems may include auxiliary information (e.g., textual descriptions, metadata, user demographics, or other side information) to mitigate the sparse overlaps and produce recommendations even for relatively obscure items and less‐active users.</h3>
+<h3 id="dimensionality%E2%80%90reduction-or-latent-factor-methods-often-prove-helpful-as-they-leverage-broader-patterns-in-the-data-rather-than-depending-exclusively-on-exact-user%E2%80%90item-overlaps-which-can-be-scarce-for-the-long-tail">Dimensionality‐reduction or latent factor methods often prove helpful, as they leverage broader patterns in the data rather than depending exclusively on exact user‐item overlaps, which can be scarce for the long tail.</h3>
+<h3 id="the-exponential%E2%80%90like-distributions-highlight-why-sparsity-and-long%E2%80%90tail-effects-are-fundamental-challenges-for-designing-and-evaluating-any-recommender-system">The exponential‐like distributions highlight why sparsity and long‐tail effects are fundamental challenges for designing and evaluating any recommender system.</h3>
+<h1 id="question-1-f">Question 1 (F)</h1>
+<h3 id="histogram-of-the-variances">Histogram of the variances:</h3>
+<pre class="hljs"><code><div>unique_movie_ID = list(set(movie_ID))
+movie_ID_list = []
+var_list = []
+<span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> range(len(unique_movie_ID)):
+    indices = [i <span class="hljs-keyword">for</span> i, x <span class="hljs-keyword">in</span> enumerate(movie_ID) <span class="hljs-keyword">if</span> x == unique_movie_ID[j]]
+    var = np.var(np.array(rating[indices]))
+    movie_ID_list.append(unique_movie_ID[j])
+    var_list.append(var)
+</div></code></pre>
+<pre class="hljs"><code><div>plt.hist(var_list, bins=np.arange(<span class="hljs-number">0</span>,<span class="hljs-number">5.5</span>,<span class="hljs-number">0.5</span>),rwidth=<span class="hljs-number">0.75</span>)
+plt.xticks(np.arange(<span class="hljs-number">0.5</span>,<span class="hljs-number">5.5</span>,<span class="hljs-number">0.5</span>))
+plt.xlim([<span class="hljs-number">0</span>, <span class="hljs-number">5.5</span>])
+plt.grid(linestyle=<span class="hljs-string">':'</span>)
+plt.xlabel(<span class="hljs-string">'Variance'</span>)
+plt.ylabel(<span class="hljs-string">'Count of variance'</span>)
+plt.savefig(<span class="hljs-string">'../abhi_images/Q1F.png'</span>,dpi=<span class="hljs-number">300</span>,bbox_inches=<span class="hljs-string">'tight'</span>)
+plt.show()
+</div></code></pre>
+<p><img src="solution_abhi_files/solution_abhi_19_0.png" alt="png"></p>
+<h1 id="question-2">Question 2</h1>
+<h3 id="note-this-part-has-been-rendered-separately-so-that-the-latex-math-notation-doesnt-change-when-converting-to-pdf">Note this part has been rendered separately so that the LaTeX math notation doesn't change when converting to pdf.</h3>
+<p><img src="./question2_latex.png" alt=""></p>
+<h1 id="question-3">Question 3</h1>
+<h3 id="centering-each-users-ratings-around-their-own-average-decreases-user-specific-bias-and-smooths-out-unusually-high-or-low-rating-patterns-this-is-useful-because-some-users-consistently-rate-items-near-the-top-or-bottom-of-the-scale-whereas-others-spread-their-ratings-across-the-entire-range-by-subtracting-each-users-mean-rating-we-reduce-variability-caused-by-these-individual-rating-tendencies-which-in-turn-lowers-noise-and-multicollinearity-ultimately-mean-centering-ensures-that-we-focus-on-meaningful-interactions-among-ratings-rather-than-being-skewed-by-outlier-behavior-or-systematic-bias-from-certain-users">Centering each user’s ratings around their own average decreases user-specific bias and smooths out unusually high or low rating patterns. This is useful because some users consistently rate items near the top or bottom of the scale, whereas others spread their ratings across the entire range. By subtracting each user’s mean rating, we reduce variability caused by these individual rating tendencies, which in turn lowers noise and multicollinearity. Ultimately, mean-centering ensures that we focus on meaningful interactions among ratings rather than being skewed by outlier behavior or systematic bias from certain users.</h3>
+<h1 id="question-4">Question 4</h1>
+<h3 id="first-we-must-clean-the-data-a-bit-to-remove-the-index-column-as-it-is-not-an-attribute-then-we-sweep-our-cross-validation-with-k--in--2100-and-plot-the-avg-rmse-and-mae-one-after-the-other-across-all-10-folds-for-each-k">First we must clean the data a bit to remove the index column as it is not an attribute. Then we sweep our cross validation with k $ \in $ [2,100] and plot the avg. RMSE and MAE (one after the other) across all 10 folds for each k.</h3>
+<pre class="hljs"><code><div>df = pd.read_csv(<span class="hljs-string">'../data/Synthetic_Movie_Lens/ratings.csv'</span>, index_col=<span class="hljs-number">0</span>)
+df = df.reset_index(drop=<span class="hljs-literal">True</span>)  <span class="hljs-comment"># If the first column was just the old index</span>
+df.to_csv(<span class="hljs-string">'../data/Synthetic_Movie_Lens/ratings_fixed.csv'</span>, index=<span class="hljs-literal">False</span>)
+df.head()
+</div></code></pre>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}
+</code></pre>
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>userId</th>
+      <th>movieId</th>
+      <th>rating</th>
+      <th>timestamp</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>496</td>
+      <td>112852</td>
+      <td>3.0</td>
+      <td>1415520462</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>391</td>
+      <td>1947</td>
+      <td>4.0</td>
+      <td>1030945141</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>387</td>
+      <td>1562</td>
+      <td>1.5</td>
+      <td>1095041022</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>474</td>
+      <td>2716</td>
+      <td>4.5</td>
+      <td>1053020930</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>483</td>
+      <td>88125</td>
+      <td>4.5</td>
+      <td>1311337237</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<pre class="hljs"><code><div>reader = Reader(line_format=<span class="hljs-string">'user item rating timestamp'</span>,sep=<span class="hljs-string">','</span>,rating_scale=(<span class="hljs-number">0.5</span>, <span class="hljs-number">5</span>),skip_lines=<span class="hljs-number">1</span>)
+ratings_dataset = Dataset.load_from_file(dataset_folder+<span class="hljs-string">"ratings_fixed.csv"</span>,reader=reader)
+</div></code></pre>
+<pre class="hljs"><code><div>k = np.arange(<span class="hljs-number">2</span>,<span class="hljs-number">102</span>,<span class="hljs-number">2</span>)
+rmse = []
+mae = []
+<span class="hljs-keyword">for</span> item <span class="hljs-keyword">in</span> k:
+    print(<span class="hljs-string">'Testing for k ='</span>,item)
+    res = cross_validate(KNNWithMeans(k=item,sim_options={<span class="hljs-string">'name'</span>:<span class="hljs-string">'pearson'</span>, <span class="hljs-string">'user_based'</span>: <span class="hljs-literal">True</span>}),
+                         measures=[<span class="hljs-string">'rmse'</span>,<span class="hljs-string">'mae'</span>],data = ratings_dataset,cv=<span class="hljs-number">10</span>,n_jobs=<span class="hljs-number">-1</span>)   
+    rmse.append(np.mean(res[<span class="hljs-string">'test_rmse'</span>]))
+    mae.append(np.mean(res[<span class="hljs-string">'test_mae'</span>]))
+</div></code></pre>
+<pre><code>Testing for k = 2
+Testing for k = 4
+Testing for k = 6
+Testing for k = 8
+Testing for k = 10
+Testing for k = 12
+Testing for k = 14
+Testing for k = 16
+Testing for k = 18
+Testing for k = 20
+Testing for k = 22
+Testing for k = 24
+Testing for k = 26
+Testing for k = 28
+Testing for k = 30
+Testing for k = 32
+Testing for k = 34
+Testing for k = 36
+Testing for k = 38
+Testing for k = 40
+Testing for k = 42
+Testing for k = 44
+Testing for k = 46
+Testing for k = 48
+Testing for k = 50
+Testing for k = 52
+Testing for k = 54
+Testing for k = 56
+Testing for k = 58
+Testing for k = 60
+Testing for k = 62
+Testing for k = 64
+Testing for k = 66
+Testing for k = 68
+Testing for k = 70
+Testing for k = 72
+Testing for k = 74
+Testing for k = 76
+Testing for k = 78
+Testing for k = 80
+Testing for k = 82
+Testing for k = 84
+Testing for k = 86
+Testing for k = 88
+Testing for k = 90
+Testing for k = 92
+Testing for k = 94
+Testing for k = 96
+Testing for k = 98
+Testing for k = 100
+</code></pre>
+<pre class="hljs"><code><div>plt.plot(k,rmse,linestyle=<span class="hljs-string">'--'</span>,color=<span class="hljs-string">'r'</span>)
+plt.grid(linestyle=<span class="hljs-string">':'</span>)
+plt.ylabel(<span class="hljs-string">'Avg. RMSE'</span>)
+plt.xlabel(<span class="hljs-string">'Number of neighbours'</span>)
+plt.savefig(<span class="hljs-string">'../abhi_images/Q4A.png'</span>,dpi=<span class="hljs-number">300</span>,bbox_inches=<span class="hljs-string">'tight'</span>)
+plt.show()
+</div></code></pre>
+<p><img src="solution_abhi_files/solution_abhi_28_0.png" alt="png"></p>
+<pre class="hljs"><code><div>plt.plot(k,mae,linestyle=<span class="hljs-string">'--'</span>,color=<span class="hljs-string">'b'</span>)
+plt.grid(linestyle=<span class="hljs-string">':'</span>)
+plt.ylabel(<span class="hljs-string">'Avg. MAE'</span>)
+plt.xlabel(<span class="hljs-string">'Number of neighbours'</span>)
+plt.savefig(<span class="hljs-string">'../abhi_images/Q4B.png'</span>,dpi=<span class="hljs-number">300</span>,bbox_inches=<span class="hljs-string">'tight'</span>)
+plt.show()
+</div></code></pre>
+<p><img src="solution_abhi_files/solution_abhi_29_0.png" alt="png"></p>
+<h1 id="question-5">Question 5</h1>
+<h3 id="judging-from-the-curves-in-question-4-we-see-that-the-steady-state-occurs-at-k--20-with-the-steady-state-rmse--08926-and-steady-state-mae--06799-so-k--20-is-our-minimum-k">Judging from the curves in Question 4, we see that the steady state occurs at k = 20, with the steady-state RMSE = 0.8926 and steady-state MAE = 0.6799. So, k = 20 is our 'minimum k'</h3>
+<pre class="hljs"><code><div>print(<span class="hljs-string">f'RMSE at k=20: <span class="hljs-subst">{rmse[<span class="hljs-number">9</span>]}</span>'</span>)
+print(<span class="hljs-string">f'MAE at k=20: <span class="hljs-subst">{mae[<span class="hljs-number">9</span>]}</span>'</span>)
+</div></code></pre>
+<pre><code>RMSE at k=20: 0.8931874735689023
+MAE at k=20: 0.6806297276068325
+</code></pre>
+<h1 id="question-6">Question 6</h1>
+<h3 id="the-avg-rmse-across-all-folds-vs-k-is-plotted-and-the-min-avg-rmse-and-the-corresponding-k-values-are-printed-for-each-trimmed-subset-of-our-data-after-that-we-use-the-ks-corresponding-to-the-min-avg-rmse-for-each-subset-and-k--20-for-full-untrimmed-data-to-plot-their-rocs-4-plots-with-all-4-thresholds-on-each-plot-min-avg-rmse-values-are-summarised-in-the-following-table">The avg RMSE across all folds vs k is plotted, and the min avg RMSE and the corresponding k values are printed for each trimmed subset of our data. After that we use the k's corresponding to the min avg RMSE for each subset (and k = 20 for full untrimmed data) to plot their ROCs (4 plots with all 4 thresholds on each plot). Min avg RMSE values are summarised in the following table:</h3>
+<table>
+<thead>
+<tr>
+<th><strong>Subset</strong></th>
+<th style="text-align:right"><strong>Best k</strong></th>
+<th style="text-align:right"><strong>Min Avg RMSE</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Popular</strong></td>
+<td style="text-align:right">42</td>
+<td style="text-align:right">0.8702</td>
+</tr>
+<tr>
+<td><strong>Unpopular</strong></td>
+<td style="text-align:right">2</td>
+<td style="text-align:right">1.0637</td>
+</tr>
+<tr>
+<td><strong>High-Variance</strong></td>
+<td style="text-align:right">2</td>
+<td style="text-align:right">1.5038</td>
+</tr>
+</tbody>
+</table>
+<pre class="hljs"><code><div><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+<span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd
+<span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+<span class="hljs-keyword">from</span> collections <span class="hljs-keyword">import</span> defaultdict
+<span class="hljs-keyword">from</span> tqdm <span class="hljs-keyword">import</span> tqdm
+<span class="hljs-keyword">from</span> surprise <span class="hljs-keyword">import</span> Dataset, Reader, KNNWithMeans, accuracy
+<span class="hljs-keyword">from</span> surprise.model_selection <span class="hljs-keyword">import</span> KFold
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">trim_data</span><span class="hljs-params">(raw_data, method=<span class="hljs-string">'popular'</span>, rating_threshold=<span class="hljs-number">2</span>, var_threshold=<span class="hljs-number">2.0</span>, min_var_count=<span class="hljs-number">5</span>)</span>:</span>
+    item_ratings = defaultdict(list)
+    <span class="hljs-keyword">for</span> (u, i, r, t) <span class="hljs-keyword">in</span> raw_data:
+        item_ratings[i].append(r)
+    <span class="hljs-keyword">if</span> method == <span class="hljs-string">'popular'</span>:
+        keep_items = {i <span class="hljs-keyword">for</span> i, rlist <span class="hljs-keyword">in</span> item_ratings.items() <span class="hljs-keyword">if</span> len(rlist) &gt; rating_threshold}
+    <span class="hljs-keyword">elif</span> method == <span class="hljs-string">'unpopular'</span>:
+        keep_items = {i <span class="hljs-keyword">for</span> i, rlist <span class="hljs-keyword">in</span> item_ratings.items() <span class="hljs-keyword">if</span> len(rlist) &lt;= rating_threshold}
+    <span class="hljs-keyword">elif</span> method == <span class="hljs-string">'high_variance'</span>:
+        keep_items = []
+        <span class="hljs-keyword">for</span> i, rlist <span class="hljs-keyword">in</span> item_ratings.items():
+            <span class="hljs-keyword">if</span> len(rlist) &gt;= min_var_count <span class="hljs-keyword">and</span> np.var(rlist) &gt;= var_threshold:
+                keep_items.append(i)
+        keep_items = set(keep_items)
+    <span class="hljs-keyword">else</span>:
+        <span class="hljs-keyword">raise</span> ValueError(<span class="hljs-string">"method must be 'popular', 'unpopular', or 'high_variance'"</span>)
+    trimmed = [(u, i, r, t) <span class="hljs-keyword">for</span> (u, i, r, t) <span class="hljs-keyword">in</span> raw_data <span class="hljs-keyword">if</span> i <span class="hljs-keyword">in</span> keep_items]
+    <span class="hljs-keyword">return</span> trimmed
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">evaluate_knn_for_subset</span><span class="hljs-params">(trimmed_raw_data, k_values, user_based=True)</span>:</span>
+    df = pd.DataFrame(trimmed_raw_data, columns=[<span class="hljs-string">'userID'</span>,<span class="hljs-string">'itemID'</span>,<span class="hljs-string">'rating'</span>,<span class="hljs-string">'timestamp'</span>])
+    reader = Reader(rating_scale=(<span class="hljs-number">0.5</span>, <span class="hljs-number">5</span>))
+    data = Dataset.load_from_df(df[[<span class="hljs-string">'userID'</span>,<span class="hljs-string">'itemID'</span>,<span class="hljs-string">'rating'</span>]], reader)
+    kf = KFold(n_splits=<span class="hljs-number">10</span>, random_state=<span class="hljs-number">0</span>, shuffle=<span class="hljs-literal">True</span>)
+    rmse_results = []
+    <span class="hljs-keyword">for</span> k <span class="hljs-keyword">in</span> tqdm(k_values, desc=<span class="hljs-string">"k-sweep"</span>):
+        fold_rmse = []
+        <span class="hljs-keyword">for</span> trainset, testset <span class="hljs-keyword">in</span> tqdm(kf.split(data), desc=<span class="hljs-string">f"(k=<span class="hljs-subst">{k}</span>) folds"</span>, leave=<span class="hljs-literal">False</span>):
+            algo = KNNWithMeans(k=k, sim_options={<span class="hljs-string">'name'</span>: <span class="hljs-string">'pearson'</span>,<span class="hljs-string">'user_based'</span>: user_based}, verbose=<span class="hljs-literal">False</span>)
+            algo.fit(trainset)
+            predictions = algo.test(testset)
+            fold_rmse.append(accuracy.rmse(predictions, verbose=<span class="hljs-literal">False</span>))
+        rmse_results.append(np.mean(fold_rmse))
+    <span class="hljs-keyword">return</span> rmse_results
+
+full_data_raw = ratings_dataset.raw_ratings
+popular_data_raw = trim_data(full_data_raw, method=<span class="hljs-string">'popular'</span>, rating_threshold=<span class="hljs-number">2</span>)
+unpopular_data_raw = trim_data(full_data_raw, method=<span class="hljs-string">'unpopular'</span>, rating_threshold=<span class="hljs-number">2</span>)
+high_var_data_raw = trim_data(full_data_raw, method=<span class="hljs-string">'high_variance'</span>, var_threshold=<span class="hljs-number">2.0</span>, min_var_count=<span class="hljs-number">5</span>)
+
+k_values = list(range(<span class="hljs-number">2</span>, <span class="hljs-number">101</span>, <span class="hljs-number">2</span>))
+
+rmse_popular = evaluate_knn_for_subset(popular_data_raw, k_values, user_based=<span class="hljs-literal">True</span>)
+best_k_popular = k_values[np.argmin(rmse_popular)]
+best_rmse_popular = min(rmse_popular)
+print(<span class="hljs-string">"=== Popular Subset ==="</span>)
+print(<span class="hljs-string">f"Best k: <span class="hljs-subst">{best_k_popular}</span>, Min Avg RMSE: <span class="hljs-subst">{best_rmse_popular:<span class="hljs-number">.4</span>f}</span>"</span>)
+plt.figure(figsize=(<span class="hljs-number">6</span>,<span class="hljs-number">4</span>))
+plt.plot(k_values, rmse_popular, marker=<span class="hljs-string">'o'</span>)
+plt.title(<span class="hljs-string">"RMSE vs. k (Popular Subset)"</span>)
+plt.xlabel(<span class="hljs-string">"k (neighbors)"</span>)
+plt.ylabel(<span class="hljs-string">"10-fold Avg RMSE"</span>)
+plt.show()
+
+rmse_unpopular = evaluate_knn_for_subset(unpopular_data_raw, k_values, user_based=<span class="hljs-literal">True</span>)
+best_k_unpopular = k_values[np.argmin(rmse_unpopular)]
+best_rmse_unpopular = min(rmse_unpopular)
+print(<span class="hljs-string">"=== Unpopular Subset ==="</span>)
+print(<span class="hljs-string">f"Best k: <span class="hljs-subst">{best_k_unpopular}</span>, Min Avg RMSE: <span class="hljs-subst">{best_rmse_unpopular:<span class="hljs-number">.4</span>f}</span>"</span>)
+plt.figure(figsize=(<span class="hljs-number">6</span>,<span class="hljs-number">4</span>))
+plt.plot(k_values, rmse_unpopular, marker=<span class="hljs-string">'o'</span>, color=<span class="hljs-string">'orange'</span>)
+plt.title(<span class="hljs-string">"RMSE vs. k (Unpopular Subset)"</span>)
+plt.xlabel(<span class="hljs-string">"k (neighbors)"</span>)
+plt.ylabel(<span class="hljs-string">"10-fold Avg RMSE"</span>)
+plt.show()
+
+rmse_highvar = evaluate_knn_for_subset(high_var_data_raw, k_values, user_based=<span class="hljs-literal">True</span>)
+best_k_highvar = k_values[np.argmin(rmse_highvar)]
+best_rmse_highvar = min(rmse_highvar)
+print(<span class="hljs-string">"=== High-Variance Subset ==="</span>)
+print(<span class="hljs-string">f"Best k: <span class="hljs-subst">{best_k_highvar}</span>, Min Avg RMSE: <span class="hljs-subst">{best_rmse_highvar:<span class="hljs-number">.4</span>f}</span>"</span>)
+plt.figure(figsize=(<span class="hljs-number">6</span>,<span class="hljs-number">4</span>))
+plt.plot(k_values, rmse_highvar, marker=<span class="hljs-string">'o'</span>, color=<span class="hljs-string">'green'</span>)
+plt.title(<span class="hljs-string">"RMSE vs. k (High-Variance Subset)"</span>)
+plt.xlabel(<span class="hljs-string">"k (neighbors)"</span>)
+plt.ylabel(<span class="hljs-string">"10-fold Avg RMSE"</span>)
+plt.show()
+
+</div></code></pre>
+<pre><code>k-sweep: 100%|██████████| 50/50 [19:28&lt;00:00, 23.37s/it]
+
+=== Popular Subset ===
+Best k: 42, Min Avg RMSE: 0.8702
+</code></pre>
+<p><img src="solution_abhi_files/solution_abhi_35_3.png" alt="png"></p>
+<pre><code>k-sweep: 100%|██████████| 50/50 [00:26&lt;00:00,  1.87it/s]
+
+
+=== Unpopular Subset ===
+Best k: 2, Min Avg RMSE: 1.0637
+</code></pre>
+<p><img src="solution_abhi_files/solution_abhi_35_6.png" alt="png"></p>
+<pre><code>k-sweep: 100%|██████████| 50/50 [00:02&lt;00:00, 22.29it/s]
+
+
+=== High-Variance Subset ===
+Best k: 2, Min Avg RMSE: 1.5038
+</code></pre>
+<p><img src="solution_abhi_files/solution_abhi_35_9.png" alt="png"></p>
+<pre class="hljs"><code><div>thres=[<span class="hljs-number">2.5</span>,<span class="hljs-number">3.0</span>,<span class="hljs-number">3.5</span>,<span class="hljs-number">4.0</span>]
+raw_full=ratings_dataset.raw_ratings
+df_full=pd.DataFrame(raw_full,columns=[<span class="hljs-string">'u'</span>,<span class="hljs-string">'i'</span>,<span class="hljs-string">'r'</span>,<span class="hljs-string">'t'</span>])
+reader=Reader(rating_scale=(<span class="hljs-number">0.5</span>,<span class="hljs-number">5</span>))
+data_full=Dataset.load_from_df(df_full[[<span class="hljs-string">'u'</span>,<span class="hljs-string">'i'</span>,<span class="hljs-string">'r'</span>]],reader)
+trainf,testf=train_test_split(data_full,test_size=<span class="hljs-number">0.1</span>)
+algof=KNNWithMeans(k=<span class="hljs-number">20</span>,sim_options={<span class="hljs-string">'name'</span>:<span class="hljs-string">'pearson'</span>},verbose=<span class="hljs-literal">False</span>).fit(trainf)
+resf=algof.test(testf)
+fig,ax=plt.subplots()
+<span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> thres:
+    y=[<span class="hljs-number">1</span> <span class="hljs-keyword">if</span> row.r_ui&gt;x <span class="hljs-keyword">else</span> <span class="hljs-number">0</span> <span class="hljs-keyword">for</span> row <span class="hljs-keyword">in</span> resf]
+    fpr,tpr,_=roc_curve(y,[row.est <span class="hljs-keyword">for</span> row <span class="hljs-keyword">in</span> resf])
+    ax.plot(fpr,tpr,label=<span class="hljs-string">"AUC="</span>+str(auc(fpr,tpr))+<span class="hljs-string">", thr="</span>+str(x))
+ax.plot([<span class="hljs-number">0</span>,<span class="hljs-number">1</span>],[<span class="hljs-number">0</span>,<span class="hljs-number">1</span>],<span class="hljs-string">'--'</span>,color=<span class="hljs-string">'g'</span>,alpha=<span class="hljs-number">.5</span>)
+plt.legend(loc=<span class="hljs-string">'best'</span>)
+plt.grid(linestyle=<span class="hljs-string">':'</span>)
+plt.title(<span class="hljs-string">'No Trimming (k=20)'</span>)
+plt.xlabel(<span class="hljs-string">'FPR'</span>)
+plt.ylabel(<span class="hljs-string">'TPR'</span>)
+plt.show()
+
+raw_pop=trim_data(raw_full,<span class="hljs-string">'popular'</span>,<span class="hljs-number">2</span>)
+df_pop=pd.DataFrame(raw_pop,columns=[<span class="hljs-string">'u'</span>,<span class="hljs-string">'i'</span>,<span class="hljs-string">'r'</span>,<span class="hljs-string">'t'</span>])
+data_pop=Dataset.load_from_df(df_pop[[<span class="hljs-string">'u'</span>,<span class="hljs-string">'i'</span>,<span class="hljs-string">'r'</span>]],reader)
+trainp,testp=train_test_split(data_pop,test_size=<span class="hljs-number">0.1</span>)
+algop=KNNWithMeans(k=best_k_popular,sim_options={<span class="hljs-string">'name'</span>:<span class="hljs-string">'pearson'</span>},verbose=<span class="hljs-literal">False</span>).fit(trainp)
+resp=algop.test(testp)
+fig,ax=plt.subplots()
+<span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> thres:
+    y=[<span class="hljs-number">1</span> <span class="hljs-keyword">if</span> row.r_ui&gt;x <span class="hljs-keyword">else</span> <span class="hljs-number">0</span> <span class="hljs-keyword">for</span> row <span class="hljs-keyword">in</span> resp]
+    fpr,tpr,_=roc_curve(y,[row.est <span class="hljs-keyword">for</span> row <span class="hljs-keyword">in</span> resp])
+    ax.plot(fpr,tpr,label=<span class="hljs-string">"AUC="</span>+str(auc(fpr,tpr))+<span class="hljs-string">", thr="</span>+str(x))
+ax.plot([<span class="hljs-number">0</span>,<span class="hljs-number">1</span>],[<span class="hljs-number">0</span>,<span class="hljs-number">1</span>],<span class="hljs-string">'--'</span>,color=<span class="hljs-string">'g'</span>,alpha=<span class="hljs-number">.5</span>)
+plt.legend(loc=<span class="hljs-string">'best'</span>)
+plt.grid(linestyle=<span class="hljs-string">':'</span>)
+plt.title(<span class="hljs-string">f'Popular (k=<span class="hljs-subst">{best_k_popular}</span>)'</span>)
+plt.xlabel(<span class="hljs-string">'FPR'</span>)
+plt.ylabel(<span class="hljs-string">'TPR'</span>)
+plt.show()
+
+raw_unp=trim_data(raw_full,<span class="hljs-string">'unpopular'</span>,<span class="hljs-number">2</span>)
+df_unp=pd.DataFrame(raw_unp,columns=[<span class="hljs-string">'u'</span>,<span class="hljs-string">'i'</span>,<span class="hljs-string">'r'</span>,<span class="hljs-string">'t'</span>])
+data_unp=Dataset.load_from_df(df_unp[[<span class="hljs-string">'u'</span>,<span class="hljs-string">'i'</span>,<span class="hljs-string">'r'</span>]],reader)
+trainu,testu=train_test_split(data_unp,test_size=<span class="hljs-number">0.1</span>)
+algou=KNNWithMeans(k=best_k_unpopular,sim_options={<span class="hljs-string">'name'</span>:<span class="hljs-string">'pearson'</span>},verbose=<span class="hljs-literal">False</span>).fit(trainu)
+resu=algou.test(testu)
+fig,ax=plt.subplots()
+<span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> thres:
+    y=[<span class="hljs-number">1</span> <span class="hljs-keyword">if</span> row.r_ui&gt;x <span class="hljs-keyword">else</span> <span class="hljs-number">0</span> <span class="hljs-keyword">for</span> row <span class="hljs-keyword">in</span> resu]
+    fpr,tpr,_=roc_curve(y,[row.est <span class="hljs-keyword">for</span> row <span class="hljs-keyword">in</span> resu])
+    ax.plot(fpr,tpr,label=<span class="hljs-string">"AUC="</span>+str(auc(fpr,tpr))+<span class="hljs-string">", thr="</span>+str(x))
+ax.plot([<span class="hljs-number">0</span>,<span class="hljs-number">1</span>],[<span class="hljs-number">0</span>,<span class="hljs-number">1</span>],<span class="hljs-string">'--'</span>,color=<span class="hljs-string">'g'</span>,alpha=<span class="hljs-number">.5</span>)
+plt.legend(loc=<span class="hljs-string">'best'</span>)
+plt.grid(linestyle=<span class="hljs-string">':'</span>)
+plt.title(<span class="hljs-string">f'Unpopular (k=<span class="hljs-subst">{best_k_unpopular}</span>)'</span>)
+plt.xlabel(<span class="hljs-string">'FPR'</span>)
+plt.ylabel(<span class="hljs-string">'TPR'</span>)
+plt.show()
+
+raw_hv=trim_data(raw_full,<span class="hljs-string">'high_variance'</span>,<span class="hljs-number">2</span>,<span class="hljs-number">2.0</span>,<span class="hljs-number">5</span>)
+df_hv=pd.DataFrame(raw_hv,columns=[<span class="hljs-string">'u'</span>,<span class="hljs-string">'i'</span>,<span class="hljs-string">'r'</span>,<span class="hljs-string">'t'</span>])
+data_hv=Dataset.load_from_df(df_hv[[<span class="hljs-string">'u'</span>,<span class="hljs-string">'i'</span>,<span class="hljs-string">'r'</span>]],reader)
+trainh,testh=train_test_split(data_hv,test_size=<span class="hljs-number">0.1</span>)
+algoh=KNNWithMeans(k=best_k_highvar,sim_options={<span class="hljs-string">'name'</span>:<span class="hljs-string">'pearson'</span>},verbose=<span class="hljs-literal">False</span>).fit(trainh)
+resh=algoh.test(testh)
+fig,ax=plt.subplots()
+<span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> thres:
+    y=[<span class="hljs-number">1</span> <span class="hljs-keyword">if</span> row.r_ui&gt;x <span class="hljs-keyword">else</span> <span class="hljs-number">0</span> <span class="hljs-keyword">for</span> row <span class="hljs-keyword">in</span> resh]
+    fpr,tpr,_=roc_curve(y,[row.est <span class="hljs-keyword">for</span> row <span class="hljs-keyword">in</span> resh])
+    ax.plot(fpr,tpr,label=<span class="hljs-string">"AUC="</span>+str(auc(fpr,tpr))+<span class="hljs-string">", thr="</span>+str(x))
+ax.plot([<span class="hljs-number">0</span>,<span class="hljs-number">1</span>],[<span class="hljs-number">0</span>,<span class="hljs-number">1</span>],<span class="hljs-string">'--'</span>,color=<span class="hljs-string">'g'</span>,alpha=<span class="hljs-number">.5</span>)
+plt.legend(loc=<span class="hljs-string">'best'</span>)
+plt.grid(linestyle=<span class="hljs-string">':'</span>)
+plt.title(<span class="hljs-string">f'High Variance (k=<span class="hljs-subst">{best_k_highvar}</span>)'</span>)
+plt.xlabel(<span class="hljs-string">'FPR'</span>)
+plt.ylabel(<span class="hljs-string">'TPR'</span>)
+plt.show()
+</div></code></pre>
+<p><img src="solution_abhi_files/solution_abhi_36_0.png" alt="png"></p>
+<p><img src="solution_abhi_files/solution_abhi_36_1.png" alt="png"></p>
+<p><img src="solution_abhi_files/solution_abhi_36_2.png" alt="png"></p>
+<p><img src="solution_abhi_files/solution_abhi_36_3.png" alt="png"></p>
+<h1 id="question-7">Question 7</h1>
+<h3 id="note-this-part-has-been-rendered-separately-so-that-the-latex-math-notation-doesnt-change-when-converting-to-pdf">Note this part has been rendered separately so that the LaTeX math notation doesn't change when converting to pdf.</h3>
+<p><img src="./question7_latex.png" alt=""></p>
+<h1 id="question-8">Question 8</h1>
+<h1 id="part-a">PART A</h1>
+<h3 id="plots-can-be-found-below">Plots can be found below:</h3>
+<pre class="hljs"><code><div>k = np.arange(<span class="hljs-number">2</span>,<span class="hljs-number">52</span>,<span class="hljs-number">2</span>)
+rmse_NMF_50 = []
+mae_NMF_50 = []
+<span class="hljs-keyword">for</span> item <span class="hljs-keyword">in</span> k:
+    print(<span class="hljs-string">'Testing for k ='</span>,item)
+    res = cross_validate(NMF(n_factors=item,n_epochs=<span class="hljs-number">50</span>,verbose=<span class="hljs-literal">False</span>),
+                         measures=[<span class="hljs-string">'rmse'</span>,<span class="hljs-string">'mae'</span>],data = ratings_dataset,cv=<span class="hljs-number">10</span>,n_jobs=<span class="hljs-number">-1</span>)   
+    rmse_NMF_50.append(np.mean(res[<span class="hljs-string">'test_rmse'</span>]))
+    mae_NMF_50.append(np.mean(res[<span class="hljs-string">'test_mae'</span>]))
+</div></code></pre>
+<pre><code>Testing for k = 2
+Testing for k = 4
+Testing for k = 6
+Testing for k = 8
+Testing for k = 10
+Testing for k = 12
+Testing for k = 14
+Testing for k = 16
+Testing for k = 18
+Testing for k = 20
+Testing for k = 22
+Testing for k = 24
+Testing for k = 26
+Testing for k = 28
+Testing for k = 30
+Testing for k = 32
+Testing for k = 34
+Testing for k = 36
+Testing for k = 38
+Testing for k = 40
+Testing for k = 42
+Testing for k = 44
+Testing for k = 46
+Testing for k = 48
+Testing for k = 50
+</code></pre>
+<pre class="hljs"><code><div>plt.plot(k,rmse_NMF_50,linestyle=<span class="hljs-string">'--'</span>,color=<span class="hljs-string">'r'</span>)
+plt.grid(linestyle=<span class="hljs-string">':'</span>)
+plt.title(<span class="hljs-string">'Avg. RMSE for NMF'</span>)
+plt.ylabel(<span class="hljs-string">'Avg. RMSE'</span>)
+plt.xlabel(<span class="hljs-string">'Number of latent factors'</span>)
+<span class="hljs-comment">#plt.savefig('../abhi_images/Q8A_RMSE.png',dpi=300,bbox_inches='tight')</span>
+plt.show()
+
+plt.plot(k,mae_NMF_50,linestyle=<span class="hljs-string">'--'</span>,color=<span class="hljs-string">'b'</span>)
+plt.grid(linestyle=<span class="hljs-string">':'</span>)
+plt.title(<span class="hljs-string">'Avg. MAE for NMF'</span>)
+plt.ylabel(<span class="hljs-string">'Avg. MAE'</span>)
+plt.xlabel(<span class="hljs-string">'Number of latent factors'</span>)
+<span class="hljs-comment">#plt.savefig('../abhi_images/Q8A_MAE.png',dpi=300,bbox_inches='tight')</span>
+plt.show()
+
+</div></code></pre>
+<p><img src="solution_abhi_files/solution_abhi_42_0.png" alt="png"></p>
+<p><img src="solution_abhi_files/solution_abhi_42_1.png" alt="png"></p>
+<pre class="hljs"><code><div>print(<span class="hljs-string">"Minimum avg. RMSE (NMF): %f, value of k: %d"</span> % (min(rmse_NMF_50),k[np.argmin(rmse_NMF_50)]))
+print(<span class="hljs-string">"Minimum avg. MAE (NMF): %f, value of k: %d"</span> % (min(mae_NMF_50), k[np.argmin(mae_NMF_50)]))
+</div></code></pre>
+<pre><code>Minimum avg. RMSE (NMF): 0.911686, value of k: 18
+Minimum avg. MAE (NMF): 0.693172, value of k: 18
+</code></pre>
+<h1 id="part-b">PART B</h1>
+<h3 id="since-both-rmse-and-mae-plots-reveal-that-the-optimal-k-which-returns-minimum-value-for-both-is-k--18-we-shall-use-this-as-out-optimal-value-to-plot-the-roc---further-this-value-is-actually-close-to-the-number-of-genres-that-was-printed-at-the-start-of-this-report">Since both RMSE and MAE plots reveal that the optimal k (which returns minimum value for both) is k = 18, we shall use this as out optimal value to plot the ROC - further, this value is actually close to the number of genres that was printed at the start of this report.</h3>
+<h1 id="part-c">PART C</h1>
+<h3 id="the-plots-can-be-seen-below-and-the-min-avg-rmse-and-corresponding-k-values-are-summarised-below">The plots can be seen below and the min avg RMSE and corresponding k values are summarised below:</h3>
+<table>
+<thead>
+<tr>
+<th><strong>Subset</strong></th>
+<th><strong>Best k</strong></th>
+<th><strong>Min RMSE</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Popular</td>
+<td>20</td>
+<td>0.8938076299869282</td>
+</tr>
+<tr>
+<td>Unpopular</td>
+<td>44</td>
+<td>1.1340514349876818</td>
+</tr>
+<tr>
+<td>High Var</td>
+<td>20</td>
+<td>1.5726049136610523</td>
+</tr>
+</tbody>
+</table>
+<h3 id="note-that-we-are-using-the-best-ks-to-plot-the-roc">Note that we are using the best k's to plot the ROC</h3>
+<pre class="hljs"><code><div><span class="hljs-keyword">from</span> tqdm <span class="hljs-keyword">import</span> tqdm
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">trim_data</span><span class="hljs-params">(raw_data, method=<span class="hljs-string">'popular'</span>, rating_threshold=<span class="hljs-number">2</span>, var_threshold=<span class="hljs-number">2.0</span>, min_var_count=<span class="hljs-number">5</span>)</span>:</span>
+    d = defaultdict(list)
+    <span class="hljs-keyword">for</span> (u,i,r,t) <span class="hljs-keyword">in</span> raw_data:
+        d[i].append(r)
+    <span class="hljs-keyword">if</span> method == <span class="hljs-string">'popular'</span>:
+        keep = {i <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> d <span class="hljs-keyword">if</span> len(d[i]) &gt; rating_threshold}
+    <span class="hljs-keyword">elif</span> method == <span class="hljs-string">'unpopular'</span>:
+        keep = {i <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> d <span class="hljs-keyword">if</span> len(d[i]) &lt;= rating_threshold}
+    <span class="hljs-keyword">elif</span> method == <span class="hljs-string">'high_variance'</span>:
+        keep = []
+        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> d:
+            <span class="hljs-keyword">if</span> len(d[i]) &gt;= min_var_count <span class="hljs-keyword">and</span> np.var(d[i]) &gt;= var_threshold:
+                keep.append(i)
+        keep = set(keep)
+    <span class="hljs-keyword">else</span>:
+        <span class="hljs-keyword">raise</span> ValueError
+    <span class="hljs-keyword">return</span> [(u,i,r,t) <span class="hljs-keyword">for</span> (u,i,r,t) <span class="hljs-keyword">in</span> raw_data <span class="hljs-keyword">if</span> i <span class="hljs-keyword">in</span> keep]
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">evaluate_nmf_10fold</span><span class="hljs-params">(trimmed_raw_data)</span>:</span>
+    df = pd.DataFrame(trimmed_raw_data, columns=[<span class="hljs-string">'userID'</span>,<span class="hljs-string">'itemID'</span>,<span class="hljs-string">'rating'</span>,<span class="hljs-string">'timestamp'</span>])
+    reader = Reader(rating_scale=(<span class="hljs-number">0.5</span>, <span class="hljs-number">5</span>))
+    data = Dataset.load_from_df(df[[<span class="hljs-string">'userID'</span>,<span class="hljs-string">'itemID'</span>,<span class="hljs-string">'rating'</span>]], reader)
+    k_values = range(<span class="hljs-number">2</span>, <span class="hljs-number">51</span>, <span class="hljs-number">2</span>)
+    kf = KFold(n_splits=<span class="hljs-number">10</span>, random_state=<span class="hljs-number">0</span>, shuffle=<span class="hljs-literal">True</span>)
+    rmse_results = []
+    <span class="hljs-keyword">for</span> k <span class="hljs-keyword">in</span> tqdm(k_values, desc=<span class="hljs-string">"Sweeping factors"</span>):
+        fold_rmse = []
+        <span class="hljs-keyword">for</span> trainset, testset <span class="hljs-keyword">in</span> kf.split(data):
+            algo = NMF(n_factors=k, n_epochs=<span class="hljs-number">50</span>, verbose=<span class="hljs-literal">False</span>)
+            algo.fit(trainset)
+            preds = algo.test(testset)
+            fold_rmse.append(accuracy.rmse(preds, verbose=<span class="hljs-literal">False</span>))
+        rmse_results.append(np.mean(fold_rmse))
+    <span class="hljs-keyword">return</span> k_values, rmse_results, df
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">plot_roc_nmf</span><span class="hljs-params">(df, best_k, title)</span>:</span>
+    reader = Reader(rating_scale=(<span class="hljs-number">0.5</span>, <span class="hljs-number">5</span>))
+    data = Dataset.load_from_df(df[[<span class="hljs-string">'userID'</span>,<span class="hljs-string">'itemID'</span>,<span class="hljs-string">'rating'</span>]], reader)
+    trainset, testset = train_test_split(data, test_size=<span class="hljs-number">0.1</span>, random_state=<span class="hljs-number">0</span>)
+    algo = NMF(n_factors=best_k, n_epochs=<span class="hljs-number">50</span>, verbose=<span class="hljs-literal">False</span>)
+    algo.fit(trainset)
+    preds = algo.test(testset)
+    thresholds = [<span class="hljs-number">2.5</span>, <span class="hljs-number">3.0</span>, <span class="hljs-number">3.5</span>, <span class="hljs-number">4.0</span>]
+    fig, ax = plt.subplots()
+    <span class="hljs-keyword">for</span> t <span class="hljs-keyword">in</span> thresholds:
+        y_true = [<span class="hljs-number">1</span> <span class="hljs-keyword">if</span> p.r_ui &gt; t <span class="hljs-keyword">else</span> <span class="hljs-number">0</span> <span class="hljs-keyword">for</span> p <span class="hljs-keyword">in</span> preds]
+        y_score = [p.est <span class="hljs-keyword">for</span> p <span class="hljs-keyword">in</span> preds]
+        fpr, tpr, _ = roc_curve(y_true, y_score)
+        ax.plot(fpr, tpr, label=<span class="hljs-string">"AUC="</span>+str(auc(fpr,tpr))+<span class="hljs-string">", thr="</span>+str(t))
+    ax.plot([<span class="hljs-number">0</span>,<span class="hljs-number">1</span>],[<span class="hljs-number">0</span>,<span class="hljs-number">1</span>],<span class="hljs-string">'--'</span>,color=<span class="hljs-string">'g'</span>,alpha=<span class="hljs-number">.5</span>)
+    plt.legend(loc=<span class="hljs-string">'best'</span>)
+    plt.title(title)
+    plt.xlabel(<span class="hljs-string">"FPR"</span>)
+    plt.ylabel(<span class="hljs-string">"TPR"</span>)
+    plt.grid(linestyle=<span class="hljs-string">':'</span>)
+    plt.show()
+
+raw_data = ratings_dataset.raw_ratings
+
+df_full = pd.DataFrame(raw_data, columns=[<span class="hljs-string">'userID'</span>,<span class="hljs-string">'itemID'</span>,<span class="hljs-string">'rating'</span>,<span class="hljs-string">'timestamp'</span>])
+reader = Reader(rating_scale=(<span class="hljs-number">0.5</span>, <span class="hljs-number">5</span>))
+data_full = Dataset.load_from_df(df_full[[<span class="hljs-string">'userID'</span>,<span class="hljs-string">'itemID'</span>,<span class="hljs-string">'rating'</span>]], reader)
+plot_roc_nmf(df_full, <span class="hljs-number">18</span>, <span class="hljs-string">"No-Trim NMF ROC (k=18)"</span>)
+
+pop_data = trim_data(raw_data, <span class="hljs-string">'popular'</span>, <span class="hljs-number">2</span>)
+kp, rp, dfp = evaluate_nmf_10fold(pop_data)
+best_kp = kp[np.argmin(rp)]
+plt.plot(kp, rp, marker=<span class="hljs-string">'o'</span>)
+plt.title(<span class="hljs-string">'Popular NMF'</span>)
+plt.xlabel(<span class="hljs-string">'Factors'</span>)
+plt.ylabel(<span class="hljs-string">'Avg RMSE'</span>)
+plt.show()
+print(<span class="hljs-string">"Popular best factors:"</span>, best_kp, <span class="hljs-string">"Min RMSE:"</span>, min(rp))
+plot_roc_nmf(dfp, best_kp, <span class="hljs-string">'Popular NMF ROC'</span>)
+
+unp_data = trim_data(raw_data, <span class="hljs-string">'unpopular'</span>, <span class="hljs-number">2</span>)
+ku, ru, dfu = evaluate_nmf_10fold(unp_data)
+best_ku = ku[np.argmin(ru)]
+plt.plot(ku, ru, marker=<span class="hljs-string">'o'</span>)
+plt.title(<span class="hljs-string">'Unpopular NMF'</span>)
+plt.xlabel(<span class="hljs-string">'Factors'</span>)
+plt.ylabel(<span class="hljs-string">'Avg RMSE'</span>)
+plt.show()
+print(<span class="hljs-string">"Unpopular best factors:"</span>, best_ku, <span class="hljs-string">"Min RMSE:"</span>, min(ru))
+plot_roc_nmf(dfu, best_ku, <span class="hljs-string">'Unpopular NMF ROC'</span>)
+
+hv_data = trim_data(raw_data, <span class="hljs-string">'high_variance'</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2.0</span>, <span class="hljs-number">5</span>)
+kh, rh, dfh = evaluate_nmf_10fold(hv_data)
+best_kh = kh[np.argmin(rh)]
+plt.plot(kh, rh, marker=<span class="hljs-string">'o'</span>)
+plt.title(<span class="hljs-string">'High-Variance NMF'</span>)
+plt.xlabel(<span class="hljs-string">'Factors'</span>)
+plt.ylabel(<span class="hljs-string">'Avg RMSE'</span>)
+plt.show()
+print(<span class="hljs-string">"High Var best factors:"</span>, best_kh, <span class="hljs-string">"Min RMSE:"</span>, min(rh))
+plot_roc_nmf(dfh, best_kh, <span class="hljs-string">'High-Variance NMF ROC'</span>)
+
+</div></code></pre>
+<p><img src="solution_abhi_files/solution_abhi_48_0.png" alt="png"></p>
+<pre><code>Sweeping factors: 100%|██████████| 25/25 [38:19&lt;00:00, 91.98s/it] 
+</code></pre>
+<p><img src="solution_abhi_files/solution_abhi_48_2.png" alt="png"></p>
+<pre><code>Popular best factors: 20 Min RMSE: 0.8938076299869282
+</code></pre>
+<p><img src="solution_abhi_files/solution_abhi_48_4.png" alt="png"></p>
+<pre><code>Sweeping factors: 100%|██████████| 25/25 [04:42&lt;00:00, 11.29s/it]
+</code></pre>
+<p><img src="solution_abhi_files/solution_abhi_48_6.png" alt="png"></p>
+<pre><code>Unpopular best factors: 44 Min RMSE: 1.1340514349876818
+</code></pre>
+<p><img src="solution_abhi_files/solution_abhi_48_8.png" alt="png"></p>
+<pre><code>Sweeping factors: 100%|██████████| 25/25 [00:08&lt;00:00,  2.83it/s]
+</code></pre>
+<p><img src="solution_abhi_files/solution_abhi_48_10.png" alt="png"></p>
+<pre><code>High Var best factors: 20 Min RMSE: 1.5726049136610523
+</code></pre>
+<p><img src="solution_abhi_files/solution_abhi_48_12.png" alt="png"></p>
+<h1 id="question-9">Question 9</h1>
+<h3 id="we-plot-the-top-10-for-each-column-below">We plot the top 10 for each column below.</h3>
+<h3 id="from-the-genre-list-we-see-that-the-top-10-movies-in-each-column-of-v-tend-to-belong-to-a-small-focused-set-of-genres-for-example">From the genre list, we see that the top 10 movies in each column of V tend to belong to a small, focused set of genres. For example:</h3>
+<h3 id="latent-factor-8-features-many-comedy-titles-eg-comedy-comedycrime">Latent Factor 8 features many Comedy titles (e.g., “Comedy”, “Comedy|Crime”).</h3>
+<h3 id="latent-factor-17-frequently-highlights-action-and-horror-motifs-eg-horrorthriller-actioncrimedramathriller">Latent Factor 17 frequently highlights Action, and Horror motifs (e.g., “Horror|Thriller”, “Action|Crime|Drama|Thriller”).</h3>
+<h3 id="these-clusters-suggest-that-each-latent-factor-captures-a-specific-theme-or-genre-blend-items-grouped-under-the-same-factor-often-share-overlapping-genres-indicating-that-the-factorization-naturally-organizes-movies-by-genre-or-broader-thematic-elements-that-users-rate-similarly">These clusters suggest that each latent factor captures a specific “theme” or “genre blend.” Items grouped under the same factor often share overlapping genres, indicating that the factorization naturally organizes movies by genre or broader thematic elements that users rate similarly.</h3>
+<pre class="hljs"><code><div>genre = pd.read_csv(dataset_folder+<span class="hljs-string">'movies.csv'</span>,usecols=[<span class="hljs-string">'movieId'</span>,<span class="hljs-string">'title'</span>,<span class="hljs-string">'genres'</span>])
+trainset, testset = train_test_split(ratings_dataset, test_size=<span class="hljs-number">0.1</span>)
+nmf = NMF(n_factors=<span class="hljs-number">20</span>,n_epochs=<span class="hljs-number">50</span>,verbose=<span class="hljs-literal">False</span>)
+nmf.fit(trainset).test(testset)
+U = nmf.pu
+V = nmf.qi
+
+cols = [i <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">20</span>)]
+<span class="hljs-keyword">for</span> item <span class="hljs-keyword">in</span> cols:
+    print(<span class="hljs-string">'Column number of V: '</span>,item)
+    selected_col = V[:,item]
+    sorted_col = np.argsort(selected_col)[::<span class="hljs-number">-1</span>]
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> sorted_col[<span class="hljs-number">0</span>:<span class="hljs-number">10</span>]:
+        print(genre[<span class="hljs-string">'genres'</span>][i])
+    print(<span class="hljs-string">'---------------------------------------------'</span>)
+</div></code></pre>
+<pre><code>Column number of V:  0
+Comedy
+Drama
+Drama|Romance
+Comedy
+Adventure|Drama|Sci-Fi
+Action|Comedy|Drama|War
+Action|Adventure|Comedy|Sci-Fi
+Documentary
+Comedy|Drama|Romance
+Comedy|Drama|Romance
+---------------------------------------------
+Column number of V:  1
+Adventure|Sci-Fi|Thriller
+Comedy
+Crime|Drama|Thriller
+Action|Horror|Thriller
+Drama|Mystery
+Drama
+Action|Crime
+Action|Drama|Romance|War
+Comedy
+Comedy|Drama|Romance
+---------------------------------------------
+Column number of V:  2
+Comedy|Romance
+Action|Sci-Fi
+Comedy|Crime
+Action|Adventure|Drama|Thriller
+Thriller
+Drama|Romance
+Musical
+Comedy
+Drama|Romance
+Mystery|Thriller
+---------------------------------------------
+Column number of V:  3
+Action|Crime|Drama|Thriller
+Comedy|Drama|Romance
+Comedy|Drama
+Drama
+Adventure|Drama|Romance
+Action|Drama|Thriller
+Drama|War
+Action|Comedy|Crime|Drama
+Comedy|Drama
+Adventure|Comedy|Thriller
+---------------------------------------------
+Column number of V:  4
+Horror
+Comedy|Romance
+Adventure|Children|Fantasy
+Drama|Fantasy
+Children|Comedy|Fantasy
+Drama|Mystery|Thriller
+Drama
+Action|Drama|Romance|War
+Action|Comedy
+Drama
+---------------------------------------------
+Column number of V:  5
+Drama|Romance
+Comedy
+Comedy|Drama
+Fantasy|Mystery|Western
+Action|Comedy|Western
+Comedy|Crime
+Drama|Mystery|Romance
+Drama|Film-Noir|Romance
+Comedy|Crime
+Adventure
+---------------------------------------------
+Column number of V:  6
+Action|Fantasy|Thriller
+Drama|Fantasy
+Action|Crime|Thriller
+Drama
+Comedy
+Drama|Thriller
+Comedy|Horror
+Comedy|Drama
+Action|Thriller
+Adventure|Animation|Children|Comedy|Fantasy
+---------------------------------------------
+Column number of V:  7
+Documentary
+Horror|Sci-Fi|Thriller
+Drama
+Drama
+Adventure|Children|Fantasy|Sci-Fi
+Action|Adventure|Sci-Fi|Thriller
+Comedy|Crime
+Drama
+Horror|Mystery|Thriller
+Action|Thriller
+---------------------------------------------
+Column number of V:  8
+Comedy|Drama|Romance
+Adventure|Comedy|Drama
+Comedy
+Drama
+Drama|Western
+Drama|Mystery
+Comedy
+Comedy|Crime
+Comedy
+Comedy|Horror
+---------------------------------------------
+Column number of V:  9
+Comedy|Drama|Romance
+Horror
+Drama|Romance
+Animation|Comedy|Musical
+Horror|Sci-Fi
+Thriller
+Comedy
+Adventure|Animation|Children|Comedy
+Comedy
+Crime|Drama|Film-Noir
+---------------------------------------------
+Column number of V:  10
+Crime|Drama
+Action|Comedy|Western
+Comedy|Drama
+Comedy|Documentary|Musical
+Fantasy|Horror|Thriller
+Adventure|Comedy|Thriller
+Action|Adventure|Sci-Fi
+Children|Comedy|Mystery
+Drama
+Comedy|Drama
+---------------------------------------------
+Column number of V:  11
+Action|Sci-Fi|War
+Action|Crime|Drama
+Thriller
+Comedy|Drama|Romance
+Adventure|Western
+Comedy|Drama
+Action|Comedy|Western
+Drama
+Comedy|Romance
+Drama|Musical
+---------------------------------------------
+Column number of V:  12
+Action|Fantasy|Thriller
+Adventure|Children|Fantasy
+Comedy|Horror
+Drama
+Comedy|Romance
+Action|Adventure|Sci-Fi|Thriller
+Documentary
+Comedy|Drama
+Action|Drama|War
+Crime|Drama
+---------------------------------------------
+Column number of V:  13
+Musical
+Animation|Children|Comedy
+Comedy
+Horror|Thriller
+Action|Crime|Thriller
+Action|Sci-Fi
+Action|Comedy|Crime|Drama
+Comedy|Drama|Romance|Thriller
+Action|Crime|Drama|Thriller
+Crime|Drama|Romance|Thriller
+---------------------------------------------
+Column number of V:  14
+Comedy|Horror
+Action|Horror|Thriller
+Adventure|Children
+Action|Drama
+Comedy|Drama|Musical
+Adventure|Comedy|Crime|Drama|Romance
+Comedy|Fantasy
+Action|Crime
+Comedy|Crime|Drama|War
+Adventure|Animation|Children|Comedy|Fantasy|Romance
+---------------------------------------------
+Column number of V:  15
+Drama
+Comedy|Drama|Romance
+Comedy
+Comedy|Drama|Romance
+Action|Crime
+Drama
+Musical
+Comedy|Crime
+Drama|Romance
+Comedy|Romance
+---------------------------------------------
+Column number of V:  16
+Action|Crime|Drama|Thriller
+Adventure|Drama|Romance
+Crime|Drama|Fantasy
+Action|Comedy|Crime|Thriller
+Drama
+Drama|Thriller
+Comedy|Romance
+Drama
+Action|Adventure|Sci-Fi|Thriller|IMAX
+Drama|Romance
+---------------------------------------------
+Column number of V:  17
+Horror|Thriller
+Action|Crime
+Action|Crime|Drama|Thriller
+Action|Adventure|Thriller
+Horror|Mystery
+Comedy
+Comedy
+Drama|Mystery|Thriller
+Horror|Sci-Fi|Thriller
+Drama
+---------------------------------------------
+Column number of V:  18
+Documentary
+Comedy|Drama
+Comedy
+Comedy|Drama|Romance
+Drama|Romance
+Drama|Romance|Sci-Fi
+Documentary
+Comedy|Drama|Musical
+Drama
+Adventure|Drama
+---------------------------------------------
+Column number of V:  19
+Drama|Romance
+Action|Thriller
+Action|Adventure|Crime|Thriller
+Action|Drama|War
+Comedy|Fantasy|Romance
+Documentary
+Comedy
+Horror|Thriller
+Comedy
+Drama|Thriller
+---------------------------------------------
+</code></pre>
+<h1 id="question-10">Question 10</h1>
+<h3 id="plots-are-reported-one-after-another-for-full-data-popular-unpopular-and-high-variance-subsets-respectively-rmse-and-mae-results-are-summarised-as-follows">Plots are reported one after another for full-data, popular, unpopular and high-variance subsets respectively. RMSE and MAE results are summarised as follows:</h3>
+<p><strong>Full Data</strong></p>
+<ul>
+<li>Min RMSE = 0.8652 at k = 26</li>
+<li>Min MAE  = 0.6642 at k = 36</li>
+<li>Chosen k (closest to 19 unique genres) = 26</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Subset</th>
+<th style="text-align:center">Best k (RMSE)</th>
+<th style="text-align:center">Min RMSE</th>
+<th style="text-align:center">Best k (MAE)</th>
+<th style="text-align:center">Min MAE</th>
+<th style="text-align:center">Chosen k</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Full Data</td>
+<td style="text-align:center">26</td>
+<td style="text-align:center">0.8652</td>
+<td style="text-align:center">36</td>
+<td style="text-align:center">0.6642</td>
+<td style="text-align:center">26</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><strong>Popular Subset</strong></p>
+<ul>
+<li>Best RMSE = 0.8559 at k = 32</li>
+</ul>
+<p><strong>Unpopular Subset</strong></p>
+<ul>
+<li>Best RMSE = 0.8953 at k = 6</li>
+</ul>
+<p><strong>High-Variance Subset</strong></p>
+<ul>
+<li>Best RMSE = 1.5611 at k = 40</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Subset</th>
+<th style="text-align:center">Best k</th>
+<th style="text-align:center">Min RMSE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Popular</td>
+<td style="text-align:center">32</td>
+<td style="text-align:center">0.8559</td>
+</tr>
+<tr>
+<td>Unpopular</td>
+<td style="text-align:center">6</td>
+<td style="text-align:center">0.8953</td>
+</tr>
+<tr>
+<td>High-Variance</td>
+<td style="text-align:center">40</td>
+<td style="text-align:center">1.5611</td>
+</tr>
+</tbody>
+</table>
+<pre class="hljs"><code><div><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+<span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd
+<span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+<span class="hljs-keyword">from</span> tqdm <span class="hljs-keyword">import</span> tqdm
+<span class="hljs-keyword">from</span> surprise <span class="hljs-keyword">import</span> SVD, Dataset, Reader, accuracy
+<span class="hljs-keyword">from</span> surprise.model_selection <span class="hljs-keyword">import</span> cross_validate, train_test_split, KFold
+<span class="hljs-keyword">from</span> sklearn.metrics <span class="hljs-keyword">import</span> roc_curve, auc
+
+k_values = np.arange(<span class="hljs-number">2</span>,<span class="hljs-number">52</span>,<span class="hljs-number">2</span>)
+rmse_SVD = []
+mae_SVD = []
+<span class="hljs-keyword">for</span> k <span class="hljs-keyword">in</span> tqdm(k_values,desc=<span class="hljs-string">"Full Data k-sweep"</span>):
+    res = cross_validate(
+        SVD(n_factors=k,n_epochs=<span class="hljs-number">20</span>,verbose=<span class="hljs-literal">False</span>),
+        data=ratings_dataset,
+        measures=[<span class="hljs-string">'rmse'</span>,<span class="hljs-string">'mae'</span>],
+        cv=<span class="hljs-number">10</span>,
+        n_jobs=<span class="hljs-number">-1</span>
+    )
+    rmse_SVD.append(np.mean(res[<span class="hljs-string">'test_rmse'</span>]))
+    mae_SVD.append(np.mean(res[<span class="hljs-string">'test_mae'</span>]))
+
+min_rmse_full = min(rmse_SVD)
+min_mae_full = min(mae_SVD)
+best_k_rmse = k_values[np.argmin(rmse_SVD)]
+best_k_mae = k_values[np.argmin(mae_SVD)]
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">dist19</span><span class="hljs-params">(x)</span>:</span> <span class="hljs-keyword">return</span> abs(x<span class="hljs-number">-19</span>)
+chosen_k = min([best_k_rmse,best_k_mae], key=dist19)
+
+print(<span class="hljs-string">f"Full Data - Min RMSE=<span class="hljs-subst">{min_rmse_full:<span class="hljs-number">.4</span>f}</span> at k=<span class="hljs-subst">{best_k_rmse}</span>"</span>)
+print(<span class="hljs-string">f"Full Data - Min MAE =<span class="hljs-subst">{min_mae_full:<span class="hljs-number">.4</span>f}</span> at k=<span class="hljs-subst">{best_k_mae}</span>"</span>)
+print(<span class="hljs-string">f"Chosen k by closeness to 19: <span class="hljs-subst">{chosen_k}</span>"</span>)
+
+plt.plot(k_values,rmse_SVD,marker=<span class="hljs-string">'o'</span>)
+plt.title(<span class="hljs-string">"RMSE vs k (Full Data) [10-fold CV]"</span>)
+plt.xlabel(<span class="hljs-string">"k"</span>)
+plt.ylabel(<span class="hljs-string">"RMSE"</span>)
+plt.show()
+
+plt.plot(k_values,mae_SVD,marker=<span class="hljs-string">'o'</span>,color=<span class="hljs-string">'orange'</span>)
+plt.title(<span class="hljs-string">"MAE vs k (Full Data) [10-fold CV]"</span>)
+plt.xlabel(<span class="hljs-string">"k"</span>)
+plt.ylabel(<span class="hljs-string">"MAE"</span>)
+plt.show()
+
+trainset, testset = train_test_split(ratings_dataset, test_size=<span class="hljs-number">0.1</span>, random_state=<span class="hljs-number">0</span>)
+algo = SVD(n_factors=chosen_k, n_epochs=<span class="hljs-number">20</span>, verbose=<span class="hljs-literal">False</span>, random_state=<span class="hljs-number">0</span>)
+algo.fit(trainset)
+predictions = algo.test(testset)
+
+thresholds = [<span class="hljs-number">2.5</span>,<span class="hljs-number">3</span>,<span class="hljs-number">3.5</span>,<span class="hljs-number">4</span>]
+plt.figure()
+<span class="hljs-keyword">for</span> t <span class="hljs-keyword">in</span> thresholds:
+    y_true = [<span class="hljs-number">1</span> <span class="hljs-keyword">if</span> p.r_ui&gt;t <span class="hljs-keyword">else</span> <span class="hljs-number">0</span> <span class="hljs-keyword">for</span> p <span class="hljs-keyword">in</span> predictions]
+    y_score = [p.est <span class="hljs-keyword">for</span> p <span class="hljs-keyword">in</span> predictions]
+    fpr, tpr, _ = roc_curve(y_true, y_score)
+    plt.plot(fpr, tpr, label=<span class="hljs-string">f"AUC=<span class="hljs-subst">{auc(fpr,tpr):<span class="hljs-number">.3</span>f}</span>, thr=<span class="hljs-subst">{t}</span>"</span>)
+plt.plot([<span class="hljs-number">0</span>,<span class="hljs-number">1</span>],[<span class="hljs-number">0</span>,<span class="hljs-number">1</span>],<span class="hljs-string">'--'</span>,color=<span class="hljs-string">'gray'</span>,alpha=<span class="hljs-number">0.6</span>)
+plt.xlabel(<span class="hljs-string">"FPR"</span>)
+plt.ylabel(<span class="hljs-string">"TPR"</span>)
+plt.title(<span class="hljs-string">f"ROC (k=<span class="hljs-subst">{chosen_k}</span>) - Full Data"</span>)
+plt.legend(loc=<span class="hljs-string">'best'</span>)
+plt.grid(linestyle=<span class="hljs-string">':'</span>)
+plt.show()
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">trim_data</span><span class="hljs-params">(raw_data,method=<span class="hljs-string">'popular'</span>,rating_threshold=<span class="hljs-number">2</span>,var_threshold=<span class="hljs-number">2.0</span>,min_var_count=<span class="hljs-number">5</span>)</span>:</span>
+    <span class="hljs-keyword">from</span> collections <span class="hljs-keyword">import</span> defaultdict
+    d = defaultdict(list)
+    <span class="hljs-keyword">for</span> (u,i,r,t) <span class="hljs-keyword">in</span> raw_data:
+        d[i].append(r)
+    <span class="hljs-keyword">if</span> method==<span class="hljs-string">'popular'</span>:
+        keep = {i <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> d <span class="hljs-keyword">if</span> len(d[i])&gt;rating_threshold}
+    <span class="hljs-keyword">elif</span> method==<span class="hljs-string">'unpopular'</span>:
+        keep = {i <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> d <span class="hljs-keyword">if</span> len(d[i])&lt;=rating_threshold}
+    <span class="hljs-keyword">elif</span> method==<span class="hljs-string">'high_variance'</span>:
+        keep = []
+        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> d:
+            <span class="hljs-keyword">if</span> len(d[i])&gt;=min_var_count <span class="hljs-keyword">and</span> np.var(d[i])&gt;=var_threshold:
+                keep.append(i)
+        keep = set(keep)
+    <span class="hljs-keyword">else</span>:
+        <span class="hljs-keyword">raise</span> ValueError(<span class="hljs-string">"Unknown trim method"</span>)
+    <span class="hljs-keyword">return</span> [(u,i,r,t) <span class="hljs-keyword">for</span> (u,i,r,t) <span class="hljs-keyword">in</span> raw_data <span class="hljs-keyword">if</span> i <span class="hljs-keyword">in</span> keep]
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">to_dataset</span><span class="hljs-params">(data)</span>:</span>
+    df = pd.DataFrame(data,columns=[<span class="hljs-string">'userID'</span>,<span class="hljs-string">'itemID'</span>,<span class="hljs-string">'rating'</span>,<span class="hljs-string">'timestamp'</span>])
+    <span class="hljs-keyword">return</span> Dataset.load_from_df(df[[<span class="hljs-string">'userID'</span>,<span class="hljs-string">'itemID'</span>,<span class="hljs-string">'rating'</span>]],Reader(rating_scale=(<span class="hljs-number">0.5</span>,<span class="hljs-number">5</span>)))
+
+pop_dataset = to_dataset(trim_data(ratings_dataset.raw_ratings,<span class="hljs-string">'popular'</span>,<span class="hljs-number">2</span>))
+unp_dataset = to_dataset(trim_data(ratings_dataset.raw_ratings,<span class="hljs-string">'unpopular'</span>,<span class="hljs-number">2</span>))
+hv_dataset  = to_dataset(trim_data(ratings_dataset.raw_ratings,<span class="hljs-string">'high_variance'</span>,<span class="hljs-number">2</span>,<span class="hljs-number">2.0</span>,<span class="hljs-number">5</span>))
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">process_subset</span><span class="hljs-params">(ds,title)</span>:</span>
+    kf = KFold(n_splits=<span class="hljs-number">10</span>,shuffle=<span class="hljs-literal">True</span>,random_state=<span class="hljs-number">0</span>)
+    kvals = np.arange(<span class="hljs-number">2</span>,<span class="hljs-number">52</span>,<span class="hljs-number">2</span>)
+    mean_rmses = []
+    <span class="hljs-keyword">for</span> k <span class="hljs-keyword">in</span> tqdm(kvals,desc=<span class="hljs-string">f"<span class="hljs-subst">{title}</span> k-sweep"</span>):
+        fold_rmses = []
+        <span class="hljs-keyword">for</span> trn,tst <span class="hljs-keyword">in</span> tqdm(kf.split(ds),desc=<span class="hljs-string">f"<span class="hljs-subst">{title}</span> folds for k=<span class="hljs-subst">{k}</span>"</span>,leave=<span class="hljs-literal">False</span>):
+            algo = SVD(n_factors=k,n_epochs=<span class="hljs-number">20</span>,verbose=<span class="hljs-literal">False</span>, random_state=<span class="hljs-number">0</span>)
+            algo.fit(trn)
+            preds = algo.test(tst)
+            fold_rmses.append(accuracy.rmse(preds,verbose=<span class="hljs-literal">False</span>))
+        mean_rmses.append(np.mean(fold_rmses))
+    bestk = kvals[np.argmin(mean_rmses)]
+    min_rmse = min(mean_rmses)
+    print(<span class="hljs-string">f"<span class="hljs-subst">{title}</span> Subset - Best RMSE=<span class="hljs-subst">{min_rmse:<span class="hljs-number">.4</span>f}</span> at k=<span class="hljs-subst">{bestk}</span>"</span>)
+    plt.plot(kvals,mean_rmses,marker=<span class="hljs-string">'o'</span>)
+    plt.title(<span class="hljs-string">f"<span class="hljs-subst">{title}</span> - RMSE vs k (10-fold CV)"</span>)
+    plt.xlabel(<span class="hljs-string">"k"</span>)
+    plt.ylabel(<span class="hljs-string">"RMSE"</span>)
+    plt.show()
+    trn2,tst2 = train_test_split(ds,test_size=<span class="hljs-number">0.1</span>,random_state=<span class="hljs-number">0</span>)
+    algo = SVD(n_factors=bestk,n_epochs=<span class="hljs-number">20</span>,verbose=<span class="hljs-literal">False</span>, random_state=<span class="hljs-number">0</span>)
+    algo.fit(trn2)
+    preds = algo.test(tst2)
+    thresholds = [<span class="hljs-number">2.5</span>,<span class="hljs-number">3</span>,<span class="hljs-number">3.5</span>,<span class="hljs-number">4</span>]
+    plt.figure()
+    <span class="hljs-keyword">for</span> thr <span class="hljs-keyword">in</span> thresholds:
+        y_true = [<span class="hljs-number">1</span> <span class="hljs-keyword">if</span> p.r_ui&gt;thr <span class="hljs-keyword">else</span> <span class="hljs-number">0</span> <span class="hljs-keyword">for</span> p <span class="hljs-keyword">in</span> preds]
+        y_score = [p.est <span class="hljs-keyword">for</span> p <span class="hljs-keyword">in</span> preds]
+        fpr,tpr,_ = roc_curve(y_true,y_score)
+        plt.plot(fpr,tpr,label=<span class="hljs-string">f"AUC=<span class="hljs-subst">{auc(fpr,tpr):<span class="hljs-number">.3</span>f}</span>, thr=<span class="hljs-subst">{thr}</span>"</span>)
+    plt.plot([<span class="hljs-number">0</span>,<span class="hljs-number">1</span>],[<span class="hljs-number">0</span>,<span class="hljs-number">1</span>],<span class="hljs-string">'--'</span>,color=<span class="hljs-string">'gray'</span>,alpha=<span class="hljs-number">0.6</span>)
+    plt.title(<span class="hljs-string">f"<span class="hljs-subst">{title}</span> ROC (k=<span class="hljs-subst">{bestk}</span>)"</span>)
+    plt.legend(loc=<span class="hljs-string">'best'</span>)
+    plt.grid(linestyle=<span class="hljs-string">':'</span>)
+    plt.show()
+
+process_subset(pop_dataset,<span class="hljs-string">"Popular"</span>)
+process_subset(unp_dataset,<span class="hljs-string">"Unpopular"</span>)
+process_subset(hv_dataset,<span class="hljs-string">"High-Variance"</span>)
+
+</div></code></pre>
+<pre><code>Full Data k-sweep: 100%|██████████| 25/25 [10:08&lt;00:00, 24.35s/it]
+
+Full Data - Min RMSE=0.8652 at k=26
+Full Data - Min MAE =0.6642 at k=36
+Chosen k by closeness to 19: 26
+</code></pre>
+<p><img src="solution_abhi_files/solution_abhi_53_3.png" alt="png"></p>
+<p><img src="solution_abhi_files/solution_abhi_53_4.png" alt="png"></p>
+<p><img src="solution_abhi_files/solution_abhi_53_5.png" alt="png"></p>
+<pre><code>Popular k-sweep: 100%|██████████| 25/25 [13:57&lt;00:00, 33.50s/it]
+
+Popular Subset - Best RMSE=0.8559 at k=32
+</code></pre>
+<p><img src="solution_abhi_files/solution_abhi_53_9.png" alt="png"></p>
+<p><img src="solution_abhi_files/solution_abhi_53_10.png" alt="png"></p>
+<pre><code>Unpopular k-sweep: 100%|██████████| 25/25 [00:52&lt;00:00,  2.08s/it]
+
+Unpopular Subset - Best RMSE=0.8953 at k=6
+</code></pre>
+<p><img src="solution_abhi_files/solution_abhi_53_14.png" alt="png"></p>
+<p><img src="solution_abhi_files/solution_abhi_53_15.png" alt="png"></p>
+<pre><code>High-Variance k-sweep: 100%|██████████| 25/25 [00:02&lt;00:00, 11.99it/s]
+
+
+High-Variance Subset - Best RMSE=1.5611 at k=40
+</code></pre>
+<p><img src="solution_abhi_files/solution_abhi_53_18.png" alt="png"></p>
+<p><img src="solution_abhi_files/solution_abhi_53_19.png" alt="png"></p>
+<h1 id="question-11">Question 11</h1>
+<h3 id="summary-of-results">Summary of results:</h3>
+<table>
+<thead>
+<tr>
+<th><strong>Subset</strong></th>
+<th><strong>10-fold CV Avg RMSE</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Full Data</td>
+<td>0.9347</td>
+</tr>
+<tr>
+<td>Popular</td>
+<td>0.9308</td>
+</tr>
+<tr>
+<td>Unpopular</td>
+<td>0.8408</td>
+</tr>
+<tr>
+<td>High-Variance</td>
+<td>0.7973</td>
+</tr>
+</tbody>
+</table>
+<pre class="hljs"><code><div><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+<span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+<span class="hljs-keyword">from</span> sklearn.model_selection <span class="hljs-keyword">import</span> KFold, train_test_split
+<span class="hljs-keyword">from</span> sklearn.metrics <span class="hljs-keyword">import</span> mean_squared_error, roc_curve, auc
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">trim_data</span><span class="hljs-params">(raw_data, method=<span class="hljs-string">'popular'</span>, rating_threshold=<span class="hljs-number">2</span>, var_threshold=<span class="hljs-number">2.0</span>, min_var_count=<span class="hljs-number">5</span>)</span>:</span>
+    d={}
+    <span class="hljs-keyword">for</span> (u,i,r,t) <span class="hljs-keyword">in</span> raw_data:
+        <span class="hljs-keyword">if</span> i <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> d:
+            d[i] = []
+        d[i].append(r)
+    <span class="hljs-keyword">if</span> method==<span class="hljs-string">'popular'</span>:
+        keep = {i <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> d <span class="hljs-keyword">if</span> len(d[i])&gt;rating_threshold}
+    <span class="hljs-keyword">elif</span> method==<span class="hljs-string">'unpopular'</span>:
+        keep = {i <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> d <span class="hljs-keyword">if</span> len(d[i])&lt;=rating_threshold}
+    <span class="hljs-keyword">elif</span> method==<span class="hljs-string">'high_variance'</span>:
+        keep = []
+        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> d:
+            <span class="hljs-keyword">if</span> len(d[i])&gt;=min_var_count <span class="hljs-keyword">and</span> np.var(d[i])&gt;=var_threshold:
+                keep.append(i)
+        keep = set(keep)
+    <span class="hljs-keyword">else</span>:
+        <span class="hljs-keyword">raise</span> ValueError(<span class="hljs-string">"Unknown trim method"</span>)
+    <span class="hljs-keyword">return</span> [(u,i,r,t) <span class="hljs-keyword">for</span> (u,i,r,t) <span class="hljs-keyword">in</span> raw_data <span class="hljs-keyword">if</span> i <span class="hljs-keyword">in</span> keep]
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">compute_user_means</span><span class="hljs-params">(data_array)</span>:</span>
+    user_arr   = np.array([row[<span class="hljs-number">0</span>] <span class="hljs-keyword">for</span> row <span class="hljs-keyword">in</span> data_array])
+    rating_arr = np.array([row[<span class="hljs-number">2</span>] <span class="hljs-keyword">for</span> row <span class="hljs-keyword">in</span> data_array])
+    user_set   = np.unique(user_arr)
+    user_mean_dict = {}
+    <span class="hljs-keyword">for</span> user_id <span class="hljs-keyword">in</span> user_set:
+        idx = np.where(user_arr == user_id)
+        user_mean_dict[user_id] = np.mean(rating_arr[idx])
+    <span class="hljs-keyword">return</span> user_mean_dict
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">naive_predict</span><span class="hljs-params">(user_means_dict, user_id)</span>:</span>
+    <span class="hljs-keyword">return</span> user_means_dict.get(user_id, np.mean(list(user_means_dict.values())))
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">naive_cv_and_roc</span><span class="hljs-params">(data_array, title)</span>:</span>
+    user_means_dict = compute_user_means(data_array)
+    data_np = np.array(data_array, dtype=object)
+    kf = KFold(n_splits=<span class="hljs-number">10</span>, shuffle=<span class="hljs-literal">True</span>, random_state=<span class="hljs-number">0</span>)
+    rmses = []
+    <span class="hljs-keyword">for</span> train_idx, test_idx <span class="hljs-keyword">in</span> kf.split(data_np):
+        preds = []
+        truth = []
+        <span class="hljs-keyword">for</span> row <span class="hljs-keyword">in</span> data_np[test_idx]:
+            uid = row[<span class="hljs-number">0</span>]
+            rating_true = row[<span class="hljs-number">2</span>]
+            rating_pred = naive_predict(user_means_dict, uid)
+            preds.append(rating_pred)
+            truth.append(rating_true)
+        rmses.append(mean_squared_error(truth, preds, squared=<span class="hljs-literal">False</span>))
+    mean_rmse = np.mean(rmses)
+    print(<span class="hljs-string">f"<span class="hljs-subst">{title}</span> - 10-fold CV - Avg RMSE: <span class="hljs-subst">{mean_rmse:<span class="hljs-number">.4</span>f}</span>"</span>)
+    idxs = np.arange(len(data_np))
+    train_idx, test_idx = train_test_split(idxs, test_size=<span class="hljs-number">0.1</span>, random_state=<span class="hljs-number">0</span>)
+    train_array = data_np[train_idx]
+    test_array  = data_np[test_idx]
+    user_means_train = compute_user_means(train_array)
+    preds_roc  = []
+    truth_roc  = []
+    <span class="hljs-keyword">for</span> row <span class="hljs-keyword">in</span> test_array:
+        uid = row[<span class="hljs-number">0</span>]
+        truth_roc.append(row[<span class="hljs-number">2</span>])
+        preds_roc.append(naive_predict(user_means_train, uid))
+    thresholds = [<span class="hljs-number">2.5</span>,<span class="hljs-number">3.0</span>,<span class="hljs-number">3.5</span>,<span class="hljs-number">4.0</span>]
+    plt.figure()
+    <span class="hljs-keyword">for</span> thr <span class="hljs-keyword">in</span> thresholds:
+        y_true = [<span class="hljs-number">1</span> <span class="hljs-keyword">if</span> r&gt;thr <span class="hljs-keyword">else</span> <span class="hljs-number">0</span> <span class="hljs-keyword">for</span> r <span class="hljs-keyword">in</span> truth_roc]
+        y_score = preds_roc
+        fpr, tpr, _ = roc_curve(y_true, y_score)
+        roc_auc = auc(fpr, tpr)
+        plt.plot(fpr, tpr, label=<span class="hljs-string">f"AUC=<span class="hljs-subst">{roc_auc:<span class="hljs-number">.3</span>f}</span>, thr=<span class="hljs-subst">{thr}</span>"</span>)
+    plt.plot([<span class="hljs-number">0</span>,<span class="hljs-number">1</span>],[<span class="hljs-number">0</span>,<span class="hljs-number">1</span>],<span class="hljs-string">'--'</span>,color=<span class="hljs-string">'gray'</span>,alpha=<span class="hljs-number">0.6</span>)
+    plt.title(<span class="hljs-string">f"<span class="hljs-subst">{title}</span> Naive Filter - ROC"</span>)
+    plt.xlabel(<span class="hljs-string">"FPR"</span>)
+    plt.ylabel(<span class="hljs-string">"TPR"</span>)
+    plt.legend(loc=<span class="hljs-string">'best'</span>)
+    plt.grid(linestyle=<span class="hljs-string">':'</span>)
+    plt.show()
+
+ratings_data = ratings_dataset.raw_ratings
+pop_data = trim_data(ratings_data,<span class="hljs-string">'popular'</span>,<span class="hljs-number">2</span>)
+unp_data = trim_data(ratings_data,<span class="hljs-string">'unpopular'</span>,<span class="hljs-number">2</span>)
+hv_data  = trim_data(ratings_data,<span class="hljs-string">'high_variance'</span>,<span class="hljs-number">2</span>,<span class="hljs-number">2.0</span>,<span class="hljs-number">5</span>)
+
+naive_cv_and_roc(ratings_data, <span class="hljs-string">"Full Data"</span>)
+naive_cv_and_roc(pop_data, <span class="hljs-string">"Popular"</span>)
+naive_cv_and_roc(unp_data, <span class="hljs-string">"Unpopular"</span>)
+naive_cv_and_roc(hv_data,  <span class="hljs-string">"High-Variance"</span>)
+
+</div></code></pre>
+<pre><code>Full Data - 10-fold CV - Avg RMSE: 0.9347
+</code></pre>
+<p><img src="solution_abhi_files/solution_abhi_56_1.png" alt="png"></p>
+<pre><code>Popular - 10-fold CV - Avg RMSE: 0.9308
+</code></pre>
+<p><img src="solution_abhi_files/solution_abhi_56_3.png" alt="png"></p>
+<pre><code>Unpopular - 10-fold CV - Avg RMSE: 0.8408
+</code></pre>
+<p><img src="solution_abhi_files/solution_abhi_56_5.png" alt="png"></p>
+<pre><code>High-Variance - 10-fold CV - Avg RMSE: 0.7973
+</code></pre>
+<p><img src="solution_abhi_files/solution_abhi_56_7.png" alt="png"></p>
+<h1 id="question-12">Question 12</h1>
+<h3 id="from-the-firgure-below-please-note-that-these-rocs-are-plotted-at-the-optimal-ks-for-each-cf-we-can-see-that-svd-cf-performs-best-among-all-the-cf-followed-by-k-nn-cf-and-nnmf-cf-coming-last-we-explain-the-performance-as-follows">From the firgure below (please note that these ROCs are plotted at the optimal k's for each CF), we can see that SVD CF performs best among all the CF, followed by k-NN CF and NNMF-CF coming last. We explain the performance as follows:</h3>
+<h3 id="svd-vs-nmf"><strong>SVD vs NMF</strong>:</h3>
+<h3 id="svd-is-able-to-better-represent-the-higher-dimensional-feature-matrix-due-to-no-constraints-on-u-and-v-providing-a-deep-factorization-with-low-information-loss-nmf-on-the-other-hand-restricts-u-and-v-to-be-positive-and-has-fewer-optimal-choices-of-elements-in-u-and-v-compared-to-svd">SVD is able to better represent the higher-dimensional feature matrix due to no constraints on U and V, providing a deep factorization with low information loss. NMF on the other hand, restricts U and V to be positive and has fewer optimal choices of elements in U and V compared to SVD.</h3>
+<h3 id="svd-produces-a-hierarchical-and-geometric-basis-ordered-by-relevance-producing-embeddings-with-the-most-relevant-features-and-traits-in-the-ratings-matrix-higher-in-the-hierarchy-thus-embeddingsproduced-by-svd-are-robust-to-outliers-and-noise-in-the-ratings-thanks-to-the-ordering-of-the-features-nmf-on-the-other-hand-does-not-consider-the-geometry-in-the-ratings-matrix">SVD produces a hierarchical and geometric basis ordered by relevance, producing embeddings with the most relevant features and traits in the ratings matrix higher in the hierarchy. Thus, embeddingsproduced by SVD are robust to outliers and noise in the ratings thanks to the ordering of the features. NMF, on the other hand, does not consider the geometry in the ratings matrix.</h3>
+<h3 id="the-embeddings-produced-by-svd-are-unique-and-deterministic-whereas-nmf-is-non-unique-and-stochastic-with-no-guarantees-of-convergence-to-the-optimal-u-and-v-each-time-the-function-is-called">The embeddings produced by SVD are unique and deterministic, whereas NMF is non-unique and stochastic, with no guarantees of convergence to the optimal U and V each time the function is called.</h3>
+<h3 id="svd-takes-into-account-user-and-movie-specific-bias-information-and-normalizes-them-appropriately-to-reduce-sensitivity-to-outliers-and-noise">SVD takes into account user and movie-specific bias information and normalizes them appropriately to reduce sensitivity to outliers and noise.</h3>
+<h3 id="why-svd-edges-k-nn"><strong>Why SVD edges k-NN</strong>:</h3>
+<h3 id="k-nn-is-not-modeling-the-bias-information-separately-for-each-user-or-item-as-a-result-it-is-more-sensitive-to-outliers-and-rarely-rated-items">k-NN is not modeling the bias information separately for each user or item. As a result, it is more sensitive to outliers and rarely rated items.</h3>
+<h3 id="k-nn-performs-inference-directly-on-the-sparse-ratings-matrix-which-yields-poor-prediction-accuracy-in-high-dimensional-space-curse-of-dimensionality-this-also-hurts-the-scalability-of-the-recommender-system-high-dimensional-inference-requires-large-amounts-of-training-data-to-work-properly-which-is-absent-as-the-ratings-matrix-is-sparse">k-NN performs inference directly on the sparse ratings matrix, which yields poor prediction accuracy in high-dimensional space (curse of dimensionality). This also hurts the scalability of the recommender system. High-dimensional inference requires large amounts of training data to work properly, which is absent as the ratings matrix is sparse.</h3>
+<h3 id="k-nn-is-much-less-generalizable-compared-to-latent-factor-based-models-as-it-cannot-find-semantic-information-and-connections-within-the-user-item-ratings-matrix-while-being-sensitive-to-rarely-rated-items">k-NN is much less generalizable compared to latent-factor based models, as it cannot find semantic information and connections within the user-item ratings matrix while being sensitive to rarely rated items.</h3>
+<pre class="hljs"><code><div><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+<span class="hljs-keyword">from</span> surprise <span class="hljs-keyword">import</span> SVD, NMF, KNNWithMeans
+<span class="hljs-keyword">from</span> surprise <span class="hljs-keyword">import</span> accuracy
+<span class="hljs-keyword">from</span> surprise.model_selection <span class="hljs-keyword">import</span> train_test_split
+<span class="hljs-keyword">from</span> sklearn.metrics <span class="hljs-keyword">import</span> roc_curve, auc
+
+<span class="hljs-comment"># Use Surprise's train_test_split, NOT sklearn's, on your Surprise dataset</span>
+trainset, testset = train_test_split(ratings_dataset, test_size=<span class="hljs-number">0.1</span>, random_state=<span class="hljs-number">0</span>)
+
+<span class="hljs-comment"># Fit each model on the Surprise 'trainset'</span>
+res_SVD  = SVD(n_factors=<span class="hljs-number">26</span>, n_epochs=<span class="hljs-number">20</span>, verbose=<span class="hljs-literal">False</span>).fit(trainset).test(testset)
+res_NMF  = NMF(n_factors=<span class="hljs-number">18</span>, n_epochs=<span class="hljs-number">50</span>, verbose=<span class="hljs-literal">False</span>).fit(trainset).test(testset)
+res_KNN  = KNNWithMeans(k=<span class="hljs-number">20</span>, sim_options={<span class="hljs-string">'name'</span>:<span class="hljs-string">'pearson'</span>}, verbose=<span class="hljs-literal">False</span>).fit(trainset).test(testset)
+
+fig, ax = plt.subplots()
+
+thresholded_out = []
+<span class="hljs-keyword">for</span> row <span class="hljs-keyword">in</span> res_SVD:
+    thresholded_out.append(<span class="hljs-number">1</span> <span class="hljs-keyword">if</span> row.r_ui &gt; <span class="hljs-number">3</span> <span class="hljs-keyword">else</span> <span class="hljs-number">0</span>)
+fpr, tpr, _ = roc_curve(thresholded_out, [row.est <span class="hljs-keyword">for</span> row <span class="hljs-keyword">in</span> res_SVD])
+ax.plot(fpr, tpr, lw=<span class="hljs-number">2</span>, linestyle=<span class="hljs-string">':'</span>, label=<span class="hljs-string">"AUC: "</span>+str(auc(fpr,tpr))+<span class="hljs-string">", SVD"</span>)
+
+thresholded_out = []
+<span class="hljs-keyword">for</span> row <span class="hljs-keyword">in</span> res_NMF:
+    thresholded_out.append(<span class="hljs-number">1</span> <span class="hljs-keyword">if</span> row.r_ui &gt; <span class="hljs-number">3</span> <span class="hljs-keyword">else</span> <span class="hljs-number">0</span>)
+fpr, tpr, _ = roc_curve(thresholded_out, [row.est <span class="hljs-keyword">for</span> row <span class="hljs-keyword">in</span> res_NMF])
+ax.plot(fpr, tpr, lw=<span class="hljs-number">2</span>, linestyle=<span class="hljs-string">':'</span>, label=<span class="hljs-string">"AUC: "</span>+str(auc(fpr,tpr))+<span class="hljs-string">", NMF"</span>)
+
+thresholded_out = []
+<span class="hljs-keyword">for</span> row <span class="hljs-keyword">in</span> res_KNN:
+    thresholded_out.append(<span class="hljs-number">1</span> <span class="hljs-keyword">if</span> row.r_ui &gt; <span class="hljs-number">3</span> <span class="hljs-keyword">else</span> <span class="hljs-number">0</span>)
+fpr, tpr, _ = roc_curve(thresholded_out, [row.est <span class="hljs-keyword">for</span> row <span class="hljs-keyword">in</span> res_KNN])
+ax.plot(fpr, tpr, lw=<span class="hljs-number">2</span>, linestyle=<span class="hljs-string">':'</span>, label=<span class="hljs-string">"AUC: "</span>+str(auc(fpr,tpr))+<span class="hljs-string">", KNN"</span>)
+
+ax.plot([<span class="hljs-number">0</span>,<span class="hljs-number">1</span>], [<span class="hljs-number">0</span>,<span class="hljs-number">1</span>], linestyle=<span class="hljs-string">'--'</span>, lw=<span class="hljs-number">2</span>, color=<span class="hljs-string">'g'</span>, label=<span class="hljs-string">'Chance'</span>, alpha=<span class="hljs-number">.5</span>)
+ax.legend(loc=<span class="hljs-string">'best'</span>)
+ax.grid(linestyle=<span class="hljs-string">':'</span>)
+ax.set_title(<span class="hljs-string">'ROC characteristics for SVD (MF), NMF and KNN'</span>)
+ax.set_xlabel(<span class="hljs-string">'FPR'</span>)
+ax.set_ylabel(<span class="hljs-string">'TPR'</span>)
+plt.show()
+
+</div></code></pre>
+<p><img src="solution_abhi_files/solution_abhi_59_0.png" alt="png"></p>
+
+</body>
+</html>

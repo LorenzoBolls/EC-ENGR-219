@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>lorenzo.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="part-9">Part 9</h1>
+<pre class="hljs"><code><div>!!pip install lightgbm
+</div></code></pre>
+<pre class="hljs"><code><div><span class="hljs-keyword">from</span> sklearn.datasets <span class="hljs-keyword">import</span> load_svmlight_file
+<span class="hljs-keyword">from</span> sklearn.metrics <span class="hljs-keyword">import</span> ndcg_score
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+
+<span class="hljs-comment"># Load the dataset for one fold</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">load_one_fole</span><span class="hljs-params">(data_path)</span>:</span>
+    X_train, y_train, qid_train = load_svmlight_file(str(data_path + <span class="hljs-string">'train.txt'</span>), query_id=<span class="hljs-literal">True</span>)
+    X_test, y_test, qid_test = load_svmlight_file(str(data_path + <span class="hljs-string">'test.txt'</span>), query_id=<span class="hljs-literal">True</span>)
+    y_train = y_train.astype(int)
+    y_test = y_test.astype(int)
+    _, group_train = np.unique(qid_train, return_counts=<span class="hljs-literal">True</span>)
+    _, group_test = np.unique(qid_test, return_counts=<span class="hljs-literal">True</span>)
+    <span class="hljs-keyword">return</span> X_train, y_train, qid_train, group_train, X_test, y_test, qid_test, group_test
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">ndcg_single_query</span><span class="hljs-params">(y_score, y_true, k)</span>:</span>
+    order = np.argsort(y_score)[::<span class="hljs-number">-1</span>]
+    y_true = np.take(y_true, order[:k])
+
+    gain = <span class="hljs-number">2</span> ** y_true - <span class="hljs-number">1</span>
+
+    discounts = np.log2(np.arange(len(y_true)) + <span class="hljs-number">2</span>)
+    <span class="hljs-keyword">return</span> np.sum(gain / discounts)
+
+<span class="hljs-comment"># calculate NDCG score given a trained model </span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">compute_ndcg_all</span><span class="hljs-params">(model, X_test, y_test, qids_test, k=<span class="hljs-number">10</span>)</span>:</span>
+    unique_qids = np.unique(qids_test)
+    ndcg_ = list()
+    <span class="hljs-keyword">for</span> i, qid <span class="hljs-keyword">in</span> enumerate(unique_qids):
+        y = y_test[qids_test == qid]
+
+        <span class="hljs-keyword">if</span> np.sum(y) == <span class="hljs-number">0</span>:
+            <span class="hljs-keyword">continue</span>
+
+        p = model.predict(X_test[qids_test == qid])
+
+        idcg = ndcg_single_query(y, y, k=k)
+        ndcg_.append(ndcg_single_query(p, y, k=k) / idcg)
+    <span class="hljs-keyword">return</span> np.mean(ndcg_)
+
+<span class="hljs-comment"># get importance of features</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_feature_importance</span><span class="hljs-params">(model, importance_type=<span class="hljs-string">'gain'</span>)</span>:</span>
+    <span class="hljs-keyword">return</span> model.booster_.feature_importance(importance_type=importance_type)
+</div></code></pre>
+<h1 id="question-13">Question 13</h1>
+<pre class="hljs"><code><div><span class="hljs-keyword">import</span> os
+<span class="hljs-keyword">import</span> zipfile
+<span class="hljs-keyword">from</span> sklearn.datasets <span class="hljs-keyword">import</span> load_svmlight_file
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+<span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+
+file_path = <span class="hljs-string">"MSLR-WEB10K.zip"</span>
+destination_path = <span class="hljs-string">"MSLR-WEB10K"</span>
+
+<span class="hljs-comment"># checks if the folder already exists, if not extract</span>
+<span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> os.path.exists(destination_path):
+    <span class="hljs-keyword">with</span> zipfile.ZipFile(file_path, <span class="hljs-string">'r'</span>) <span class="hljs-keyword">as</span> zip_ref:
+        zip_ref.extractall(destination_path)
+        
+data_path = <span class="hljs-string">"./MSLR-WEB10K/Fold1/"</span>
+
+<span class="hljs-comment"># loading dataset</span>
+X_train, y_train, qid_train = load_svmlight_file(str(data_path + <span class="hljs-string">"train.txt"</span>), query_id=<span class="hljs-literal">True</span>)
+
+<span class="hljs-comment"># converting relevance labels to integers</span>
+y_train = y_train.astype(int)
+
+num_unique_queries = len(np.unique(qid_train))
+print(<span class="hljs-string">f"Number of unique queries: <span class="hljs-subst">{num_unique_queries}</span>"</span>)
+
+<span class="hljs-comment"># computing the distribution of relevance labels</span>
+relevance_counts = np.bincount(y_train, minlength=<span class="hljs-number">5</span>) 
+print(<span class="hljs-string">"Relevance Label Distribution:"</span>)
+<span class="hljs-keyword">for</span> label, count <span class="hljs-keyword">in</span> enumerate(relevance_counts):
+    print(<span class="hljs-string">f"Label <span class="hljs-subst">{label}</span>: <span class="hljs-subst">{count}</span> occurrences"</span>)
+
+<span class="hljs-comment"># ploting distribution of relevence labels</span>
+plt.figure(figsize=(<span class="hljs-number">8</span>, <span class="hljs-number">5</span>))
+plt.bar(range(<span class="hljs-number">5</span>), relevance_counts, tick_label=[<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>])
+plt.xlabel(<span class="hljs-string">"Relevance Label"</span>)
+plt.ylabel(<span class="hljs-string">"Frequency"</span>)
+plt.title(<span class="hljs-string">"Distribution of Relevance Labels in Training Data"</span>)
+plt.show()
+</div></code></pre>
+<h4 id="output">Output:</h4>
+<p>Number of unique queries: 6000<br>
+Relevance Label Distribution:<br>
+Label 0: 377957 occurrences<br>
+Label 1: 232569 occurrences<br>
+Label 2: 95082 occurrences<br>
+Label 3: 12658 occurrences<br>
+Label 4: 5146 occurrences</p>
+<p><img src="lorenzo_images/Q13.png" alt="Distribution of Relevance Data"></p>
+<h1 id="question-14">Question 14</h1>
+<pre class="hljs"><code><div><span class="hljs-keyword">import</span> lightgbm <span class="hljs-keyword">as</span> lgb
+<span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd
+<span class="hljs-keyword">from</span> IPython.display <span class="hljs-keyword">import</span> display
+
+<span class="hljs-comment"># definitions</span>
+dataset_path = <span class="hljs-string">"./MSLR-WEB10K/"</span>
+folds = [<span class="hljs-string">f"Fold<span class="hljs-subst">{i}</span>"</span> <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">1</span>, <span class="hljs-number">6</span>)]
+ndcg_k_values = [<span class="hljs-number">3</span>, <span class="hljs-number">5</span>, <span class="hljs-number">10</span>]
+
+<span class="hljs-comment"># Dictionary to store results</span>
+results = {}
+
+<span class="hljs-comment"># Loop through each fold</span>
+<span class="hljs-keyword">for</span> fold <span class="hljs-keyword">in</span> folds:
+    print(<span class="hljs-string">f"\n<span class="hljs-subst">{fold}</span> Training:\n"</span>)
+    
+    <span class="hljs-comment"># load training and testing data</span>
+    data_path = os.path.join(dataset_path, fold)
+    X_train, y_train, qid_train = load_svmlight_file(os.path.join(data_path, <span class="hljs-string">"train.txt"</span>), query_id=<span class="hljs-literal">True</span>)
+    X_test, y_test, qid_test = load_svmlight_file(os.path.join(data_path, <span class="hljs-string">"test.txt"</span>), query_id=<span class="hljs-literal">True</span>)
+
+    <span class="hljs-comment"># LightGBM dataset format</span>
+    train_data = lgb.Dataset(X_train, label=y_train, group=np.bincount(qid_train.astype(int)))
+    test_data = lgb.Dataset(X_test, label=y_test, group=np.bincount(qid_test.astype(int)), reference=train_data)
+
+    <span class="hljs-comment"># LightGBM parameters</span>
+    params = {
+        <span class="hljs-string">"objective"</span>: <span class="hljs-string">"lambdarank"</span>,
+        <span class="hljs-string">"metric"</span>: <span class="hljs-string">"ndcg"</span>,
+        <span class="hljs-string">"ndcg_eval_at"</span>: ndcg_k_values,  
+        <span class="hljs-string">"learning_rate"</span>: <span class="hljs-number">0.05</span>, 
+        <span class="hljs-string">"boosting_type"</span>: <span class="hljs-string">"gbdt"</span>,
+        <span class="hljs-string">"lambda_l1"</span>: <span class="hljs-number">0.1</span>, 
+        <span class="hljs-string">"lambda_l2"</span>: <span class="hljs-number">0.1</span>,  
+        <span class="hljs-string">"verbosity"</span>: <span class="hljs-number">-1</span> 
+    }
+
+
+    <span class="hljs-comment"># training LightGBM model</span>
+    model = lgb.train(params, train_data, num_boost_round=<span class="hljs-number">100</span>, valid_sets=[test_data])  
+
+
+    <span class="hljs-comment"># test set score predictions</span>
+    y_pred = model.predict(X_test)
+
+    ndcg_scores = {<span class="hljs-string">f"nDCG@<span class="hljs-subst">{k}</span>"</span>: ndcg_score([y_test], [y_pred], k=k) <span class="hljs-keyword">for</span> k <span class="hljs-keyword">in</span> ndcg_k_values}
+
+    results[fold] = ndcg_scores
+
+    <span class="hljs-comment"># Print nDCG results</span>
+    print(<span class="hljs-string">f"\n<span class="hljs-subst">{fold}</span> Performance:"</span>)
+    <span class="hljs-keyword">for</span> metric, score <span class="hljs-keyword">in</span> ndcg_scores.items():
+        print(<span class="hljs-string">f"<span class="hljs-subst">{metric}</span>: <span class="hljs-subst">{score:<span class="hljs-number">.4</span>f}</span>"</span>)
+
+
+results_df = pd.DataFrame(results).T
+<span class="hljs-comment"># Simply print the DataFrame</span>
+print(<span class="hljs-string">"Final nDCG Scores:"</span>)
+display(results_df)
+</div></code></pre>
+<h4 id="output">Output:</h4>
+<p>Fold1 Performance:<br>
+nDCG@3: 1.0000<br>
+nDCG@5: 1.0000<br>
+nDCG@10: 0.9266</p>
+<p>Fold2 Performance:<br>
+nDCG@3: 1.0000<br>
+nDCG@5: 1.0000<br>
+nDCG@10: 0.9841</p>
+<p>Fold3 Performance:<br>
+nDCG@3: 0.8827<br>
+nDCG@5: 0.9152<br>
+nDCG@10: 0.8936</p>
+<p>Fold4 Performance:<br>
+nDCG@3: 0.9260<br>
+nDCG@5: 0.9465<br>
+nDCG@10: 0.9487</p>
+<p>Fold5 Performance:<br>
+nDCG@3: 0.8520<br>
+nDCG@5: 0.8930<br>
+nDCG@10: 0.9306<br>
+Final nDCG Scores:</p>
+<table>
+<thead>
+<tr>
+<th>Fold</th>
+<th>nDCG@3</th>
+<th>nDCG@5</th>
+<th>nDCG@10</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fold1</td>
+<td>1.000000</td>
+<td>1.000000</td>
+<td>0.926636</td>
+</tr>
+<tr>
+<td>Fold2</td>
+<td>1.000000</td>
+<td>1.000000</td>
+<td>0.984095</td>
+</tr>
+<tr>
+<td>Fold3</td>
+<td>0.882680</td>
+<td>0.915210</td>
+<td>0.893567</td>
+</tr>
+<tr>
+<td>Fold4</td>
+<td>0.925980</td>
+<td>0.946503</td>
+<td>0.948721</td>
+</tr>
+<tr>
+<td>Fold5</td>
+<td>0.851959</td>
+<td>0.893007</td>
+<td>0.930569</td>
+</tr>
+</tbody>
+</table>
+<h1 id="question-15-result-analysis-and-interpretation">QUESTION 15: Result Analysis and Interpretation:</h1>
+<p>For each of the five provided folds, list top 5 most important features of the model based on
+the importance score. Please use model.booster .feature importance(importance type=’gain’) as
+demonstrated here for retrieving importance score per feature. You can also find helper code in the
+provided notebook.</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_feature_importance</span><span class="hljs-params">(model, importance_type=<span class="hljs-string">'gain'</span>)</span>:</span>
+    importance_scores = model.feature_importance(importance_type=importance_type)
+    feature_names = model.feature_name()
+    importance_dict = {name: score <span class="hljs-keyword">for</span> name, score <span class="hljs-keyword">in</span> zip(feature_names, importance_scores)}
+    <span class="hljs-keyword">return</span> sorted(importance_dict.items(), key=<span class="hljs-keyword">lambda</span> x: x[<span class="hljs-number">1</span>], reverse=<span class="hljs-literal">True</span>)[:<span class="hljs-number">5</span>]
+</div></code></pre>
+<pre class="hljs"><code><div><span class="hljs-comment"># Define training parameters</span>
+training_params = {
+    <span class="hljs-string">'objective'</span>: <span class="hljs-string">'lambdarank'</span>,
+    <span class="hljs-string">'metric'</span>: <span class="hljs-string">'ndcg'</span>,
+    <span class="hljs-string">'learning_rate'</span>: <span class="hljs-number">0.1</span>,
+    <span class="hljs-string">'num_leaves'</span>: <span class="hljs-number">31</span>,
+    <span class="hljs-string">'verbose'</span>: <span class="hljs-number">-1</span>
+}
+
+<span class="hljs-comment"># Set base directory for data</span>
+base_dir = <span class="hljs-string">'./MSLR-WEB10K/Fold'</span>
+
+<span class="hljs-comment"># Store feature importances across folds</span>
+all_feature_importances = []
+
+<span class="hljs-comment"># Iterate through each fold (1 to 5)</span>
+<span class="hljs-keyword">for</span> fold <span class="hljs-keyword">in</span> range(<span class="hljs-number">1</span>, <span class="hljs-number">6</span>):
+    fold_data_dir = base_dir + str(fold) + <span class="hljs-string">"/"</span>  <span class="hljs-comment"># Generate fold-specific directory path</span>
+    
+    <span class="hljs-comment"># Load training and test data for this fold</span>
+    train_features, train_labels, train_qids, train_groups, test_features, test_labels, test_qids, test_groups = load_one_fole(fold_data_dir)
+
+    <span class="hljs-comment"># Create dataset objects for training and evaluation</span>
+    training_set = lgb.Dataset(train_features, label=train_labels, group=train_groups)
+    validation_set = lgb.Dataset(test_features, label=test_labels, group=test_groups, reference=training_set)
+
+    <span class="hljs-comment"># Train the LightGBM model</span>
+    model = lgb.train(training_params, training_set, num_boost_round=<span class="hljs-number">100</span>, valid_sets=[validation_set])
+
+    <span class="hljs-comment"># Extract and display top 5 feature importances</span>
+    important_features = get_feature_importance(model, importance_type=<span class="hljs-string">'gain'</span>)
+    print(<span class="hljs-string">f"Top 5 Features in Fold <span class="hljs-subst">{fold}</span> (by gain):"</span>)
+    <span class="hljs-keyword">for</span> feature_name, feature_value <span class="hljs-keyword">in</span> important_features:
+        print(<span class="hljs-string">f"<span class="hljs-subst">{feature_name}</span>: <span class="hljs-subst">{feature_value}</span>"</span>)
+</div></code></pre>
+<p>Resulting Output:</p>
+<p>Top 5 Features in Fold 1 (by gain):
+Column_133: 23856.702950954437
+Column_7: 4248.546391487122
+Column_107: 4135.244449853897
+Column_54: 4078.4632263183594
+Column_129: 3635.03702378273
+Top 5 Features in Fold 2 (by gain):
+Column_133: 23578.90825009346
+Column_7: 5157.964912414551
+Column_54: 4386.669756650925
+Column_107: 4094.0121722221375
+Column_129: 4035.0706725120544
+Top 5 Features in Fold 3 (by gain):
+Column_133: 23218.075441122055
+Column_54: 4991.3033719062805
+Column_107: 4226.807395458221
+Column_129: 4059.7525141239166
+Column_7: 3691.792320251465
+Top 5 Features in Fold 4 (by gain):
+Column_133: 23796.899673223495
+Column_7: 4622.622978448868
+Column_54: 3883.4817056655884
+Column_129: 3356.8469800949097
+Column_128: 3207.5755367279053
+Top 5 Features in Fold 5 (by gain):
+Column_133: 23540.94235444069
+Column_7: 4794.9451723098755
+Column_54: 4079.608554124832
+Column_107: 3514.8357515335083
+Column_129: 3209.0584440231323</p>
+<h1 id="question-16-experiments-with-subset-of-features">QUESTION 16: Experiments with Subset of Features:</h1>
+<p>For each of the five provided folds:</p>
+<ul>
+<li>
+<p>Remove the top 20 most important features according to the computed importance score in
+the question 15. Then train a new LightGBM model on the resulted 116 dimensional query-
+url data. Evaluate the performance of this new model on the test set using nDCG. Does
+the outcome align with your expectations? If not, please share your hypothesis regarding the
+potential reasons for this discrepancy.</p>
+</li>
+<li>
+<p>Remove the 60 least important features according to the computed importance score in the
+question 15. Then train a new LightGBM model on the resulted 76 dimensional query-url data.
+Evaluate the performance of this new model on the test set using nDCG. Does the outcome
+align with your expectations? If not, please share your hypothesis regarding the potential
+reasons for this discrepancy.</p>
+</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-comment"># Load the dataset for one fold</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">load_one_fole</span><span class="hljs-params">(data_path)</span>:</span>
+    X_train, y_train, qid_train = load_svmlight_file(str(data_path + <span class="hljs-string">'train.txt'</span>), query_id=<span class="hljs-literal">True</span>)
+    X_test, y_test, qid_test = load_svmlight_file(str(data_path + <span class="hljs-string">'test.txt'</span>), query_id=<span class="hljs-literal">True</span>)
+    y_train = y_train.astype(int)
+    y_test = y_test.astype(int)
+    _, group_train = np.unique(qid_train, return_counts=<span class="hljs-literal">True</span>)
+    _, group_test = np.unique(qid_test, return_counts=<span class="hljs-literal">True</span>)
+    <span class="hljs-keyword">return</span> X_train, y_train, qid_train, group_train, X_test, y_test, qid_test, group_test
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">ndcg_single_query</span><span class="hljs-params">(y_score, y_true, k)</span>:</span>
+    order = np.argsort(y_score)[::<span class="hljs-number">-1</span>]
+    y_true = np.take(y_true, order[:k])
+
+    gain = <span class="hljs-number">2</span> ** y_true - <span class="hljs-number">1</span>
+
+    discounts = np.log2(np.arange(len(y_true)) + <span class="hljs-number">2</span>)
+    <span class="hljs-keyword">return</span> np.sum(gain / discounts)
+
+<span class="hljs-comment"># calculate NDCG score given a trained model </span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">compute_ndcg_all</span><span class="hljs-params">(model, X_test, y_test, qids_test, k=<span class="hljs-number">10</span>)</span>:</span>
+    unique_qids = np.unique(qids_test)
+    ndcg_ = list()
+    <span class="hljs-keyword">for</span> i, qid <span class="hljs-keyword">in</span> enumerate(unique_qids):
+        y = y_test[qids_test == qid]
+
+        <span class="hljs-keyword">if</span> np.sum(y) == <span class="hljs-number">0</span>:
+            <span class="hljs-keyword">continue</span>
+
+        p = model.predict(X_test[qids_test == qid])
+
+        idcg = ndcg_single_query(y, y, k=k)
+        ndcg_.append(ndcg_single_query(p, y, k=k) / idcg)
+    <span class="hljs-keyword">return</span> np.mean(ndcg_)
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_important_features_indices</span><span class="hljs-params">(model, num_features, least_important=False)</span>:</span>
+    <span class="hljs-comment"># Extract feature importances based on gain</span>
+    feature_importances = model.feature_importance(importance_type=<span class="hljs-string">'gain'</span>)
+    
+    <span class="hljs-comment"># Determine whether to return least or most important features</span>
+    sorted_indices = np.argsort(feature_importances)
+    <span class="hljs-keyword">return</span> sorted_indices[:num_features] <span class="hljs-keyword">if</span> least_important <span class="hljs-keyword">else</span> sorted_indices[-num_features:]
+</div></code></pre>
+<pre class="hljs"><code><div><span class="hljs-comment"># Define LightGBM parameters</span>
+params = {
+    <span class="hljs-string">'objective'</span>: <span class="hljs-string">'lambdarank'</span>,
+    <span class="hljs-string">'metric'</span>: <span class="hljs-string">'ndcg'</span>,
+    <span class="hljs-string">'learning_rate'</span>: <span class="hljs-number">0.1</span>,
+    <span class="hljs-string">'num_leaves'</span>: <span class="hljs-number">31</span>,
+    <span class="hljs-string">'verbose'</span>: <span class="hljs-number">-1</span>
+}
+
+<span class="hljs-comment"># Base path for dataset folds</span>
+base_data_path = <span class="hljs-string">'./MSLR-WEB10K/Fold'</span>
+
+<span class="hljs-comment"># Iterate through each fold</span>
+<span class="hljs-keyword">for</span> fold_idx <span class="hljs-keyword">in</span> range(<span class="hljs-number">1</span>, <span class="hljs-number">6</span>):
+    data_path = base_data_path + str(fold_idx) + <span class="hljs-string">"/"</span>  <span class="hljs-comment"># Generate the fold-specific path</span>
+    X_train, y_train, qid_train, group_train, X_test, y_test, qid_test, group_test = load_one_fole(data_path)
+
+    <span class="hljs-comment"># Prepare LightGBM datasets</span>
+    train_data = lgb.Dataset(X_train, label=y_train, group=group_train)
+    test_data = lgb.Dataset(X_test, label=y_test, group=group_test, reference=train_data)
+
+    <span class="hljs-comment"># Train the initial model</span>
+    model = lgb.train(params, train_data, num_boost_round=<span class="hljs-number">100</span>, valid_sets=[test_data])
+
+    <span class="hljs-comment"># Identify and remove the top 20 most important features</span>
+    top_features_indices = get_important_features_indices(model, <span class="hljs-number">20</span>)
+    X_train_reduced_top, X_test_reduced_top = X_train[:, top_features_indices], X_test[:, top_features_indices]
+    train_data_reduced_top = lgb.Dataset(X_train_reduced_top, label=y_train, group=group_train)
+    test_data_reduced_top = lgb.Dataset(X_test_reduced_top, label=y_test, group=group_test)
+
+    <span class="hljs-comment"># Retrain with top features removed</span>
+    model_reduced_top = lgb.train(params, train_data_reduced_top, num_boost_round=<span class="hljs-number">100</span>, valid_sets=[test_data_reduced_top])
+    ndcg_score_reduced_top = compute_ndcg_all(model_reduced_top, X_test_reduced_top, y_test, qid_test)
+    print(<span class="hljs-string">"Fold {}, Top 20 Features Removed, NDCG Score: {}"</span>.format(fold_idx, ndcg_score_reduced_top))
+
+    <span class="hljs-comment"># Identify and remove the bottom 60 least important features</span>
+    bottom_features_indices = get_important_features_indices(model, <span class="hljs-number">60</span>, least_important=<span class="hljs-literal">True</span>)
+    X_train_reduced_bottom, X_test_reduced_bottom = X_train[:, bottom_features_indices], X_test[:, bottom_features_indices]
+    train_data_reduced_bottom = lgb.Dataset(X_train_reduced_bottom, label=y_train, group=group_train)
+    test_data_reduced_bottom = lgb.Dataset(X_test_reduced_bottom, label=y_test, group=group_test)
+
+    <span class="hljs-comment"># Retrain with bottom features removed</span>
+    model_reduced_bottom = lgb.train(params, train_data_reduced_bottom, num_boost_round=<span class="hljs-number">100</span>, valid_sets=[test_data_reduced_bottom])
+    ndcg_score_reduced_bottom = compute_ndcg_all(model_reduced_bottom, X_test_reduced_bottom, y_test, qid_test)
+    print(<span class="hljs-string">"Fold {}, Bottom 60 Features Removed, NDCG Score: {}"</span>.format(fold_idx, ndcg_score_reduced_bottom))
+</div></code></pre>
+<h1 id="resulting-output">Resulting Output:</h1>
+<p>Fold 1, Top 20 Features Removed, NDCG Score: 0.47827689648179766
+Fold 1, Bottom 60 Features Removed, NDCG Score: 0.3725346737876415
+Fold 2, Top 20 Features Removed, NDCG Score: 0.4738541279047724
+Fold 2, Bottom 60 Features Removed, NDCG Score: 0.35378669585571704
+Fold 3, Top 20 Features Removed, NDCG Score: 0.47214671154446586
+Fold 3, Bottom 60 Features Removed, NDCG Score: 0.367133083900162
+Fold 4, Top 20 Features Removed, NDCG Score: 0.4800954917400635
+Fold 4, Bottom 60 Features Removed, NDCG Score: 0.37409776466008327
+Fold 5, Top 20 Features Removed, NDCG Score: 0.4839351910646641
+Fold 5, Bottom 60 Features Removed, NDCG Score: 0.35427364869638417</p>
+<p>Answer to questions:</p>
+<p>As we can see, removing the top 20 most important features significantly dropped nDCG scores from around 0.85-1.0 to 0.47-0.48. This is expected since these features had the highest predictive power. Also, when we remove the 60 least important features, it lowered scores even more to 0.35-0.37, which shows that these features still contributed useful ranking signals. This suggests that feature interactions and regularization effects did play a role where unimportant features improved performance. This also might mean that low importance features might not be useful alone, but together they could contribute meaningfully to the model when combined with other features.  Overall, the results show that removing high importance features weakens the model, but blindly eliminating low importance ones can also be harmful because of the loss of weak but still useful signals.</p>
+
+</body>
+</html>

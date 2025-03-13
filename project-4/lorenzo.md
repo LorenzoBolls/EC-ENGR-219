@@ -85,3 +85,86 @@ print(df_statistics)
 | #nfl       | 397.0214           | 4662.3754              | 1.5345               |
 | #gohawks   | 292.4879           | 2217.9237              | 2.0132               |
 | #gopatriots| 40.9547            | 1427.2526              | 1.4082               |
+
+<br />
+
+# Question 9.2
+
+```python
+from json import loads
+import os
+import pandas as pd
+import numpy as np
+from collections import defaultdict
+import datetime
+import matplotlib.pyplot as plt
+import matplotlib.dates as mdates
+
+tweet_directory = './ECE219_tweet_data/'
+
+def process_hashtag_file(file):
+    hashtag_name = file.split('.')[0].split('_')[1]
+    tweets_per_hour = defaultdict(int)
+
+    with open(os.path.join(tweet_directory, file), encoding="utf8") as tweet_file:
+        for line in tweet_file:
+            tweet_data = loads(line.strip())
+            tweet_time = tweet_data['citation_date']
+
+            # convert to hourly timestamp
+            timestamp = datetime.datetime.fromtimestamp(tweet_time)
+            hourly_timestamp = timestamp.replace(minute=0, second=0, microsecond=0)
+
+            tweets_per_hour[hourly_timestamp] += 1
+
+    return hashtag_name, tweets_per_hour
+
+superbowl_file = 'tweets_#superbowl.txt'
+nfl_file = 'tweets_#nfl.txt'
+
+superbowl_hashtag, superbowl_tweets_per_hour = process_hashtag_file(superbowl_file)
+nfl_hashtag, nfl_tweets_per_hour = process_hashtag_file(nfl_file)
+
+# converting to defaultdict to a dataframe to make plotting easier
+superbowl_df = pd.DataFrame(list(superbowl_tweets_per_hour.items()), columns=['Time', 'Tweets'])
+nfl_df = pd.DataFrame(list(nfl_tweets_per_hour.items()), columns=['Time', 'Tweets'])
+
+# sort the dataframes by time
+superbowl_df = superbowl_df.sort_values(by='Time')
+nfl_df = nfl_df.sort_values(by='Time')
+
+# plot data
+plt.figure(figsize=(16, 10)) 
+
+# plot for #superbowl
+plt.subplot(2, 1, 1)
+plt.bar(superbowl_df['Time'], superbowl_df['Tweets'], color='blue', alpha=0.7, width=0.1)  # Increased bar width
+plt.title(f'Tweets per Hour for {superbowl_hashtag}', fontsize=14)
+plt.xlabel('Date', fontsize=12) 
+plt.ylabel('Number of Tweets', fontsize=12)
+plt.grid(True, linestyle='--', alpha=0.6)
+
+# showing by date since labeling by hour is too hard to read
+plt.gca().xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m-%d'))  
+plt.gca().xaxis.set_major_locator(mdates.DayLocator(interval=1)) 
+plt.xticks(rotation=45)  
+
+# plot for #nfl
+plt.subplot(2, 1, 2)
+plt.bar(nfl_df['Time'], nfl_df['Tweets'], color='green', alpha=0.7, width=0.1) 
+plt.title(f'Tweets per Hour for {nfl_hashtag}', fontsize=14)
+plt.xlabel('Date', fontsize=12) 
+plt.ylabel('Number of Tweets', fontsize=12)
+plt.grid(True, linestyle='--', alpha=0.6)
+
+# formatting for date
+plt.gca().xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m-%d')) 
+plt.gca().xaxis.set_major_locator(mdates.DayLocator(interval=1)) 
+plt.xticks(rotation=45)  
+
+plt.tight_layout()  
+plt.show()
+```
+
+#### Output:
+![Question 9.2 Output](Question-9.2.png)
